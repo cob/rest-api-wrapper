@@ -1,0 +1,6 @@
+.DS_Store
+node_modules
+.idea
+*.iml
+.test.in.execution
+db.json
