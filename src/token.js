@@ -1,10 +1,10 @@
-const { _setUsername } = require("./login")
+const { _setUsername } = require("./auth")
 
 var _token = []
 var _timelessToken = false
 
 var setTimelessToken = function (token) {
-  _token = [token]
+  _token = token
   _timelessToken = true
 
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
@@ -14,17 +14,25 @@ var setTimelessToken = function (token) {
 }
 
 var _setToken = function (token) {
-  // If cob enviroment skip setting token - use browser cookies
+  // If browser enviroment skip setting token - use browser cookies
   if(typeof document === 'object') return
   
   // Only update if token is not a timeless token
   if(!_timelessToken) {
-    _token = [token]
+    if(typeof(token) == "object") {
+      _token = ""
+      for(key in Object.keys(token)) {
+        _token += ";" + token[key]
+      }
+    } else {
+      _token = token
+    }
   }
 }
 
 var _getToken = function () {
-  if(typeof document === 'object') return [document.cookie]
+  // If browser enviroment return browser cookies
+  if(typeof document === 'object') return document.cookie
   return _token
 }
 

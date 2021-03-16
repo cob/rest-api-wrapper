@@ -1,7 +1,7 @@
 /** @jest-environment node */
 
 const { setTimelessToken, _setToken, _getToken } = require("../src/token")
-const { getUsername } = require("../src/login")
+const { getUsername } = require("../src/auth")
 
 
 test('before setting a token _getToken returns an empty array', () => {
@@ -12,7 +12,7 @@ test('before setting a token _getToken returns an empty array', () => {
 test('internally setting tokens with _setToken updates the token ', () => {
     _setToken("3434243")
     _setToken("8766473")
-    expect(_getToken()).toEqual(["8766473"]);
+    expect(_getToken()).toEqual("8766473");
 })
 
 
@@ -20,7 +20,7 @@ test('but after setting a timelessTokens future calls to _setToken never updates
     setTimelessToken("456456")
     _setToken("8766473")
     _setToken("6434635")
-    expect(_getToken()).toEqual(["456456"]);
+    expect(_getToken()).toEqual("456456");
 })
 
 
@@ -43,12 +43,12 @@ test('using timelessTokens in cob app generates a warning', () => {
 test('_setToken in browser enviroment does nothing', () => {
     document = {cookie : "cobtoken=testToken"} //Simulate cob app enviroment
     _setToken("6434635")
-    expect(_getToken()).not.toEqual(["6434635"]);
+    expect(_getToken()).not.toEqual("6434635");
 })
 
 
 test('_getToken in browser enviroment should return document.cookie', () => {
     document = {cookie : "cobtoken=testToken"} //Simulate cob app enviroment
-    expect(_getToken()).toEqual(["cobtoken=testToken"]);
+    expect(_getToken()).toEqual("cobtoken=testToken");
 })
 

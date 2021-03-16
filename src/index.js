@@ -1,5 +1,7 @@
 const { setServer, getServer } = require("./server")
-const { login, getUsername } = require("./login")
+const { auth, getUsername } = require("./auth")
 const { rmDefinitionSearch } = require("./rmDefinitionSearch")
+const { rmGetInstance } = require("./rmGetInstance")
+const { rmAddInstance } = require("./rmAddInstance")
 
-module.exports = { login, getUsername, setServer, getServer, rmDefinitionSearch };
+module.exports = { auth, getUsername, setServer, getServer, rmDefinitionSearch, rmGetInstance, rmAddInstance };

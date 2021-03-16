@@ -9,4 +9,6 @@ test('getServer equals last setServer call', () => {
     setServer("https://abc.cultofbits.com")
     setServer("https://xpto.cultofbits.com")
     expect(getServer()).toBe("https://xpto.cultofbits.com");
+    setServer("https://learning.cultofbits.com") //restore default server for tests
 })
+

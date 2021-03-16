@@ -2,12 +2,14 @@ const { getServer } = require("./server")
 const { _setToken, _getToken } = require("./token")
 const axios = require('axios');
 
+axios.defaults.withCredentials = true
+
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=0&size=0&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
 
 var rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0,sort="", ascending=false) {
 
-    axios.defaults.headers.Cookie = _getToken() //TODO: only do this in node
+    axios.defaults.headers.Cookie = _getToken() 
 
     let queryUrl = QueryURLTemplate
         .replace('__DEF_NAME__',definitionName)
@@ -16,7 +18,7 @@ var rmDefinitionSearch = async function (definitionName, query="*", from=0, size
     return axios
       .get(getServer() + queryUrl)
       .then(response => {
-        _setToken(response.headers["set-cookie"]) //TODO: only do this in node
+        _setToken(response.headers["set-cookie"])
         let def = response.data._definitions
         let defId = def[Object.keys(def)[0]].id
         

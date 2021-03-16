@@ -4,26 +4,28 @@ const axios = require('axios');
 
 var _username = "anonymous"
 
-var login = async function (username, password) {
+var auth = function (username, password) {
   // start by reseting _username, wich signal clients momentarily to way for decision
   _username = "" 
+  axios.defaults.withCredentials = true
 
-  await axios
+  return axios
     .post(getServer() + "/recordm/security/auth", {
       username: username,
       password: password
     })
     .then(response => {
+      console.log(response)
       _username = username
       let newToken = response.headers["set-cookie"]
       _setToken(newToken)
+      return username
     })
     .catch ( e => {
-      console.warn("Failed login")
+      console.warn("Failed auth")
       _username = "anonymous" 
       _setToken("")
     })
-  return _username;
 }
 
 var getUsername = function() {
@@ -38,4 +40,4 @@ var _setUsername = function(username) {
   _username = username
 }
 
-module.exports = { login, getUsername, _setUsername }
+module.exports = { auth, getUsername, _setUsername }
