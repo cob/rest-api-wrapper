@@ -2,6 +2,7 @@
 /** @jest-environment node */
 const { getUsername, _setUsername, auth } = require("../src/auth")
 const { _getToken, _setToken } = require("../src/token")
+const { umLoggedin } = require("../src/umLoggedin")
 
 test('before any auth getUsername returns "anonymous"', () => {
     expect(getUsername()).toBe("anonymous");
@@ -37,8 +38,13 @@ test('after successful auth username and token are updated', done => {
     // Login
     return auth("jestTests", "1jestTests2").then( () =>{
         expect(getUsername()).toEqual("jestTests");
-        expect(_getToken().toString()).toMatch(/cob-username=jestTests/);
-        done()
+        umLoggedin().then( result => {
+            expect(result.loggedInUser.username).toEqual("jestTests");
+            done()
+        })
+        .catch( e => {
+            done(e)
+        })
     })
     .catch( e => {
         done(e)

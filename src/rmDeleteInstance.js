@@ -4,18 +4,20 @@ const axios = require('axios');
 
 axios.defaults.withCredentials = true
 
-const GetURL =  "/recordm/recordm/instances/"
-const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
+const GetURL =  "/recordm/recordm/instances/__ID__??ignoreRefs=__FLAG__"
 
-var rmGetInstance = async function (instanceId) {
+var rmDeleteInstance = async function (instanceId, ignoreRefs=false) {
 
     axios.defaults.headers.Cookie = _getToken() 
 
+    let url = GetURL
+    .replace('__ID__',instanceId)
+    .replace('__FLAG__',ignoreRefs)
+
     return axios
-      .get(getServer() + GetURL + instanceId)
+      .delete(getServer() + url)
       .then(response => {
         _setToken(response.headers["set-cookie"])
-        response.data.resultsUrl = GetURL + instanceId
         return response.data
       })
       .catch ( e => {
@@ -23,4 +25,4 @@ var rmGetInstance = async function (instanceId) {
       })
 }
 
-module.exports = { rmGetInstance }
+module.exports = { rmDeleteInstance }

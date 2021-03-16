@@ -15,7 +15,6 @@ var auth = function (username, password) {
       password: password
     })
     .then(response => {
-      console.log(response)
       _username = username
       let newToken = response.headers["set-cookie"]
       _setToken(newToken)
