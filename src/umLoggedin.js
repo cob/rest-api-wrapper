@@ -5,7 +5,7 @@ const axios = require('axios');
 var umLoggedin = function () {
   axios.defaults.withCredentials = true
 
-  axios.defaults.headers.Cookie = _getToken() 
+  if(_getToken()) axios.defaults.headers.Cookie = _getToken() 
 
   return axios
     .get(getServer() + "/userm/userm/user/loggedin")

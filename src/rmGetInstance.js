@@ -9,21 +9,21 @@ const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
 var rmGetInstance = async function (instanceId) {
 
-    axios.defaults.headers.Cookie = _getToken() 
+  if(_getToken()) axios.defaults.headers.Cookie = _getToken() 
 
-    return axios
-      .get(getServer() + GetURL + instanceId)
-      .then(response => {
-        _setToken(response.headers["set-cookie"])
-        response.data.resultsUrl = GetURL + instanceId
-        if(typeof window == "undefined") {
-          response.data.resultsUrl = getServer() + response.data.resultsUrl
-        }
-        return response.data
-      })
-      .catch ( e => {
-        throw(e)
-      })
+  return axios
+    .get(getServer() + GetURL + instanceId)
+    .then(response => {
+      _setToken(response.headers["set-cookie"])
+      response.data.resultsUrl = GetURL + instanceId
+      if(typeof window == "undefined") {
+        response.data.resultsUrl = getServer() + response.data.resultsUrl
+      }
+      return response.data
+    })
+    .catch ( e => {
+      throw(e)
+    })
 }
 
 module.exports = { rmGetInstance }
