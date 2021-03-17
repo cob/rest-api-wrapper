@@ -1,16 +1,13 @@
-const { _setUsername } = require("./auth")
-
-var _token = []
-var _timelessToken = false
+var _token = ""
+var _timelessTokenFlag = false
 
 var setTimelessToken = function (token) {
   _token = token
-  _timelessToken = true
+  _timelessTokenFlag = true
 
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     console.warn('You should only use timeless tokens in backend scripts, not browser');
   }
-  _setUsername("timelessToken_"+token.substring(0,4))
 }
 
 var _setToken = function (token) {
@@ -18,7 +15,7 @@ var _setToken = function (token) {
   if(typeof document === 'object') return
   
   // Only update if token is not a timeless token
-  if(!_timelessToken) {
+  if(!_timelessTokenFlag) {
     if(typeof(token) == "object") {
       _token = ""
       for(key in Object.keys(token)) {
@@ -36,4 +33,8 @@ var _getToken = function () {
   return _token
 }
 
-module.exports = { setTimelessToken, _setToken, _getToken }
+var _isTimelessToken = function () {
+  return _timelessTokenFlag
+}
+
+module.exports = { setTimelessToken, _setToken, _getToken, _isTimelessToken }

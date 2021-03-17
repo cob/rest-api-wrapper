@@ -1,5 +1,5 @@
 const { getServer } = require("./server")
-const { _setToken } = require("./token")
+const { _setToken, _getToken, _isTimelessToken } = require("./token")
 const axios = require('axios');
 
 var _username = "anonymous"
@@ -30,6 +30,8 @@ var auth = function (username, password) {
 var getUsername = function() {
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return cob.app.getCurrentLoggedInUser()
+  } else if (_isTimelessToken()) {
+    return ("timelessToken_"+_getToken().substring(0,4))
   } else {
     return _username
   }

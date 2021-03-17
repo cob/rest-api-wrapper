@@ -5,7 +5,7 @@ const { getUsername } = require("../src/auth")
 
 
 test('before setting a token _getToken returns an empty array', () => {
-    expect(_getToken()).toEqual([]);
+    expect(_getToken()).toEqual("");
 })
 
 
