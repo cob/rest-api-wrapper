@@ -4,16 +4,22 @@ const axios = require('axios');
 
 axios.defaults.withCredentials = true
 
-const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=0&size=0&q=__QUERY__"
+const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
+sort=country_code&ascending=false
 
-var rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0,sort="", ascending=false) {
+var rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0,sort="", ascending="") {
 
   if(_getToken()) axios.defaults.headers.Cookie = _getToken() 
 
   let queryUrl = QueryURLTemplate
-      .replace('__DEF_NAME__',definitionName)
-      .replace('__QUERY__',query)
+    .replace('__DEF_NAME__',definitionName)
+    .replace('__QUERY__',query)
+    .replace('__FROM__',from)
+    .replace('__SIZE__',size)
+
+  if(sort) queryUrl += "&sort="+sort
+  if(ascending) queryUrl += "&ascending="+ascending
 
   return axios
     .get(getServer() + queryUrl)

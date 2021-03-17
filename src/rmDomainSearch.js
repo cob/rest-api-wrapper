@@ -14,7 +14,12 @@ var rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort=""
     let queryUrl = QueryURLTemplate
         .replace('__DOMAIN_ID__',domainId)
         .replace('__QUERY__',query)
+        .replace('__FROM__',from)
+        .replace('__SIZE__',size)
 
+    if(sort) queryUrl += "&sort="+sort
+    if(ascending) queryUrl += "&ascending="+ascending
+  
     return axios
       .get(getServer() + queryUrl)
       .then(response => {
