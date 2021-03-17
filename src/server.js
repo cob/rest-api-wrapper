@@ -1,4 +1,7 @@
 var _server = ""
+if (typeof document !== 'object') {
+  global._server = _server
+}
 
 var setServer = function(server) {
   if(typeof self == 'object' && self.self === self && self) {

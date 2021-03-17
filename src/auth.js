@@ -3,6 +3,9 @@ const { _setToken, _getToken, _isTimelessToken } = require("./token")
 const axios = require('axios');
 
 var _username = "anonymous"
+if (typeof document !== 'object') {
+  global._username = _username
+}
 
 var auth = function (username, password) {
   // start by reseting _username, wich signal clients momentarily to way for decision

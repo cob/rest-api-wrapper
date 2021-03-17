@@ -1,6 +1,11 @@
 var _token = ""
 var _timelessTokenFlag = false
 
+if (typeof document !== 'object') {
+  global._token = _token
+  global._timelessTokenFlag = _timelessTokenFlag
+}
+
 var setTimelessToken = function (token) {
   _token = token
   _timelessTokenFlag = true
