@@ -14,7 +14,7 @@ test('for the learning server, "countries series" count for "Arab world" is 20',
 test('the resultsUrl is added to the response and in learning Countries defId=1', () => {
     rmDefinitionSearch("Countries")
     .then( result => {
-        expect(result.resultsUrl).toBe("/recordm/#/definitions/1/q=*")
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/1/q=*")
     })
 })
 

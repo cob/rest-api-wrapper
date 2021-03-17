@@ -26,7 +26,10 @@ var rmDefinitionSearch = async function (definitionName, query="*", from=0, size
         response.data.resultsUrl = ResultsURLTemplate
           .replace('__DEF_ID__', defId)
           .replace('__QUERY__', query);
-
+        if(typeof window == "undefined") {
+          response.data.resultsUrl = getServer() + response.data.resultsUrl
+        }
+  
         return response.data
       })
       .catch ( e => {
