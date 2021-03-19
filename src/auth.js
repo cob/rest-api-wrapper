@@ -4,14 +4,17 @@ const axios = require('axios').default;
 const tough = require('tough-cookie');
 const axiosCookieJarSupport = require('axios-cookiejar-support').default;
 
-axiosCookieJarSupport(axios);
-
-const cookieJar = new tough.CookieJar();
-axios.defaults.jar = cookieJar;
+var cookieJar
+// If in node use tough-cookie for axios jar
+if(typeof axiosCookieJarSupport === "function") {
+  axiosCookieJarSupport(axios);
+  cookieJar = new tough.CookieJar();
+  axios.defaults.jar = cookieJar;
+}
 axios.defaults.withCredentials = true;
 
-
 var _username = "anonymous"
+
 if (typeof document !== 'object') {
   global._username = _username
 }
