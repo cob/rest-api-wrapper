@@ -22,8 +22,9 @@ npm install jest --global
 
 then run jest in watch mode and check for error during the normal development process. The `-o` flag means 'only test changed files'.
 
+To support es6 modules we need to use these flags:
 ```
-jest —-watch -o
+node --no-warnings --trace-warnings --experimental-vm-modules node_modules/.bin/jest  --watch -o
 ```
 
 

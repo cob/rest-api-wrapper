@@ -1,11 +1,11 @@
-const { setServer, getServer } = require("./server")
-const { auth, getUsername } = require("./auth")
-const { rmDefinitionSearch } = require("./rmDefinitionSearch")
-const { rmDefinitionAdvSearch } = require("./rmDefinitionAdvSearch")
-const { rmDomainSearch } = require("./rmDomainSearch")
-const { rmGetInstance } = require("./rmGetInstance")
-const { rmAddInstance } = require("./rmAddInstance")
-const { rmDeleteInstance } = require("./rmDeleteInstance")
-const { umLoggedin } = require("./umLoggedin")
+import { setServer, getServer } from "./server"
+import { auth, getUsername } from "./auth"
+import { rmDefinitionSearch } from "./rmDefinitionSearch"
+import { rmDefinitionAdvSearch } from "./rmDefinitionAdvSearch"
+import { rmDomainSearch } from "./rmDomainSearch"
+import { rmGetInstance } from "./rmGetInstance"
+import { rmAddInstance } from "./rmAddInstance"
+import { rmDeleteInstance } from "./rmDeleteInstance"
+import { umLoggedin } from "./umLoggedin"
 
-module.exports = { auth, getUsername, setServer, getServer, rmDefinitionSearch, rmDefinitionAdvSearch, rmDomainSearch, rmGetInstance, rmAddInstance, rmDeleteInstance, umLoggedin };
+export { auth, getUsername, setServer, getServer, rmDefinitionSearch, rmDefinitionAdvSearch, rmDomainSearch, rmGetInstance, rmAddInstance, rmDeleteInstance, umLoggedin };

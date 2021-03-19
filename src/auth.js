@@ -1,14 +1,14 @@
-const { getServer } = require("./server")
+import { getServer } from "./server";
 
-const axios = require('axios').default;
-const tough = require('tough-cookie');
-const axiosCookieJarSupport = require('axios-cookiejar-support').default;
+import axios from 'axios';
+import { CookieJar } from 'tough-cookie';
+import axiosCookieJarSupport from 'axios-cookiejar-support';
 
 var cookieJar
 // If in node use tough-cookie for axios jar
-if(typeof axiosCookieJarSupport === "function") {
-  axiosCookieJarSupport(axios);
-  cookieJar = new tough.CookieJar();
+if(typeof axiosCookieJarSupport.default === "function") {
+  axiosCookieJarSupport.default(axios);
+  cookieJar = new CookieJar();
   axios.defaults.jar = cookieJar;
 }
 axios.defaults.withCredentials = true;
@@ -63,4 +63,4 @@ var _setUsername = function(username) {
 }
 
 
-module.exports = { auth, setTimelessToken, getUsername, _setUsername }
+export { auth, setTimelessToken, getUsername, _setUsername }

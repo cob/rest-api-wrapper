@@ -1,5 +1,5 @@
-const { getServer } = require("./server")
-const axios = require('axios');
+import { getServer } from "./server";
+import axios from 'axios';
 
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/advanced/__DEF_ID__?from=__FROM__&size=__SIZE__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
@@ -28,8 +28,7 @@ var rmDefinitionAdvSearch = async function (defId, aggregation, query="*", from=
     "aggs": aggregation
   }
 
-  return axios
-    .post(getServer() + queryUrl, data)
+  return axios.post(getServer() + queryUrl, data)
     .then(response => {
       //Add resultsUrl to response
       response.data.resultsUrl = resultsUrl
@@ -43,4 +42,4 @@ var rmDefinitionAdvSearch = async function (defId, aggregation, query="*", from=
     })
 }
 
-module.exports = { rmDefinitionAdvSearch }
+export { rmDefinitionAdvSearch }

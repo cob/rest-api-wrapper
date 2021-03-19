@@ -1,12 +1,11 @@
-const { getServer } = require("./server")
-const axios = require('axios');
+import { getServer } from "./server";
+import axios from 'axios';
 
 const GetURL =  "/recordm/recordm/instances/"
 const ResultsURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
 var rmGetInstance = async function (instanceId) {
-  return axios
-    .get(getServer() + GetURL + instanceId)
+  return axios.get(getServer() + GetURL + instanceId)
     .then(response => {
       response.data.resultsUrl = ResultsURLTemplate
         .replace('__INSTANCE_ID__', instanceId)
@@ -21,4 +20,4 @@ var rmGetInstance = async function (instanceId) {
     })
 }
 
-module.exports = { rmGetInstance }
+export { rmGetInstance }

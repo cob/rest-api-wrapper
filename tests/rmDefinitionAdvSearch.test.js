@@ -1,6 +1,6 @@
 
 /** @jest-environment node */
-const { rmDefinitionAdvSearch } = require("../src/rmDefinitionAdvSearch")
+import { rmDefinitionAdvSearch } from "../src/rmDefinitionAdvSearch"
 
 
 test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20', (done) => {

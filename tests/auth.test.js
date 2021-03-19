@@ -1,7 +1,7 @@
-
 /** @jest-environment node */
-const { getUsername, setTimelessToken, _setUsername, auth } = require("../src/auth")
-const { umLoggedin } = require("../src/umLoggedin")
+import {jest} from '@jest/globals';
+import { getUsername, setTimelessToken, _setUsername, auth } from "../src/auth";
+import { umLoggedin } from "../src/umLoggedin";
 
 test('before any auth getUsername returns "anonymous"', () => {
     expect(getUsername()).toBe("anonymous");

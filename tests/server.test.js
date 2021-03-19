@@ -1,5 +1,5 @@
 /** @jest-environment node */
-const { getServer, setServer } = require("../src/server")
+import { getServer, setServer } from "../src/server";
 
 test('default server is "https://learning.cultofbits.com"', () => {
     expect(getServer()).toBe("https://learning.cultofbits.com");
