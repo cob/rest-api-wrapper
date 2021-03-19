@@ -1,6 +1,15 @@
 const { getServer } = require("./server")
-const { _setToken, _getToken, _isTimelessToken } = require("./token")
-const axios = require('axios');
+
+const axios = require('axios').default;
+const tough = require('tough-cookie');
+const axiosCookieJarSupport = require('axios-cookiejar-support').default;
+
+axiosCookieJarSupport(axios);
+
+const cookieJar = new tough.CookieJar();
+axios.defaults.jar = cookieJar;
+axios.defaults.withCredentials = true;
+
 
 var _username = "anonymous"
 if (typeof document !== 'object') {
@@ -10,38 +19,45 @@ if (typeof document !== 'object') {
 var auth = function (username, password) {
   // start by reseting _username, wich signal clients momentarily to way for decision
   _username = "" 
-  axios.defaults.withCredentials = true
 
   return axios
     .post(getServer() + "/recordm/security/auth", {
       username: username,
       password: password
-    })
-    .then(response => {
+    },
+    )
+    .then( () => {
       _username = username
-      let newToken = response.headers["set-cookie"]
-      _setToken(newToken)
       return username
     })
     .catch ( e => {
       console.warn("Failed auth")
       _username = "anonymous" 
-      _setToken("")
     })
 }
 
 var getUsername = function() {
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return cob.app.getCurrentLoggedInUser()
-  } else if (_isTimelessToken()) {
-    return ("timelessToken_"+_getToken().substring(0,4))
   } else {
     return _username
   }
 }
 
+var setTimelessToken = function (token) {
+  if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
+    console.warn('You should only use timeless tokens in backend scripts, not browser. Ignoring');
+    return
+  }
+  //TODO: fix and test
+  cookieJar.setCookieSync('cobtoken=' + token + ';', getServer());
+  _setUsername("timelessToken_"+token.substring(0,4))
+}
+
+
 var _setUsername = function(username) {
   _username = username
 }
 
-module.exports = { auth, getUsername, _setUsername }
+
+module.exports = { auth, setTimelessToken, getUsername, _setUsername }
