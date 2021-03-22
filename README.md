@@ -19,6 +19,7 @@ The list of available functions are:
 * `umLoggedin`
 * `rmDefinitionSearch`
 * `rmDefinitionAdvSearch`
+* `rmDomainSearch`
 * `rmGetInstance`
 * `rmAddInstance`
 * `rmDeleteInstance`
