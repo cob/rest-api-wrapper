@@ -17,9 +17,9 @@ The list of available functions are:
 * `server` 
 * `auth` 
 * `umLoggedin`
+* `rmDomainSearch`
 * `rmDefinitionSearch`
 * `rmDefinitionAdvSearch`
-* `rmDomainSearch`
 * `rmGetInstance`
 * `rmAddInstance`
 * `rmDeleteInstance`
