@@ -22,4 +22,4 @@ var getServer = function() {
   return _server
 }
 
-module.exports = { setServer, getServer }
+export { setServer, getServer }

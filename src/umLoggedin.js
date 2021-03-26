@@ -1,9 +1,8 @@
-const { getServer } = require("./server")
-const axios = require('axios');
+import { getServer }  from "./server";
+import axios from 'axios';
 
 var umLoggedin = function () {
-  return axios
-    .get(getServer() + "/userm/userm/user/loggedin")
+  return axios.get(getServer() + "/userm/userm/user/loggedin")
     .then(response => {
       return response.data.loggedInUser
     })
@@ -12,4 +11,4 @@ var umLoggedin = function () {
     })
 }
 
-module.exports = { umLoggedin }
+export { umLoggedin }

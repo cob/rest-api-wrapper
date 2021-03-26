@@ -1,5 +1,5 @@
-const { getServer } = require("./server")
-const axios = require('axios');
+import { getServer } from "./server";
+import axios from 'axios';
 
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
@@ -15,8 +15,7 @@ var rmDefinitionSearch = async function (definitionName, query="*", from=0, size
   if(sort) queryUrl += "&sort="+sort
   if(ascending) queryUrl += "&ascending="+ascending
 
-  return axios
-    .get(getServer() + queryUrl)
+  return axios.get(getServer() + queryUrl)
     .then(response => {
       let def = response.data._definitions
       let defId = def[Object.keys(def)[0]].id
@@ -33,4 +32,4 @@ var rmDefinitionSearch = async function (definitionName, query="*", from=0, size
     })
 }
 
-module.exports = { rmDefinitionSearch }
+export { rmDefinitionSearch }

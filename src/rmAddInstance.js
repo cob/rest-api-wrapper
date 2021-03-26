@@ -1,5 +1,5 @@
-const { getServer } = require("./server")
-const axios = require('axios');
+import { getServer } from "./server";
+import axios from 'axios';
 
 const PostURL =  "/recordm/recordm/instances/integration"
 const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
@@ -10,8 +10,7 @@ var rmAddInstance = async function (definitionName, values) {
     "values": values
   }
   
-  return axios
-    .post(getServer() + PostURL, data)
+  return axios.post(getServer() + PostURL, data)
     .then(response => {
       let id = response.data.id
       //Add resultsUrl to response
@@ -27,4 +26,4 @@ var rmAddInstance = async function (definitionName, values) {
     })
 }
 
-module.exports = { rmAddInstance }
+export { rmAddInstance }

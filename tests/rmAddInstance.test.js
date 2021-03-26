@@ -1,7 +1,7 @@
 /** @jest-environment node */
-const { auth } = require("../src/auth")
-const { rmAddInstance } = require("../src/rmAddInstance")
-const { rmDeleteInstance } = require("../src/rmDeleteInstance")
+import { auth } from "../src/auth"
+import { rmAddInstance } from "../src/rmAddInstance"
+import { rmDeleteInstance } from "../src/rmDeleteInstance"
 
 
 test('after creating a instance you can get it from server', done => {
