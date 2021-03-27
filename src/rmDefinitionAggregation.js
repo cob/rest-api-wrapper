@@ -4,7 +4,7 @@ import axios from 'axios';
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/advanced/__DEF_ID__?from=__FROM__&size=__SIZE__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
 
-var rmDefinitionAdvSearch = async function (defId, aggregation, query="*", from=0, size=10,sort="", ascending="") {
+var rmDefinitionAggregation = function (defId, aggregation, query="*", from=0, size=10, sort="", ascending="") {
   let queryUrl = QueryURLTemplate
     .replace('__DEF_ID__',defId)
     .replace('__FROM__',from)
@@ -42,4 +42,4 @@ var rmDefinitionAdvSearch = async function (defId, aggregation, query="*", from=
     })
 }
 
-export { rmDefinitionAdvSearch }
+export { rmDefinitionAggregation }

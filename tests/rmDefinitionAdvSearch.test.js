@@ -1,10 +1,9 @@
 
 /** @jest-environment node */
-import { rmDefinitionAdvSearch } from "../src/rmDefinitionAdvSearch"
-
+import { rmDefinitionAggregation } from "../src/rmDefinitionAggregation"
 
 test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20', (done) => {
-    rmDefinitionAdvSearch(2, {}, "Arab world")
+    rmDefinitionAggregation(2, {}, "Arab world")
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
         expect(result.hits.total.value).toBe(20)
@@ -25,7 +24,7 @@ test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
         }
     }
 
-    rmDefinitionAdvSearch(2, agg , 'Arab  World indicator_name:"population, total"')
+    rmDefinitionAggregation(2, agg , 'Arab  World indicator_name:"population, total"')
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World indicator_name:\"population, total\"")
         expect(result.aggregations['sum#x'].value).toBe(2019650012)
@@ -47,7 +46,7 @@ test('for "Arab world" there are 4 indicators', (done) => {
         }
     }
 
-    rmDefinitionAdvSearch(2, agg , "Arab  World")
+    rmDefinitionAggregation(2, agg , "Arab  World")
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World")
         expect(result.aggregations['sterms#x'].buckets).toEqual([
