@@ -1,65 +1,37 @@
-import { getServer } from "./server";
+import { getServer } from "./server"
+import umLoggedin from "../src/umLoggedin.js"
 
-import axios from 'axios';
-import { CookieJar } from 'tough-cookie';
-import axiosCookieJarSupport from 'axios-cookiejar-support';
+import axios from 'axios'
+import { CookieJar } from 'tough-cookie'
+import axiosCookieJarSupport from 'axios-cookiejar-support'
 
 var cookieJar
 // If in node use tough-cookie for axios jar
 if(typeof axiosCookieJarSupport.default === "function") {
-  axiosCookieJarSupport.default(axios);
-  cookieJar = new CookieJar();
-  axios.defaults.jar = cookieJar;
+  axiosCookieJarSupport.default(axios)
+  cookieJar = new CookieJar()
+  axios.defaults.jar = cookieJar
+  axios.defaults.ignoreCookieErrors = true
 }
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
-var _username = "anonymous"
-
-if (typeof document !== 'object') {
-  global._username = _username
-}
-
-var auth = function (username, password) {
-  // start by reseting _username, wich signal clients momentarily to way for decision
-  _username = "" 
-
-  return axios
+var auth = function ({username, password, token}) {
+  if(username) return axios
     .post(getServer() + "/recordm/security/auth", {
       username: username,
       password: password
-    },
-    )
-    .then( () => {
-      _username = username
-      return username
     })
-    .catch ( e => {
-      console.warn("Failed auth")
-      _username = "anonymous" 
-    })
-}
-
-var getUsername = function() {
-  if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
-    return cob.app.getCurrentLoggedInUser()
-  } else {
-    return _username
+    .then( r => umLoggedin(false) )
+    .catch( e => { throw e })
+  else if(token) {
+    if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
+      console.warn('You should only use timeless tokens in backend scripts, not browser. Ignoring');
+    }
+    //TODO: test
+    cookieJar.setCookieSync('cobtoken=' + token + ';', getServer())
+    return Promise.resolve( umLoggedin(false) )
   }
-}
-
-var setTimelessToken = function (token) {
-  if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
-    console.warn('You should only use timeless tokens in backend scripts, not browser. Ignoring');
-    return
-  }
-  //TODO: fix and test
-  cookieJar.setCookieSync('cobtoken=' + token + ';', getServer());
-  _setUsername("timelessToken_"+token.substring(0,4))
-}
-
-
-var _setUsername = function(username) {
-  _username = username
+  return Promise.fail("Specify a username/password OR a token")
 }
 
 export default auth 
