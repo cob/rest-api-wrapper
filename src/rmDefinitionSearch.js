@@ -1,4 +1,4 @@
-import { getServer } from "./server";
+import { getServer } from "./server.js";
 import axios from 'axios';
 
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__"

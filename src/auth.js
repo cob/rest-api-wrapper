@@ -1,4 +1,4 @@
-import { getServer } from "./server"
+import { getServer } from "./server.js"
 import umLoggedin from "../src/umLoggedin.js"
 
 import axios from 'axios'

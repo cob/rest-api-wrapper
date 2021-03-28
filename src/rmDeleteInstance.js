@@ -1,4 +1,4 @@
-import { getServer } from "./server";
+import { getServer } from "./server.js";
 import axios from 'axios';
 
 const GetURL =  "/recordm/recordm/instances/__ID__??ignoreRefs=__FLAG__"
