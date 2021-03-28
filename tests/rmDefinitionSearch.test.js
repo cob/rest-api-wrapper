@@ -1,6 +1,6 @@
 
 /** @jest-environment node */
-import { rmDefinitionSearch } from "../src/rmDefinitionSearch"
+import rmDefinitionSearch from "../src/rmDefinitionSearch"
 
 
 test('for the learning server, "countries series" count for "Arab world" is 20', () => {

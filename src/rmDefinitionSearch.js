@@ -32,4 +32,4 @@ var rmDefinitionSearch = async function (definitionName, query="*", from=0, size
     })
 }
 
-export { rmDefinitionSearch }
+export default rmDefinitionSearch 

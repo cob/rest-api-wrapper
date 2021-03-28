@@ -1,6 +1,6 @@
 
 /** @jest-environment node */
-import { rmDomainSearch } from "../src/rmDomainSearch"
+import rmDomainSearch from "../src/rmDomainSearch"
 
 
 test('for the learning server, "E-learning Demo" domain count for "Arab world" is 22', (done) => {

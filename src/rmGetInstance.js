@@ -20,4 +20,4 @@ var rmGetInstance = async function (instanceId) {
     })
 }
 
-export { rmGetInstance }
+export default rmGetInstance

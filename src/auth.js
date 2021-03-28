@@ -62,5 +62,4 @@ var _setUsername = function(username) {
   _username = username
 }
 
-
-export { auth, setTimelessToken, getUsername, _setUsername }
+export default auth 

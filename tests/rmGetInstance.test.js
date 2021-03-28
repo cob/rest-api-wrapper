@@ -1,6 +1,6 @@
 
 /** @jest-environment node */
-import { rmGetInstance } from "../src/rmGetInstance"
+import rmGetInstance from "../src/rmGetInstance"
 
 
 test('instance 556 is Aruba (ABW)', done => {

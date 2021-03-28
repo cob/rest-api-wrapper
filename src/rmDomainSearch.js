@@ -31,4 +31,4 @@ var rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort=""
       })
 }
 
-export { rmDomainSearch }
+export default rmDomainSearch

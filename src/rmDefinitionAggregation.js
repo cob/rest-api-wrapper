@@ -42,4 +42,4 @@ var rmDefinitionAggregation = function (defId, aggregation, query="*", from=0, s
     })
 }
 
-export { rmDefinitionAggregation }
+export default rmDefinitionAggregation 

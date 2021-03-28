@@ -11,4 +11,4 @@ var umLoggedin = function () {
     })
 }
 
-export { umLoggedin }
+export default umLoggedin 

@@ -17,4 +17,4 @@ var rmDeleteInstance = async function (instanceId, ignoreRefs=false) {
     })
 }
 
-export { rmDeleteInstance }
+export default rmDeleteInstance

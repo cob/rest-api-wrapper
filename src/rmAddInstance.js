@@ -26,4 +26,4 @@ var rmAddInstance = async function (definitionName, values) {
     })
 }
 
-export { rmAddInstance }
+export default rmAddInstance
