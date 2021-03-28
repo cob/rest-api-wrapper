@@ -3,15 +3,19 @@ import axios from 'axios'
 
 var _lastUmLoggedinResponse = {}
 var _lastUmLoggedinResponseValidity = 0
+var _currentPromise
 
 var umLoggedin = function (throtle=true) {
+  // debugger;
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return Promise.resolve(cob.app.getCurrentLoggedInUser())
   } else if ( throtle && Date.now() < _lastUmLoggedinResponseValidity ) {
     _lastUmLoggedinResponse.throtle = true
     return Promise.resolve(_lastUmLoggedinResponse)
+  } else if ( _currentPromise && typeof _currentPromise.then === "function") {
+    return _currentPromise.then( r => r)
   } else {
-    return axios.get(getServer() + "/userm/userm/user/loggedin")
+    return _currentPromise = axios.get(getServer() + "/userm/userm/user/loggedin")
     .then(response => {
         _lastUmLoggedinResponseValidity = Date.now() + 60000
         return _lastUmLoggedinResponse = response.data.loggedInUser 
