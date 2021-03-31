@@ -15,7 +15,7 @@ var umLoggedin = function (throtle=true) {
   } else if ( throtle && Date.now() < _lastUmLoggedinResponseValidity ) {
     _lastUmLoggedinResponse.throtle = true
     return Promise.resolve(_lastUmLoggedinResponse)
-  } else if ( _currentPromise && typeof _currentPromise.then === "function") {
+  } else if ( throtle && _currentPromise && typeof _currentPromise.then === "function") {
     return _currentPromise.then( r => r)
   } else {
     return _currentPromise = axios.get(getServer() + "/userm/userm/user/loggedin")

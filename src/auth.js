@@ -21,7 +21,7 @@ var auth = function ({username, password, token}) {
       username: username,
       password: password
     })
-    .then( r => umLoggedin(false) )
+    .then( r => umLoggedin({throtle:false}) )
     .catch( e => { throw e })
   else if(token) {
     if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
@@ -29,7 +29,7 @@ var auth = function ({username, password, token}) {
     }
     //TODO: test
     cookieJar.setCookieSync('cobtoken=' + token + ';', getServer())
-    return Promise.resolve( umLoggedin(false) )
+    return Promise.resolve( umLoggedin({throtle:false}) )
   }
   return Promise.reject("Specify a username/password OR a token")
 }

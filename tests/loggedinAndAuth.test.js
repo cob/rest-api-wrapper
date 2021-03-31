@@ -2,6 +2,8 @@
 import auth from "../src/auth.js"
 import umLoggedin from "../src/umLoggedin.js"
 
+// Nota por questões de concorrência de autenticações estes testes só funcionam 1 de cada vez (colocando test.only para o que se quiser testar)
+
 test('before any auth, umLoggedin returns "anonymous"', async () => {
     let result = await umLoggedin()
     expect(result).toEqual({username:"anonymous"})
@@ -18,7 +20,7 @@ test('after successful auth umLoggedin returns that user and sets throtled usern
 })
 
 
-test('setting a timelessTokens also sets throtled username', async () => {
+test.only('setting a timelessTokens also sets throtled username', async () => {
     let response = await auth({token:"Pn2tDonpOqtIXvwPATQC1/AKGnYHRTeWVgPd4Jsjx3oviX9cVlIe/Q2yfHF0KVAyl0qixyggX/BsFjb+xtTLdE/wYoSKci29LzjZPHgtqgNeKbzYQS0ipAarKpy2x09R2JMmHxyZgLt0mb20fnptYg=="})
     expect(response.username).toEqual("jestTests")
     expect(response.throtle).toBeUndefined()
