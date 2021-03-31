@@ -4,3 +4,4 @@ node_modules
 *.iml
 .test.in.execution
 db.json
+rest-api-wrapper.js.LICENSE.txt
