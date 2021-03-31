@@ -4,17 +4,21 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "./node_modules/.bin/webpack --config webpack.config.js"
   },
   "author": "",
-  "license": "ISC",
+  "license" : "SEE LICENSE IN <filename>",
   "dependencies": {
     "axios": "^0.21.1",
     "axios-cookiejar-support": "^1.0.1",
-    "tough-cookie": "^4.0.0"
+    "tough-cookie": "^4.0.0",
+    "util": "^0.12.3",
+    "webpack": "^5.28.0"
   },
   "devDependencies": {
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "webpack-cli": "^4.6.0"
   },
   "type": "module",
   "jest": {

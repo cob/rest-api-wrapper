@@ -8,4 +8,15 @@ import rmAddInstance from "./rmAddInstance.js"
 import rmDeleteInstance from "./rmDeleteInstance.js"
 import umLoggedin from "./umLoggedin.js"
 
+if(window) window.cobRestApiWrapper = {
+    auth: auth,
+    rmDefinitionSearch: rmDefinitionSearch,
+    rmDefinitionAggregation: rmDefinitionAggregation,
+    rmDomainSearch: rmDomainSearch,
+    rmGetInstance: rmGetInstance,
+    rmAddInstance: rmAddInstance,
+    rmDeleteInstance: rmDeleteInstance,
+    umLoggedin: umLoggedin
+}
+
 export { auth, setServer, getServer, rmDefinitionSearch, rmDefinitionAggregation, rmDomainSearch, rmGetInstance, rmAddInstance, rmDeleteInstance, umLoggedin };
