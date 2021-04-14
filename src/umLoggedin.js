@@ -10,7 +10,7 @@ var umLoggedin = function (throtle=true) {
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return Promise.resolve({
       username:cob.app.getCurrentLoggedInUser(),
-      groups:cob.app.getGroups()?.map(g => ({name:g})),
+      groups:cob.app.getGroups().getGroups().map(g => ({name:g})),
     })
   } else if ( throtle && Date.now() < _lastUmLoggedinResponseValidity ) {
     _lastUmLoggedinResponse.throtle = true
