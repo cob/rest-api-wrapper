@@ -23,6 +23,7 @@ The list of available functions are:
 * `rmGetInstance`
 * `rmAddInstance`
 * `rmDeleteInstance`
+* `dmEquipmentSearch`
 
 
 # Examples

@@ -7,5 +7,6 @@ import rmGetInstance from "./rmGetInstance.js"
 import rmAddInstance from "./rmAddInstance.js"
 import rmDeleteInstance from "./rmDeleteInstance.js"
 import umLoggedin from "./umLoggedin.js"
+import dmEquipmentSearch from "./dmEquipmentSearch.js"
 
-export { auth, setServer, getServer, rmDefinitionSearch, rmDefinitionAggregation, rmDomainSearch, rmGetInstance, rmAddInstance, rmDeleteInstance, umLoggedin };
+export { auth, setServer, getServer, rmDefinitionSearch, rmDefinitionAggregation, rmDomainSearch, rmGetInstance, rmAddInstance, rmDeleteInstance, umLoggedin, dmEquipmentSearch };
