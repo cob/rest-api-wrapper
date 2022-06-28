@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest",
+    "test": " node --experimental-vm-modules node_modules/.bin/jest",
     "build": "./node_modules/.bin/webpack --config webpack.config.js"
   },
   "author": "",
