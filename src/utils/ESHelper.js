@@ -5,7 +5,7 @@
  */
 function toEsFieldName(fieldName) {
     if (!fieldName) return null
-    return fieldName.replace(/ /g, '_').toLowerCase()
+    return fieldName.replace(/\s+/g, '_').toLowerCase()
 }
 
 export {toEsFieldName}
