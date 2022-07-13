@@ -4,7 +4,7 @@ import axios from 'axios';
 const QueryURLTemplate =  "/recordm/recordm/domains/search/__DOMAIN_ID__?from=0&size=0&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/domain/__DOMAIN_ID__/q=__QUERY__"
 
-var rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort="", ascending=false) {
+const rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort="", ascending=false) {
     let queryUrl = QueryURLTemplate
         .replace('__DOMAIN_ID__',domainId)
         .replace('__QUERY__',query)
