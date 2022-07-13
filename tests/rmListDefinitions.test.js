@@ -2,29 +2,22 @@
 
 import rmListDefinitions from '../src/rmListDefinitions.js'
 
-test('Can list all definitions with no filter', async () => {
+test('Can list all active definitions with (no filter)', async () => {
 
     let definitions = await rmListDefinitions();
-    expect(definitions).toHaveLength(4)
+    expect(definitions.length).toBeGreaterThanOrEqual(4)
 
-    expect(definitions.sort((e1, e2) => e1.id < e2.id).map(def => def.name))
-        .toStrictEqual(['Countries', 'Countries Series', 'Dashboard', 'E-learning Contents'])
+    const countriesName = definitions.sort((e1, e2) => e1.id < e2.id).map(def => def.name);
+
+    ['Countries', 'Countries Series', 'Dashboard', 'E-learning Contents']
+        .forEach(c => expect(countriesName).toContain(c))
 })
 
-test('Can list all definitions with filter', async () => {
+test('Can find definitions matching name', async () => {
 
     let definitions = await rmListDefinitions({name: 'Countries*'});
     expect(definitions).toHaveLength(2)
 
     expect(definitions.sort((e1, e2) => e1.id < e2.id).map(def => def.name))
         .toStrictEqual(['Countries', 'Countries Series'])
-})
-
-test('Can list all definitions with filter', async () => {
-
-    let definitions = await rmListDefinitions({name: 'Countries*Ser*'});
-    expect(definitions).toHaveLength(1)
-
-    expect(definitions.sort((e1, e2) => e1.id < e2.id).map(def => def.name))
-        .toStrictEqual(['Countries Series'])
 })
