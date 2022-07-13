@@ -19,11 +19,13 @@ axios.defaults.withCredentials = true
 
 const auth = function ({username, password, token}) {
   if(username) {
-    return axios.post(getServer() + "/recordm/security/auth", {
-      username: username,
-      password: password
-    }).then( r => umLoggedin({throtle:false}) )
-        .catch( e => { throw e })
+    return axios
+        .post(getServer() + "/recordm/security/auth", {
+            username: username,
+            password: password
+        })
+        .then(r => umLoggedin({throtle: false}))
+        .catch(e => { throw e })
 
   } else if(token) {
     if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
