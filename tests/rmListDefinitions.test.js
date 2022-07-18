@@ -5,11 +5,11 @@ import rmListDefinitions from '../src/rmListDefinitions.js'
 test('Can list all active definitions with (no filter)', async () => {
 
     let definitions = await rmListDefinitions();
-    expect(definitions.length).toBeGreaterThanOrEqual(4)
+    expect(definitions.length).toBeGreaterThanOrEqual(3)
 
     const countriesName = definitions.sort((e1, e2) => e1.id < e2.id).map(def => def.name);
 
-    ['Countries', 'Countries Series', 'Dashboard', 'E-learning Contents']
+    ['Countries', 'Countries Series', 'E-learning Contents']
         .forEach(c => expect(countriesName).toContain(c))
 })
 
