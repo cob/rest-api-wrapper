@@ -35,7 +35,7 @@ export const ReportsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reportPost: async (reportGenerationRequest?: ReportGenerationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        generate: async (reportGenerationRequest?: ReportGenerationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/report`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -71,7 +71,7 @@ export const ReportsApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reportTestPost: async (f?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        test: async (f?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/report/test`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -122,8 +122,8 @@ export const ReportsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async reportPost(reportGenerationRequest?: ReportGenerationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.reportPost(reportGenerationRequest, options);
+        async generate(reportGenerationRequest?: ReportGenerationRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.generate(reportGenerationRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -133,8 +133,8 @@ export const ReportsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async reportTestPost(f?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.reportTestPost(f, options);
+        async test(f?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.test(f, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -154,8 +154,8 @@ export const ReportsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reportPost(reportGenerationRequest?: ReportGenerationRequest, options?: any): AxiosPromise<void> {
-            return localVarFp.reportPost(reportGenerationRequest, options).then((request) => request(axios, basePath));
+        generate(reportGenerationRequest?: ReportGenerationRequest, options?: any): AxiosPromise<void> {
+            return localVarFp.generate(reportGenerationRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * To simplify development of new report templates. Arguments to the template can be passed as query string args.
@@ -164,8 +164,8 @@ export const ReportsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        reportTestPost(f?: any, options?: any): AxiosPromise<void> {
-            return localVarFp.reportTestPost(f, options).then((request) => request(axios, basePath));
+        test(f?: any, options?: any): AxiosPromise<void> {
+            return localVarFp.test(f, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -185,8 +185,8 @@ export class ReportsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ReportsApi
      */
-    public reportPost(reportGenerationRequest?: ReportGenerationRequest, options?: AxiosRequestConfig) {
-        return ReportsApiFp(this.configuration).reportPost(reportGenerationRequest, options).then((request) => request(this.axios, this.basePath));
+    public generate(reportGenerationRequest?: ReportGenerationRequest, options?: AxiosRequestConfig) {
+        return ReportsApiFp(this.configuration).generate(reportGenerationRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -197,7 +197,7 @@ export class ReportsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof ReportsApi
      */
-    public reportTestPost(f?: any, options?: AxiosRequestConfig) {
-        return ReportsApiFp(this.configuration).reportTestPost(f, options).then((request) => request(this.axios, this.basePath));
+    public test(f?: any, options?: AxiosRequestConfig) {
+        return ReportsApiFp(this.configuration).test(f, options).then((request) => request(this.axios, this.basePath));
     }
 }

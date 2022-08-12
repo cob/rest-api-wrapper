@@ -32,13 +32,12 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * Adds a new instance represented by the passed Object.
          * @summary Add an instance
          * @param {Instance} instance the instance to add
-         * @param {boolean} [waitFor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        add1: async (instance: Instance, waitFor?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addInstance: async (instance: Instance, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'instance' is not null or undefined
-            assertParamExists('add1', 'instance', instance)
+            assertParamExists('addInstance', 'instance', instance)
             const localVarPath = `/recordm/instances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -52,10 +51,6 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
             const localVarQueryParameter = {} as any;
 
             // authentication cobtoken required
-
-            if (waitFor !== undefined) {
-                localVarQueryParameter['waitFor'] = waitFor;
-            }
 
 
     
@@ -79,9 +74,9 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addLogMessageToInstance1: async (id: number, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        addLogMessageToInstance: async (id: number, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('addLogMessageToInstance1', 'id', id)
+            assertParamExists('addLogMessageToInstance', 'id', id)
             const localVarPath = `/recordm/instances/{id}/log`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -119,9 +114,9 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1: async (id: number, ignoreRefs?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteInstance: async (id: number, ignoreRefs?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('delete1', 'id', id)
+            assertParamExists('deleteInstance', 'id', id)
             const localVarPath = `/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -162,13 +157,13 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadFile1: async (id: string, fieldDefinitionId: string, filename: string, disposition?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        downloadFile: async (id: string, fieldDefinitionId: string, filename: string, disposition?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('downloadFile1', 'id', id)
+            assertParamExists('downloadFile', 'id', id)
             // verify required parameter 'fieldDefinitionId' is not null or undefined
-            assertParamExists('downloadFile1', 'fieldDefinitionId', fieldDefinitionId)
+            assertParamExists('downloadFile', 'fieldDefinitionId', fieldDefinitionId)
             // verify required parameter 'filename' is not null or undefined
-            assertParamExists('downloadFile1', 'filename', filename)
+            assertParamExists('downloadFile', 'filename', filename)
             const localVarPath = `/recordm/instances/{id}/files/{fieldDefinitionId}/{filename}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)))
                 .replace(`{${"fieldDefinitionId"}}`, encodeURIComponent(String(fieldDefinitionId)))
@@ -209,9 +204,9 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance1: async (id: number, ifNoneMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getInstance: async (id: number, ifNoneMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('getInstance1', 'id', id)
+            assertParamExists('getInstance', 'id', id)
             const localVarPath = `/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -250,9 +245,9 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewInstance1: async (definitionId: number, withDefaults?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getNewInstance: async (definitionId: number, withDefaults?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('getNewInstance1', 'definitionId', definitionId)
+            assertParamExists('getNewInstance', 'definitionId', definitionId)
             const localVarPath = `/recordm/instances/empty/definition/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -292,11 +287,11 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update2: async (id: number, instance: Instance, acceptOutdated?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateInstance: async (id: number, instance: Instance, acceptOutdated?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('update2', 'id', id)
+            assertParamExists('updateInstance', 'id', id)
             // verify required parameter 'instance' is not null or undefined
-            assertParamExists('update2', 'instance', instance)
+            assertParamExists('updateInstance', 'instance', instance)
             const localVarPath = `/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -379,55 +374,6 @@ export const InstancesApiAxiosParamCreator = function (configuration?: Configura
                 options: localVarRequestOptions,
             };
         },
-        /**
-         * Upload a file to be used as a value for a $file field
-         * @summary Upload file to field in instance
-         * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
-         * @param {string} fieldDefinitionIdOrName The id of the field definition of the $file field
-         * @param {object} [file] The file to upload.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        uploadFile1: async (id: string, fieldDefinitionIdOrName: string, file?: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('uploadFile1', 'id', id)
-            // verify required parameter 'fieldDefinitionIdOrName' is not null or undefined
-            assertParamExists('uploadFile1', 'fieldDefinitionIdOrName', fieldDefinitionIdOrName)
-            const localVarPath = `/recordm/instances/{id}/files/{fieldDefinitionIdOrName}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)))
-                .replace(`{${"fieldDefinitionIdOrName"}}`, encodeURIComponent(String(fieldDefinitionIdOrName)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
-
-            // authentication cobtoken required
-
-
-            if (file !== undefined) { 
-                localVarFormParams.append('file', new Blob([JSON.stringify(file)], { type: "application/json", }));
-            }
-    
-    
-            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = localVarFormParams;
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
     }
 };
 
@@ -442,12 +388,11 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * Adds a new instance represented by the passed Object.
          * @summary Add an instance
          * @param {Instance} instance the instance to add
-         * @param {boolean} [waitFor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async add1(instance: Instance, waitFor?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.add1(instance, waitFor, options);
+        async addInstance(instance: Instance, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addInstance(instance, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -458,8 +403,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addLogMessageToInstance1(id: number, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.addLogMessageToInstance1(id, body, options);
+        async addLogMessageToInstance(id: number, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addLogMessageToInstance(id, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -470,8 +415,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete1(id: number, ignoreRefs?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete1(id, ignoreRefs, options);
+        async deleteInstance(id: number, ignoreRefs?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteInstance(id, ignoreRefs, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -484,8 +429,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadFile1(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadFile1(id, fieldDefinitionId, filename, disposition, options);
+        async downloadFile(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadFile(id, fieldDefinitionId, filename, disposition, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -496,8 +441,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstance1(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstance1(id, ifNoneMatch, options);
+        async getInstance(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getInstance(id, ifNoneMatch, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -508,8 +453,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNewInstance1(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getNewInstance1(definitionId, withDefaults, options);
+        async getNewInstance(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getNewInstance(definitionId, withDefaults, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -521,8 +466,8 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update2(id: number, instance: Instance, acceptOutdated?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update2(id, instance, acceptOutdated, options);
+        async updateInstance(id: number, instance: Instance, acceptOutdated?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateInstance(id, instance, acceptOutdated, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -536,19 +481,6 @@ export const InstancesApiFp = function(configuration?: Configuration) {
          */
         async uploadFile(id: string, fieldDefinitionId: string, file?: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFile(id, fieldDefinitionId, file, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
-         * Upload a file to be used as a value for a $file field
-         * @summary Upload file to field in instance
-         * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
-         * @param {string} fieldDefinitionIdOrName The id of the field definition of the $file field
-         * @param {object} [file] The file to upload.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async uploadFile1(id: string, fieldDefinitionIdOrName: string, file?: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFile1(id, fieldDefinitionIdOrName, file, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -565,12 +497,11 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * Adds a new instance represented by the passed Object.
          * @summary Add an instance
          * @param {Instance} instance the instance to add
-         * @param {boolean} [waitFor] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        add1(instance: Instance, waitFor?: boolean, options?: any): AxiosPromise<void> {
-            return localVarFp.add1(instance, waitFor, options).then((request) => request(axios, basePath));
+        addInstance(instance: Instance, options?: any): AxiosPromise<void> {
+            return localVarFp.addInstance(instance, options).then((request) => request(axios, basePath));
         },
         /**
          * Adds a LogM log entry to an instance.
@@ -580,8 +511,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addLogMessageToInstance1(id: number, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.addLogMessageToInstance1(id, body, options).then((request) => request(axios, basePath));
+        addLogMessageToInstance(id: number, body?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.addLogMessageToInstance(id, body, options).then((request) => request(axios, basePath));
         },
         /**
          * Deletes an instance.
@@ -591,8 +522,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete1(id: number, ignoreRefs?: boolean, options?: any): AxiosPromise<void> {
-            return localVarFp.delete1(id, ignoreRefs, options).then((request) => request(axios, basePath));
+        deleteInstance(id: number, ignoreRefs?: boolean, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteInstance(id, ignoreRefs, options).then((request) => request(axios, basePath));
         },
         /**
          * Download a file that is attached to a $file field
@@ -604,8 +535,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadFile1(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.downloadFile1(id, fieldDefinitionId, filename, disposition, options).then((request) => request(axios, basePath));
+        downloadFile(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.downloadFile(id, fieldDefinitionId, filename, disposition, options).then((request) => request(axios, basePath));
         },
         /**
          * Obtains a representation of an instance.
@@ -615,8 +546,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInstance1(id: number, ifNoneMatch?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.getInstance1(id, ifNoneMatch, options).then((request) => request(axios, basePath));
+        getInstance(id: number, ifNoneMatch?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.getInstance(id, ifNoneMatch, options).then((request) => request(axios, basePath));
         },
         /**
          * Obtains a representation of an instance with no values. Useful for using as a starting point for creating a new instance.
@@ -626,8 +557,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getNewInstance1(definitionId: number, withDefaults?: boolean, options?: any): AxiosPromise<void> {
-            return localVarFp.getNewInstance1(definitionId, withDefaults, options).then((request) => request(axios, basePath));
+        getNewInstance(definitionId: number, withDefaults?: boolean, options?: any): AxiosPromise<void> {
+            return localVarFp.getNewInstance(definitionId, withDefaults, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates an instance with the complete representation passed.
@@ -638,8 +569,8 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update2(id: number, instance: Instance, acceptOutdated?: boolean, options?: any): AxiosPromise<void> {
-            return localVarFp.update2(id, instance, acceptOutdated, options).then((request) => request(axios, basePath));
+        updateInstance(id: number, instance: Instance, acceptOutdated?: boolean, options?: any): AxiosPromise<void> {
+            return localVarFp.updateInstance(id, instance, acceptOutdated, options).then((request) => request(axios, basePath));
         },
         /**
          * Upload a file to be used as a value for a $file field
@@ -652,18 +583,6 @@ export const InstancesApiFactory = function (configuration?: Configuration, base
          */
         uploadFile(id: string, fieldDefinitionId: string, file?: object, options?: any): AxiosPromise<void> {
             return localVarFp.uploadFile(id, fieldDefinitionId, file, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * Upload a file to be used as a value for a $file field
-         * @summary Upload file to field in instance
-         * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
-         * @param {string} fieldDefinitionIdOrName The id of the field definition of the $file field
-         * @param {object} [file] The file to upload.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        uploadFile1(id: string, fieldDefinitionIdOrName: string, file?: object, options?: any): AxiosPromise<void> {
-            return localVarFp.uploadFile1(id, fieldDefinitionIdOrName, file, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -679,13 +598,12 @@ export class InstancesApi extends BaseAPI {
      * Adds a new instance represented by the passed Object.
      * @summary Add an instance
      * @param {Instance} instance the instance to add
-     * @param {boolean} [waitFor] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public add1(instance: Instance, waitFor?: boolean, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).add1(instance, waitFor, options).then((request) => request(this.axios, this.basePath));
+    public addInstance(instance: Instance, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).addInstance(instance, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -697,8 +615,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public addLogMessageToInstance1(id: number, body?: string, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).addLogMessageToInstance1(id, body, options).then((request) => request(this.axios, this.basePath));
+    public addLogMessageToInstance(id: number, body?: string, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).addLogMessageToInstance(id, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -710,8 +628,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public delete1(id: number, ignoreRefs?: boolean, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).delete1(id, ignoreRefs, options).then((request) => request(this.axios, this.basePath));
+    public deleteInstance(id: number, ignoreRefs?: boolean, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).deleteInstance(id, ignoreRefs, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -725,8 +643,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public downloadFile1(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).downloadFile1(id, fieldDefinitionId, filename, disposition, options).then((request) => request(this.axios, this.basePath));
+    public downloadFile(id: string, fieldDefinitionId: string, filename: string, disposition?: string, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).downloadFile(id, fieldDefinitionId, filename, disposition, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -738,8 +656,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public getInstance1(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).getInstance1(id, ifNoneMatch, options).then((request) => request(this.axios, this.basePath));
+    public getInstance(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).getInstance(id, ifNoneMatch, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -751,8 +669,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public getNewInstance1(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).getNewInstance1(definitionId, withDefaults, options).then((request) => request(this.axios, this.basePath));
+    public getNewInstance(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).getNewInstance(definitionId, withDefaults, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -765,8 +683,8 @@ export class InstancesApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public update2(id: number, instance: Instance, acceptOutdated?: boolean, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).update2(id, instance, acceptOutdated, options).then((request) => request(this.axios, this.basePath));
+    public updateInstance(id: number, instance: Instance, acceptOutdated?: boolean, options?: AxiosRequestConfig) {
+        return InstancesApiFp(this.configuration).updateInstance(id, instance, acceptOutdated, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -781,19 +699,5 @@ export class InstancesApi extends BaseAPI {
      */
     public uploadFile(id: string, fieldDefinitionId: string, file?: object, options?: AxiosRequestConfig) {
         return InstancesApiFp(this.configuration).uploadFile(id, fieldDefinitionId, file, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * Upload a file to be used as a value for a $file field
-     * @summary Upload file to field in instance
-     * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
-     * @param {string} fieldDefinitionIdOrName The id of the field definition of the $file field
-     * @param {object} [file] The file to upload.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof InstancesApi
-     */
-    public uploadFile1(id: string, fieldDefinitionIdOrName: string, file?: object, options?: AxiosRequestConfig) {
-        return InstancesApiFp(this.configuration).uploadFile1(id, fieldDefinitionIdOrName, file, options).then((request) => request(this.axios, this.basePath));
     }
 }

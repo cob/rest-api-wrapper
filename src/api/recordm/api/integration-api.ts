@@ -27,9 +27,9 @@ import { IntegrationAddMessage } from '../model';
 // @ts-ignore
 import { IntegrationDeleteMessage } from '../model';
 // @ts-ignore
-import { IntegrationUpdateMessage } from '../model';
+import { IntegrationStats } from '../model';
 // @ts-ignore
-import { Stats } from '../model';
+import { IntegrationUpdateMessage } from '../model';
 /**
  * IntegrationApi - axios parameter creator
  * @export
@@ -37,49 +37,13 @@ import { Stats } from '../model';
 export const IntegrationApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Adds a new instance represented by the passed Object.
-         * @summary Create an instance
-         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        add2: async (integrationAddMessage?: IntegrationAddMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/instances/integration`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication cobtoken required
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(integrationAddMessage, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Deletes the instances that match the condition.
          * @summary Deletes one or more instances
          * @param {IntegrationDeleteMessage} [integrationDeleteMessage] A JSON doc of the specified format
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete2: async (integrationDeleteMessage?: IntegrationDeleteMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        _delete: async (integrationDeleteMessage?: IntegrationDeleteMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/instances/integration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -109,13 +73,49 @@ export const IntegrationApiAxiosParamCreator = function (configuration?: Configu
             };
         },
         /**
+         * Adds a new instance represented by the passed Object.
+         * @summary Create an instance
+         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        add: async (integrationAddMessage?: IntegrationAddMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/recordm/instances/integration`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication cobtoken required
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(integrationAddMessage, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Updates the matching instances with the passed updates.
          * @summary Update one or more instances
          * @param {IntegrationUpdateMessage} [integrationUpdateMessage] A JSON doc of the specified format
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update3: async (integrationUpdateMessage?: IntegrationUpdateMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        update: async (integrationUpdateMessage?: IntegrationUpdateMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/instances/integration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -155,25 +155,25 @@ export const IntegrationApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = IntegrationApiAxiosParamCreator(configuration)
     return {
         /**
-         * Adds a new instance represented by the passed Object.
-         * @summary Create an instance
-         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async add2(integrationAddMessage?: IntegrationAddMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.add2(integrationAddMessage, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * Deletes the instances that match the condition.
          * @summary Deletes one or more instances
          * @param {IntegrationDeleteMessage} [integrationDeleteMessage] A JSON doc of the specified format
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async delete2(integrationDeleteMessage?: IntegrationDeleteMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Stats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.delete2(integrationDeleteMessage, options);
+        async _delete(integrationDeleteMessage?: IntegrationDeleteMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IntegrationStats>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator._delete(integrationDeleteMessage, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Adds a new instance represented by the passed Object.
+         * @summary Create an instance
+         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async add(integrationAddMessage?: IntegrationAddMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Instance>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.add(integrationAddMessage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -183,8 +183,8 @@ export const IntegrationApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async update3(integrationUpdateMessage?: IntegrationUpdateMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Stats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.update3(integrationUpdateMessage, options);
+        async update(integrationUpdateMessage?: IntegrationUpdateMessage, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IntegrationStats>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.update(integrationUpdateMessage, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -198,24 +198,24 @@ export const IntegrationApiFactory = function (configuration?: Configuration, ba
     const localVarFp = IntegrationApiFp(configuration)
     return {
         /**
-         * Adds a new instance represented by the passed Object.
-         * @summary Create an instance
-         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        add2(integrationAddMessage?: IntegrationAddMessage, options?: any): AxiosPromise<Instance> {
-            return localVarFp.add2(integrationAddMessage, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Deletes the instances that match the condition.
          * @summary Deletes one or more instances
          * @param {IntegrationDeleteMessage} [integrationDeleteMessage] A JSON doc of the specified format
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        delete2(integrationDeleteMessage?: IntegrationDeleteMessage, options?: any): AxiosPromise<Stats> {
-            return localVarFp.delete2(integrationDeleteMessage, options).then((request) => request(axios, basePath));
+        _delete(integrationDeleteMessage?: IntegrationDeleteMessage, options?: any): AxiosPromise<IntegrationStats> {
+            return localVarFp._delete(integrationDeleteMessage, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Adds a new instance represented by the passed Object.
+         * @summary Create an instance
+         * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        add(integrationAddMessage?: IntegrationAddMessage, options?: any): AxiosPromise<Instance> {
+            return localVarFp.add(integrationAddMessage, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates the matching instances with the passed updates.
@@ -224,8 +224,8 @@ export const IntegrationApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        update3(integrationUpdateMessage?: IntegrationUpdateMessage, options?: any): AxiosPromise<Stats> {
-            return localVarFp.update3(integrationUpdateMessage, options).then((request) => request(axios, basePath));
+        update(integrationUpdateMessage?: IntegrationUpdateMessage, options?: any): AxiosPromise<IntegrationStats> {
+            return localVarFp.update(integrationUpdateMessage, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -238,18 +238,6 @@ export const IntegrationApiFactory = function (configuration?: Configuration, ba
  */
 export class IntegrationApi extends BaseAPI {
     /**
-     * Adds a new instance represented by the passed Object.
-     * @summary Create an instance
-     * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof IntegrationApi
-     */
-    public add2(integrationAddMessage?: IntegrationAddMessage, options?: AxiosRequestConfig) {
-        return IntegrationApiFp(this.configuration).add2(integrationAddMessage, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Deletes the instances that match the condition.
      * @summary Deletes one or more instances
      * @param {IntegrationDeleteMessage} [integrationDeleteMessage] A JSON doc of the specified format
@@ -257,8 +245,20 @@ export class IntegrationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof IntegrationApi
      */
-    public delete2(integrationDeleteMessage?: IntegrationDeleteMessage, options?: AxiosRequestConfig) {
-        return IntegrationApiFp(this.configuration).delete2(integrationDeleteMessage, options).then((request) => request(this.axios, this.basePath));
+    public _delete(integrationDeleteMessage?: IntegrationDeleteMessage, options?: AxiosRequestConfig) {
+        return IntegrationApiFp(this.configuration)._delete(integrationDeleteMessage, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Adds a new instance represented by the passed Object.
+     * @summary Create an instance
+     * @param {IntegrationAddMessage} [integrationAddMessage] A JSON doc of the specified format
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof IntegrationApi
+     */
+    public add(integrationAddMessage?: IntegrationAddMessage, options?: AxiosRequestConfig) {
+        return IntegrationApiFp(this.configuration).add(integrationAddMessage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -269,7 +269,7 @@ export class IntegrationApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof IntegrationApi
      */
-    public update3(integrationUpdateMessage?: IntegrationUpdateMessage, options?: AxiosRequestConfig) {
-        return IntegrationApiFp(this.configuration).update3(integrationUpdateMessage, options).then((request) => request(this.axios, this.basePath));
+    public update(integrationUpdateMessage?: IntegrationUpdateMessage, options?: AxiosRequestConfig) {
+        return IntegrationApiFp(this.configuration).update(integrationUpdateMessage, options).then((request) => request(this.axios, this.basePath));
     }
 }

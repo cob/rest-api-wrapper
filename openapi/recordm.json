@@ -32,7 +32,7 @@
       "post" : {
         "tags" : [ "Definitions" ],
         "summary" : "Clones an existing definition",
-        "operationId" : "cloneDefinition_1",
+        "operationId" : "cloneDefinition",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -84,7 +84,7 @@
         "tags" : [ "Definitions" ],
         "summary" : "Retrieves a specific definition including its fields.",
         "description" : "Retrieves the full details about a specific definition. When setting export to true it will return a clone of the definition.",
-        "operationId" : "getDefinition_1",
+        "operationId" : "getDefinition",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -135,7 +135,7 @@
       "put" : {
         "tags" : [ "Definitions" ],
         "summary" : "Update an existing definition",
-        "operationId" : "updateDefinition_1",
+        "operationId" : "updateDefinition",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -197,7 +197,7 @@
       "delete" : {
         "tags" : [ "Definitions" ],
         "summary" : "Delete an existing definition",
-        "operationId" : "deleteDefinition_1",
+        "operationId" : "deleteDefinition",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -228,7 +228,7 @@
       "get" : {
         "tags" : [ "Definitions" ],
         "summary" : "Download a definition",
-        "operationId" : "exportDefinition_1",
+        "operationId" : "exportDefinition",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -272,7 +272,7 @@
         "tags" : [ "Definitions" ],
         "summary" : "Retrieves all definitions",
         "description" : "Retrieves a sinple representation of all enabled definitions by default.  To include disabled definitions set the query parameter `includeDisbaled` to true.  The result will not include the field definitions.",
-        "operationId" : "getAllDefinitions_1",
+        "operationId" : "getAllDefinitions",
         "parameters" : [ {
           "name" : "includeDisabled",
           "in" : "query",
@@ -311,7 +311,7 @@
       "post" : {
         "tags" : [ "Definitions" ],
         "summary" : "Create a new definition",
-        "operationId" : "saveDefinition_1",
+        "operationId" : "saveDefinition",
         "requestBody" : {
           "description" : "The new definition payload",
           "content" : {
@@ -360,7 +360,7 @@
         "tags" : [ "Definitions" ],
         "summary" : "Retrieves a specific that match a provided name.",
         "description" : "Retrieves the full details about a definition.",
-        "operationId" : "getDefinitionByName_1",
+        "operationId" : "getDefinitionByName",
         "parameters" : [ {
           "name" : "name",
           "in" : "path",
@@ -398,7 +398,7 @@
         "tags" : [ "Definitions" ],
         "summary" : "Retrieves statistics about a definition.",
         "description" : "Retrieves the sta",
-        "operationId" : "getDefinitionStats_1",
+        "operationId" : "getDefinitionStats",
         "parameters" : [ {
           "name" : "defId",
           "in" : "query",
@@ -454,7 +454,7 @@
       "put" : {
         "tags" : [ "Definitions" ],
         "summary" : "Change the state of an existing definition",
-        "operationId" : "updateDefinitionState_1",
+        "operationId" : "updateDefinitionState",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -501,7 +501,7 @@
         "tags" : [ "Search" ],
         "summary" : "Search Definition",
         "description" : "The preferred endpoint for searches. Search instances of a definition specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.",
-        "operationId" : "search_1",
+        "operationId" : "searchInDefinition",
         "parameters" : [ {
           "name" : "defId",
           "in" : "query",
@@ -564,7 +564,7 @@
         "tags" : [ "Search" ],
         "summary" : "Structured Search of Definition",
         "description" : "Search the definition specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.",
-        "operationId" : "searchStructured_1",
+        "operationId" : "structuredSearchInDefinition",
         "parameters" : [ {
           "name" : "defId",
           "in" : "query",
@@ -619,7 +619,7 @@
         "tags" : [ "Search" ],
         "summary" : "Stream a Definition Search",
         "description" : "Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.",
-        "operationId" : "search",
+        "operationId" : "streamSearchInDefinition",
         "parameters" : [ {
           "name" : "defId",
           "in" : "query",
@@ -664,7 +664,7 @@
         "tags" : [ "Search" ],
         "summary" : "Stream a Definition Search",
         "description" : "Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.",
-        "operationId" : "search_3",
+        "operationId" : "streamStructuredSearchInDefinition",
         "parameters" : [ {
           "name" : "defId",
           "in" : "query",
@@ -711,7 +711,7 @@
         "tags" : [ "Domains" ],
         "summary" : "Add a new definition to an existing domain",
         "description" : "The response will return the domain with its definitions but not with it's field definitions.",
-        "operationId" : "addDefinitionToDomain_1",
+        "operationId" : "addDefinitionToDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "path",
@@ -754,7 +754,7 @@
         "tags" : [ "Domains" ],
         "summary" : "Remove a definition from an existing domain",
         "description" : "The response will return the domain with its definitions but not with it's field definitions.",
-        "operationId" : "removeDefinitionFromDomain_1",
+        "operationId" : "removeDefinitionFromDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "path",
@@ -799,7 +799,7 @@
         "tags" : [ "Domains" ],
         "summary" : "Retrieves all domains",
         "description" : "It will include all definitions belonging to this domain but the definitions will not include it's field definitions.",
-        "operationId" : "getAllDomains_1",
+        "operationId" : "getAllDomains",
         "responses" : {
           "200" : {
             "description" : "The list of domains",
@@ -825,7 +825,7 @@
       "post" : {
         "tags" : [ "Domains" ],
         "summary" : "Creates a new domain",
-        "operationId" : "addDomain_1",
+        "operationId" : "addDomain",
         "requestBody" : {
           "description" : "The new definition details",
           "content" : {
@@ -874,7 +874,7 @@
         "tags" : [ "Domains" ],
         "summary" : "Retrieve a domain by it's identifier",
         "description" : "It will include all definitions belonging to this domain but the definitions will not include it's field definitions.",
-        "operationId" : "getDomain_1",
+        "operationId" : "getDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "path",
@@ -920,7 +920,7 @@
       "put" : {
         "tags" : [ "Domains" ],
         "summary" : "Update an existing domain",
-        "operationId" : "update_1",
+        "operationId" : "updateDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "path",
@@ -976,7 +976,7 @@
       "delete" : {
         "tags" : [ "Domains" ],
         "summary" : "Delete an existing domain",
-        "operationId" : "deleteDomain_1",
+        "operationId" : "deleteDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "path",
@@ -1004,7 +1004,7 @@
         "tags" : [ "Domains" ],
         "summary" : "Find a domain by name",
         "description" : "It will include all definitions belonging to this domain but the definitions will not include it's field definitions.",
-        "operationId" : "findDomainByName_1",
+        "operationId" : "findDomainByName",
         "parameters" : [ {
           "name" : "name",
           "in" : "path",
@@ -1042,7 +1042,7 @@
         "tags" : [ "Search" ],
         "summary" : "Search Domain",
         "description" : "Search instances of all definitions of a Domain, specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.",
-        "operationId" : "search_2",
+        "operationId" : "searchInDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "query",
@@ -1105,7 +1105,7 @@
         "tags" : [ "Search" ],
         "summary" : "Structured Search of Domain",
         "description" : "Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.",
-        "operationId" : "search_5",
+        "operationId" : "searchStructuredInDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "query",
@@ -1152,7 +1152,7 @@
         "tags" : [ "Search" ],
         "summary" : "Stream a Domain Search",
         "description" : "Stream through all the results of a Domain search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.",
-        "operationId" : "search_4",
+        "operationId" : "streamSearchInDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "query",
@@ -1197,7 +1197,7 @@
         "tags" : [ "Search" ],
         "summary" : "Stream a Definition Search",
         "description" : "Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.",
-        "operationId" : "search_7",
+        "operationId" : "streamStructuredSearchInDomain",
         "parameters" : [ {
           "name" : "domainId",
           "in" : "query",
@@ -1244,15 +1244,7 @@
         "tags" : [ "Instances" ],
         "summary" : "Add an instance",
         "description" : "Adds a new instance represented by the passed Object.",
-        "operationId" : "add_1",
-        "parameters" : [ {
-          "name" : "waitFor",
-          "in" : "query",
-          "schema" : {
-            "type" : "boolean",
-            "default" : false
-          }
-        } ],
+        "operationId" : "addInstance",
         "requestBody" : {
           "description" : "the instance to add",
           "content" : {
@@ -1289,7 +1281,7 @@
         "tags" : [ "Instances" ],
         "summary" : "Add log to instance",
         "description" : "Adds a LogM log entry to an instance.",
-        "operationId" : "addLogMessageToInstance_1",
+        "operationId" : "addLogMessageToInstance",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1328,7 +1320,7 @@
         "externalDocs" : {
           "url" : "/docs/instance_get.html"
         },
-        "operationId" : "getInstance_1",
+        "operationId" : "getInstance",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1365,7 +1357,7 @@
         "tags" : [ "Instances" ],
         "summary" : "Update an instance",
         "description" : "Updates an instance with the complete representation passed.",
-        "operationId" : "update_2",
+        "operationId" : "updateInstance",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1449,7 +1441,7 @@
         "tags" : [ "Instances" ],
         "summary" : "Delete an instance",
         "description" : "Deletes an instance.",
-        "operationId" : "delete_1",
+        "operationId" : "deleteInstance",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1485,7 +1477,7 @@
         "externalDocs" : {
           "url" : "/docs/instance_download_file.html"
         },
-        "operationId" : "downloadFile_1",
+        "operationId" : "downloadFile",
         "parameters" : [ {
           "name" : "id",
           "in" : "path",
@@ -1534,7 +1526,7 @@
         "tags" : [ "Instances" ],
         "summary" : "Get a new empty instance",
         "description" : "Obtains a representation of an instance with no values. Useful for using as a starting point for creating a new instance.",
-        "operationId" : "getNewInstance_1",
+        "operationId" : "getNewInstance",
         "parameters" : [ {
           "name" : "definitionId",
           "in" : "path",
@@ -1619,59 +1611,6 @@
         }
       }
     },
-    "/recordm/instances/{id}/files/{fieldDefinitionIdOrName}" : {
-      "post" : {
-        "tags" : [ "Instances" ],
-        "summary" : "Upload file to field in instance",
-        "description" : "Upload a file to be used as a value for a $file field",
-        "externalDocs" : {
-          "url" : "/docs/instance_upload_file.html"
-        },
-        "operationId" : "uploadFile_1",
-        "parameters" : [ {
-          "name" : "id",
-          "in" : "path",
-          "description" : "When uploading to an existing instance, it's the id of the instance. When uploading for an instance that doesn't yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "name" : "fieldDefinitionIdOrName",
-          "in" : "path",
-          "description" : "The id of the field definition of the $file field",
-          "required" : true,
-          "schema" : {
-            "type" : "string"
-          }
-        } ],
-        "requestBody" : {
-          "content" : {
-            "multipart/form-data" : {
-              "schema" : {
-                "type" : "object",
-                "properties" : {
-                  "file" : {
-                    "type" : "object",
-                    "description" : "The file to upload."
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses" : {
-          "200" : {
-            "description" : "The upload was done successfully. For compatibility with IE, the response wraps the uploaded filename in a &lt;textarea/&gt;. ",
-            "content" : {
-              "text/html" : {
-                "example" : "<textarea>uploaded_file.txt</textarea>"
-              }
-            }
-          }
-        }
-      }
-    },
     "/recordm/instances/integration" : {
       "put" : {
         "tags" : [ "Integration" ],
@@ -1680,7 +1619,7 @@
         "externalDocs" : {
           "url" : "/docs/instance_integration.html"
         },
-        "operationId" : "update_3",
+        "operationId" : "update",
         "requestBody" : {
           "description" : "A JSON doc of the specified format",
           "content" : {
@@ -1700,7 +1639,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Stats"
+                  "$ref" : "#/components/schemas/IntegrationStats"
                 }
               }
             }
@@ -1714,7 +1653,7 @@
         "externalDocs" : {
           "url" : "/docs/instance_integration.html"
         },
-        "operationId" : "add_2",
+        "operationId" : "add",
         "requestBody" : {
           "description" : "A JSON doc of the specified format",
           "content" : {
@@ -1751,7 +1690,7 @@
         "externalDocs" : {
           "url" : "/docs/instance_integration.html"
         },
-        "operationId" : "delete_2",
+        "operationId" : "delete",
         "requestBody" : {
           "description" : "A JSON doc of the specified format",
           "content" : {
@@ -1771,7 +1710,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/Stats"
+                  "$ref" : "#/components/schemas/IntegrationStats"
                 }
               }
             }
@@ -2292,7 +2231,7 @@
           }
         }
       },
-      "Stats" : {
+      "IntegrationStats" : {
         "type" : "object",
         "properties" : {
           "updated" : {

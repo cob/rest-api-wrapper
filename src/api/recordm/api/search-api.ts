@@ -27,58 +27,6 @@ import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } fr
 export const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
-         * @param {string} [q] The query
-         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        search: async (defId?: number, def?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search/stream`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication cobtoken required
-
-            if (defId !== undefined) {
-                localVarQueryParameter['defId'] = defId;
-            }
-
-            if (def !== undefined) {
-                localVarQueryParameter['def'] = def;
-            }
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
-            if (sort !== undefined) {
-                localVarQueryParameter['sort'] = sort;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * The preferred endpoint for searches. Search instances of a definition specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.
          * @summary Search Definition
          * @param {number} [defId] The definition Id
@@ -90,7 +38,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1: async (defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        searchInDefinition: async (defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/definitions/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -152,7 +100,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2: async (domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        searchInDomain: async (domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/domains/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -203,16 +151,16 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
+         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
+         * @summary Structured Search of Domain
+         * @param {number} [domainId] The domain Id
+         * @param {string} [domain] The domain name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3: async (defId?: number, def?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search/stream`;
+        searchStructuredInDomain: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/recordm/domains/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -226,12 +174,12 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication cobtoken required
 
-            if (defId !== undefined) {
-                localVarQueryParameter['defId'] = defId;
+            if (domainId !== undefined) {
+                localVarQueryParameter['domainId'] = domainId;
             }
 
-            if (def !== undefined) {
-                localVarQueryParameter['def'] = def;
+            if (domain !== undefined) {
+                localVarQueryParameter['domain'] = domain;
             }
 
 
@@ -249,6 +197,58 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
+         * @param {string} [q] The query
+         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamSearchInDefinition: async (defId?: number, def?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/recordm/definitions/search/stream`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication cobtoken required
+
+            if (defId !== undefined) {
+                localVarQueryParameter['defId'] = defId;
+            }
+
+            if (def !== undefined) {
+                localVarQueryParameter['def'] = def;
+            }
+
+            if (q !== undefined) {
+                localVarQueryParameter['q'] = q;
+            }
+
+            if (sort !== undefined) {
+                localVarQueryParameter['sort'] = sort;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Stream through all the results of a Domain search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
          * @summary Stream a Domain Search
          * @param {number} [domainId] The domain Id
@@ -258,7 +258,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search4: async (domainId?: number, domain?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        streamSearchInDomain: async (domainId?: number, domain?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/domains/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -301,16 +301,16 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
-         * @summary Structured Search of Domain
-         * @param {number} [domainId] The domain Id
-         * @param {string} [domain] The domain name
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search5: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains/search`;
+        streamStructuredSearchInDefinition: async (defId?: number, def?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/recordm/definitions/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -324,12 +324,12 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
 
             // authentication cobtoken required
 
-            if (domainId !== undefined) {
-                localVarQueryParameter['domainId'] = domainId;
+            if (defId !== undefined) {
+                localVarQueryParameter['defId'] = defId;
             }
 
-            if (domain !== undefined) {
-                localVarQueryParameter['domain'] = domain;
+            if (def !== undefined) {
+                localVarQueryParameter['def'] = def;
             }
 
 
@@ -355,7 +355,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search7: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        streamStructuredSearchInDomain: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/domains/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -402,7 +402,7 @@ export const SearchApiAxiosParamCreator = function (configuration?: Configuratio
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchStructured1: async (defId?: number, def?: string, typedKeys?: boolean, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        structuredSearchInDefinition: async (defId?: number, def?: string, typedKeys?: boolean, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/definitions/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -454,20 +454,6 @@ export const SearchApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = SearchApiAxiosParamCreator(configuration)
     return {
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
-         * @param {string} [q] The query
-         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async search(defId?: number, def?: string, q?: string, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search(defId, def, q, sort, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
-        },
-        /**
          * The preferred endpoint for searches. Search instances of a definition specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.
          * @summary Search Definition
          * @param {number} [defId] The definition Id
@@ -479,8 +465,8 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search1(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search1(defId, def, q, from, size, sort, options);
+        async searchInDefinition(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchInDefinition(defId, def, q, from, size, sort, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -495,21 +481,35 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search2(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search2(domainId, domain, q, from, size, sort, options);
+        async searchInDomain(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchInDomain(domainId, domain, q, from, size, sort, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
+         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
+         * @summary Structured Search of Domain
+         * @param {number} [domainId] The domain Id
+         * @param {string} [domain] The domain name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search3(defId?: number, def?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search3(defId, def, body, options);
+        async searchStructuredInDomain(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.searchStructuredInDomain(domainId, domain, body, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
+         * @param {string} [q] The query
+         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async streamSearchInDefinition(defId?: number, def?: string, q?: string, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamSearchInDefinition(defId, def, q, sort, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -522,21 +522,21 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search4(domainId?: number, domain?: string, q?: string, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search4(domainId, domain, q, sort, options);
+        async streamSearchInDomain(domainId?: number, domain?: string, q?: string, sort?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamSearchInDomain(domainId, domain, q, sort, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
-         * @summary Structured Search of Domain
-         * @param {number} [domainId] The domain Id
-         * @param {string} [domain] The domain name
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search5(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search5(domainId, domain, body, options);
+        async streamStructuredSearchInDefinition(defId?: number, def?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamStructuredSearchInDefinition(defId, def, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -548,8 +548,8 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async search7(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.search7(domainId, domain, body, options);
+        async streamStructuredSearchInDomain(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.streamStructuredSearchInDomain(domainId, domain, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -562,8 +562,8 @@ export const SearchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async searchStructured1(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.searchStructured1(defId, def, typedKeys, body, options);
+        async structuredSearchInDefinition(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.structuredSearchInDefinition(defId, def, typedKeys, body, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -577,19 +577,6 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
     const localVarFp = SearchApiFp(configuration)
     return {
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
-         * @param {string} [q] The query
-         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        search(defId?: number, def?: string, q?: string, sort?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search(defId, def, q, sort, options).then((request) => request(axios, basePath));
-        },
-        /**
          * The preferred endpoint for searches. Search instances of a definition specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.
          * @summary Search Definition
          * @param {number} [defId] The definition Id
@@ -601,8 +588,8 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search1(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search1(defId, def, q, from, size, sort, options).then((request) => request(axios, basePath));
+        searchInDefinition(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.searchInDefinition(defId, def, q, from, size, sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Search instances of all definitions of a Domain, specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.
@@ -616,20 +603,33 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search2(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search2(domainId, domain, q, from, size, sort, options).then((request) => request(axios, basePath));
+        searchInDomain(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.searchInDomain(domainId, domain, q, from, size, sort, options).then((request) => request(axios, basePath));
         },
         /**
-         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
-         * @summary Stream a Definition Search
-         * @param {number} [defId] The definition Id
-         * @param {string} [def] The definition name
+         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
+         * @summary Structured Search of Domain
+         * @param {number} [domainId] The domain Id
+         * @param {string} [domain] The domain name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search3(defId?: number, def?: string, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search3(defId, def, body, options).then((request) => request(axios, basePath));
+        searchStructuredInDomain(domainId?: number, domain?: string, body?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.searchStructuredInDomain(domainId, domain, body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
+         * @param {string} [q] The query
+         * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        streamSearchInDefinition(defId?: number, def?: string, q?: string, sort?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.streamSearchInDefinition(defId, def, q, sort, options).then((request) => request(axios, basePath));
         },
         /**
          * Stream through all the results of a Domain search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
@@ -641,20 +641,20 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search4(domainId?: number, domain?: string, q?: string, sort?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search4(domainId, domain, q, sort, options).then((request) => request(axios, basePath));
+        streamSearchInDomain(domainId?: number, domain?: string, q?: string, sort?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.streamSearchInDomain(domainId, domain, q, sort, options).then((request) => request(axios, basePath));
         },
         /**
-         * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
-         * @summary Structured Search of Domain
-         * @param {number} [domainId] The domain Id
-         * @param {string} [domain] The domain name
+         * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
+         * @summary Stream a Definition Search
+         * @param {number} [defId] The definition Id
+         * @param {string} [def] The definition name
          * @param {string} [body] The JSON of the ES query.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search5(domainId?: number, domain?: string, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search5(domainId, domain, body, options).then((request) => request(axios, basePath));
+        streamStructuredSearchInDefinition(defId?: number, def?: string, body?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.streamStructuredSearchInDefinition(defId, def, body, options).then((request) => request(axios, basePath));
         },
         /**
          * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
@@ -665,8 +665,8 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        search7(domainId?: number, domain?: string, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.search7(domainId, domain, body, options).then((request) => request(axios, basePath));
+        streamStructuredSearchInDomain(domainId?: number, domain?: string, body?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.streamStructuredSearchInDomain(domainId, domain, body, options).then((request) => request(axios, basePath));
         },
         /**
          * Search the definition specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
@@ -678,8 +678,8 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        searchStructured1(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: any): AxiosPromise<void> {
-            return localVarFp.searchStructured1(defId, def, typedKeys, body, options).then((request) => request(axios, basePath));
+        structuredSearchInDefinition(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: any): AxiosPromise<void> {
+            return localVarFp.structuredSearchInDefinition(defId, def, typedKeys, body, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -691,21 +691,6 @@ export const SearchApiFactory = function (configuration?: Configuration, basePat
  * @extends {BaseAPI}
  */
 export class SearchApi extends BaseAPI {
-    /**
-     * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
-     * @summary Stream a Definition Search
-     * @param {number} [defId] The definition Id
-     * @param {string} [def] The definition name
-     * @param {string} [q] The query
-     * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof SearchApi
-     */
-    public search(defId?: number, def?: string, q?: string, sort?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search(defId, def, q, sort, options).then((request) => request(this.axios, this.basePath));
-    }
-
     /**
      * The preferred endpoint for searches. Search instances of a definition specified either by id or by name, using ES query_string. Supports multiple sorts.See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl-query-string-query.html#query-string-syntax) for syntax details.
      * @summary Search Definition
@@ -719,8 +704,8 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search1(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search1(defId, def, q, from, size, sort, options).then((request) => request(this.axios, this.basePath));
+    public searchInDefinition(defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).searchInDefinition(defId, def, q, from, size, sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -736,22 +721,37 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search2(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search2(domainId, domain, q, from, size, sort, options).then((request) => request(this.axios, this.basePath));
+    public searchInDomain(domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).searchInDomain(domainId, domain, q, from, size, sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
-     * @summary Stream a Definition Search
-     * @param {number} [defId] The definition Id
-     * @param {string} [def] The definition name
+     * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
+     * @summary Structured Search of Domain
+     * @param {number} [domainId] The domain Id
+     * @param {string} [domain] The domain name
      * @param {string} [body] The JSON of the ES query.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search3(defId?: number, def?: string, body?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search3(defId, def, body, options).then((request) => request(this.axios, this.basePath));
+    public searchStructuredInDomain(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).searchStructuredInDomain(domainId, domain, body, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. The arguments are the same as on a normal search, excluding `size` and `from`, that are not needed.
+     * @summary Stream a Definition Search
+     * @param {number} [defId] The definition Id
+     * @param {string} [def] The definition name
+     * @param {string} [q] The query
+     * @param {string} [sort] A comma-separated list of &lt;field&gt;:&lt;direction&gt; pairs
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SearchApi
+     */
+    public streamSearchInDefinition(defId?: number, def?: string, q?: string, sort?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).streamSearchInDefinition(defId, def, q, sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -765,22 +765,22 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search4(domainId?: number, domain?: string, q?: string, sort?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search4(domainId, domain, q, sort, options).then((request) => request(this.axios, this.basePath));
+    public streamSearchInDomain(domainId?: number, domain?: string, q?: string, sort?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).streamSearchInDomain(domainId, domain, q, sort, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * Search instances of all definitions of a Domain, specified either by id or name, using a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.
-     * @summary Structured Search of Domain
-     * @param {number} [domainId] The domain Id
-     * @param {string} [domain] The domain name
+     * Stream through all the results of a Definition search. Useful when needing to process more than the 10.000 results available through the normal search. Accepts a structured ES search request. See [the ES docs](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/query-dsl.html) for details on query syntax.Does <strong>NOT</strong> accept aggregations, use the normal search endpoint for them.
+     * @summary Stream a Definition Search
+     * @param {number} [defId] The definition Id
+     * @param {string} [def] The definition name
      * @param {string} [body] The JSON of the ES query.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search5(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search5(domainId, domain, body, options).then((request) => request(this.axios, this.basePath));
+    public streamStructuredSearchInDefinition(defId?: number, def?: string, body?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).streamStructuredSearchInDefinition(defId, def, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -793,8 +793,8 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public search7(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).search7(domainId, domain, body, options).then((request) => request(this.axios, this.basePath));
+    public streamStructuredSearchInDomain(domainId?: number, domain?: string, body?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).streamStructuredSearchInDomain(domainId, domain, body, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -808,7 +808,7 @@ export class SearchApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof SearchApi
      */
-    public searchStructured1(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: AxiosRequestConfig) {
-        return SearchApiFp(this.configuration).searchStructured1(defId, def, typedKeys, body, options).then((request) => request(this.axios, this.basePath));
+    public structuredSearchInDefinition(defId?: number, def?: string, typedKeys?: boolean, body?: string, options?: AxiosRequestConfig) {
+        return SearchApiFp(this.configuration).structuredSearchInDefinition(defId, def, typedKeys, body, options).then((request) => request(this.axios, this.basePath));
     }
 }

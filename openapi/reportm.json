@@ -17,6 +17,7 @@
         "tags" : [ "Reports" ],
         "summary" : "Generate Report",
         "description" : "Can be used with both JSON - the simplest way when calling from other code (or even cURL) - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.",
+        "operationId" : "generate",
         "requestBody" : {
           "description" : "The params passed to the report.",
           "content" : {
@@ -113,6 +114,7 @@
         "tags" : [ "Reports" ],
         "summary" : "Test a report template",
         "description" : "To simplify development of new report templates. Arguments to the template can be passed as query string args.",
+        "operationId" : "test",
         "requestBody" : {
           "description" : "An excel file to be used as a template",
           "content" : {

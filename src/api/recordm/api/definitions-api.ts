@@ -43,9 +43,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloneDefinition1: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        cloneDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('cloneDefinition1', 'definitionId', definitionId)
+            assertParamExists('cloneDefinition', 'definitionId', definitionId)
             const localVarPath = `/recordm/definitions/{definitionId}/clone`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -79,9 +79,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDefinition1: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        deleteDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('deleteDefinition1', 'definitionId', definitionId)
+            assertParamExists('deleteDefinition', 'definitionId', definitionId)
             const localVarPath = `/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -115,9 +115,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportDefinition1: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        exportDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('exportDefinition1', 'definitionId', definitionId)
+            assertParamExists('exportDefinition', 'definitionId', definitionId)
             const localVarPath = `/recordm/definitions/{definitionId}/export`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -152,7 +152,7 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllDefinitions1: async (includeDisabled?: boolean, name?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getAllDefinitions: async (includeDisabled?: boolean, name?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/definitions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -195,9 +195,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinition1: async (definitionId: number, ifNoneMatch?: string, _export?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDefinition: async (definitionId: number, ifNoneMatch?: string, _export?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('getDefinition1', 'definitionId', definitionId)
+            assertParamExists('getDefinition', 'definitionId', definitionId)
             const localVarPath = `/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -239,9 +239,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinitionByName1: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDefinitionByName: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
-            assertParamExists('getDefinitionByName1', 'name', name)
+            assertParamExists('getDefinitionByName', 'name', name)
             const localVarPath = `/recordm/definitions/name/{name}`
                 .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -276,7 +276,7 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinitionStats1: async (defId?: number, def?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getDefinitionStats: async (defId?: number, def?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/definitions/stats`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -317,7 +317,7 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        saveDefinition1: async (createDefinitionRequest?: CreateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        saveDefinition: async (createDefinitionRequest?: CreateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/recordm/definitions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -354,9 +354,9 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDefinition1: async (definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDefinition: async (definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('updateDefinition1', 'definitionId', definitionId)
+            assertParamExists('updateDefinition', 'definitionId', definitionId)
             const localVarPath = `/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -394,11 +394,11 @@ export const DefinitionsApiAxiosParamCreator = function (configuration?: Configu
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDefinitionState1: async (definitionId: number, state: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateDefinitionState: async (definitionId: number, state: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
-            assertParamExists('updateDefinitionState1', 'definitionId', definitionId)
+            assertParamExists('updateDefinitionState', 'definitionId', definitionId)
             // verify required parameter 'state' is not null or undefined
-            assertParamExists('updateDefinitionState1', 'state', state)
+            assertParamExists('updateDefinitionState', 'state', state)
             const localVarPath = `/recordm/definitions/{definitionId}/state/{state}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)))
                 .replace(`{${"state"}}`, encodeURIComponent(String(state)));
@@ -443,8 +443,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async cloneDefinition1(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.cloneDefinition1(definitionId, options);
+        async cloneDefinition(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cloneDefinition(definitionId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -454,8 +454,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async deleteDefinition1(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDefinition1(definitionId, options);
+        async deleteDefinition(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteDefinition(definitionId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -465,8 +465,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async exportDefinition1(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.exportDefinition1(definitionId, options);
+        async exportDefinition(definitionId: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.exportDefinition(definitionId, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -477,8 +477,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getAllDefinitions1(includeDisabled?: boolean, name?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DecoratedDefinition>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllDefinitions1(includeDisabled, name, options);
+        async getAllDefinitions(includeDisabled?: boolean, name?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DecoratedDefinition>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getAllDefinitions(includeDisabled, name, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -490,8 +490,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDefinition1(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinition1(definitionId, ifNoneMatch, _export, options);
+        async getDefinition(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinition(definitionId, ifNoneMatch, _export, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -501,8 +501,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDefinitionByName1(name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinitionByName1(name, options);
+        async getDefinitionByName(name: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinitionByName(name, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -513,8 +513,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getDefinitionStats1(defId?: number, def?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DefinitionStats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinitionStats1(defId, def, options);
+        async getDefinitionStats(defId?: number, def?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DefinitionStats>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinitionStats(defId, def, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -524,8 +524,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async saveDefinition1(createDefinitionRequest?: CreateDefinitionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.saveDefinition1(createDefinitionRequest, options);
+        async saveDefinition(createDefinitionRequest?: CreateDefinitionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.saveDefinition(createDefinitionRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -536,8 +536,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDefinition1(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDefinition1(definitionId, updateDefinitionRequest, options);
+        async updateDefinition(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDefinition(definitionId, updateDefinitionRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -548,8 +548,8 @@ export const DefinitionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateDefinitionState1(definitionId: number, state: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDefinitionState1(definitionId, state, options);
+        async updateDefinitionState(definitionId: number, state: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DecoratedDefinition>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateDefinitionState(definitionId, state, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -569,8 +569,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cloneDefinition1(definitionId: number, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.cloneDefinition1(definitionId, options).then((request) => request(axios, basePath));
+        cloneDefinition(definitionId: number, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.cloneDefinition(definitionId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -579,8 +579,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteDefinition1(definitionId: number, options?: any): AxiosPromise<void> {
-            return localVarFp.deleteDefinition1(definitionId, options).then((request) => request(axios, basePath));
+        deleteDefinition(definitionId: number, options?: any): AxiosPromise<void> {
+            return localVarFp.deleteDefinition(definitionId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -589,8 +589,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        exportDefinition1(definitionId: number, options?: any): AxiosPromise<void> {
-            return localVarFp.exportDefinition1(definitionId, options).then((request) => request(axios, basePath));
+        exportDefinition(definitionId: number, options?: any): AxiosPromise<void> {
+            return localVarFp.exportDefinition(definitionId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a sinple representation of all enabled definitions by default.  To include disabled definitions set the query parameter `includeDisbaled` to true.  The result will not include the field definitions.
@@ -600,8 +600,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getAllDefinitions1(includeDisabled?: boolean, name?: string, options?: any): AxiosPromise<Array<DecoratedDefinition>> {
-            return localVarFp.getAllDefinitions1(includeDisabled, name, options).then((request) => request(axios, basePath));
+        getAllDefinitions(includeDisabled?: boolean, name?: string, options?: any): AxiosPromise<Array<DecoratedDefinition>> {
+            return localVarFp.getAllDefinitions(includeDisabled, name, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the full details about a specific definition. When setting export to true it will return a clone of the definition.
@@ -612,8 +612,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinition1(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.getDefinition1(definitionId, ifNoneMatch, _export, options).then((request) => request(axios, basePath));
+        getDefinition(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.getDefinition(definitionId, ifNoneMatch, _export, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the full details about a definition.
@@ -622,8 +622,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinitionByName1(name: string, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.getDefinitionByName1(name, options).then((request) => request(axios, basePath));
+        getDefinitionByName(name: string, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.getDefinitionByName(name, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the sta
@@ -633,8 +633,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getDefinitionStats1(defId?: number, def?: string, options?: any): AxiosPromise<DefinitionStats> {
-            return localVarFp.getDefinitionStats1(defId, def, options).then((request) => request(axios, basePath));
+        getDefinitionStats(defId?: number, def?: string, options?: any): AxiosPromise<DefinitionStats> {
+            return localVarFp.getDefinitionStats(defId, def, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -643,8 +643,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        saveDefinition1(createDefinitionRequest?: CreateDefinitionRequest, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.saveDefinition1(createDefinitionRequest, options).then((request) => request(axios, basePath));
+        saveDefinition(createDefinitionRequest?: CreateDefinitionRequest, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.saveDefinition(createDefinitionRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -654,8 +654,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDefinition1(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.updateDefinition1(definitionId, updateDefinitionRequest, options).then((request) => request(axios, basePath));
+        updateDefinition(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.updateDefinition(definitionId, updateDefinitionRequest, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -665,8 +665,8 @@ export const DefinitionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateDefinitionState1(definitionId: number, state: string, options?: any): AxiosPromise<DecoratedDefinition> {
-            return localVarFp.updateDefinitionState1(definitionId, state, options).then((request) => request(axios, basePath));
+        updateDefinitionState(definitionId: number, state: string, options?: any): AxiosPromise<DecoratedDefinition> {
+            return localVarFp.updateDefinitionState(definitionId, state, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -686,8 +686,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public cloneDefinition1(definitionId: number, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).cloneDefinition1(definitionId, options).then((request) => request(this.axios, this.basePath));
+    public cloneDefinition(definitionId: number, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).cloneDefinition(definitionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -698,8 +698,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public deleteDefinition1(definitionId: number, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).deleteDefinition1(definitionId, options).then((request) => request(this.axios, this.basePath));
+    public deleteDefinition(definitionId: number, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).deleteDefinition(definitionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -710,8 +710,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public exportDefinition1(definitionId: number, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).exportDefinition1(definitionId, options).then((request) => request(this.axios, this.basePath));
+    public exportDefinition(definitionId: number, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).exportDefinition(definitionId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -723,8 +723,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public getAllDefinitions1(includeDisabled?: boolean, name?: string, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).getAllDefinitions1(includeDisabled, name, options).then((request) => request(this.axios, this.basePath));
+    public getAllDefinitions(includeDisabled?: boolean, name?: string, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).getAllDefinitions(includeDisabled, name, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -737,8 +737,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public getDefinition1(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).getDefinition1(definitionId, ifNoneMatch, _export, options).then((request) => request(this.axios, this.basePath));
+    public getDefinition(definitionId: number, ifNoneMatch?: string, _export?: boolean, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).getDefinition(definitionId, ifNoneMatch, _export, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -749,8 +749,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public getDefinitionByName1(name: string, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).getDefinitionByName1(name, options).then((request) => request(this.axios, this.basePath));
+    public getDefinitionByName(name: string, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).getDefinitionByName(name, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -762,8 +762,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public getDefinitionStats1(defId?: number, def?: string, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).getDefinitionStats1(defId, def, options).then((request) => request(this.axios, this.basePath));
+    public getDefinitionStats(defId?: number, def?: string, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).getDefinitionStats(defId, def, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -774,8 +774,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public saveDefinition1(createDefinitionRequest?: CreateDefinitionRequest, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).saveDefinition1(createDefinitionRequest, options).then((request) => request(this.axios, this.basePath));
+    public saveDefinition(createDefinitionRequest?: CreateDefinitionRequest, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).saveDefinition(createDefinitionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -787,8 +787,8 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public updateDefinition1(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).updateDefinition1(definitionId, updateDefinitionRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateDefinition(definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).updateDefinition(definitionId, updateDefinitionRequest, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -800,7 +800,7 @@ export class DefinitionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefinitionsApi
      */
-    public updateDefinitionState1(definitionId: number, state: string, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).updateDefinitionState1(definitionId, state, options).then((request) => request(this.axios, this.basePath));
+    public updateDefinitionState(definitionId: number, state: string, options?: AxiosRequestConfig) {
+        return DefinitionsApiFp(this.configuration).updateDefinitionState(definitionId, state, options).then((request) => request(this.axios, this.basePath));
     }
 }
