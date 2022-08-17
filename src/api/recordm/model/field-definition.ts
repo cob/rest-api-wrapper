@@ -25,13 +25,13 @@ export interface FieldDefinition {
      * @type {number}
      * @memberof FieldDefinition
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
      * @memberof FieldDefinition
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -55,24 +55,24 @@ export interface FieldDefinition {
      * @type {boolean}
      * @memberof FieldDefinition
      */
-    'duplicable'?: boolean;
+    'duplicable': boolean;
     /**
      * 
      * @type {boolean}
      * @memberof FieldDefinition
      */
-    'groupField'?: boolean;
+    'groupField': boolean;
     /**
      * 
      * @type {number}
      * @memberof FieldDefinition
      */
-    'order'?: number;
+    'order': number;
     /**
      * 
      * @type {Array<FieldDefinition>}
      * @memberof FieldDefinition
      */
-    'fields'?: Array<FieldDefinition>;
+    'fields': Array<FieldDefinition>;
 }
 

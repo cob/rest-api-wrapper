@@ -31,7 +31,7 @@ export interface DefinitionLinks {
      * @type {string}
      * @memberof DefinitionLinks
      */
-    'export'?: string;
+    'export': string;
     /**
      * 
      * @type {string}
@@ -79,6 +79,6 @@ export interface DefinitionLinks {
      * @type {string}
      * @memberof DefinitionLinks
      */
-    'size'?: string;
+    'size': string;
 }
 

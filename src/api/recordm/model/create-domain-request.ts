@@ -26,7 +26,7 @@ export interface CreateDomainRequest {
      * @type {string}
      * @memberof CreateDomainRequest
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -39,11 +39,5 @@ export interface CreateDomainRequest {
      * @memberof CreateDomainRequest
      */
     'definitions'?: Array<Definition>;
-    /**
-     * 
-     * @type {number}
-     * @memberof CreateDomainRequest
-     */
-    'version'?: number;
 }
 

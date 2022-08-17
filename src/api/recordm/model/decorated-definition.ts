@@ -27,13 +27,13 @@ export interface DecoratedDefinition {
      * @type {number}
      * @memberof DecoratedDefinition
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
      * @memberof DecoratedDefinition
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -51,25 +51,25 @@ export interface DecoratedDefinition {
      * @type {string}
      * @memberof DecoratedDefinition
      */
-    'state'?: DecoratedDefinitionStateEnum;
+    'state': DecoratedDefinitionStateEnum;
     /**
      * 
      * @type {Array<FieldDefinition>}
      * @memberof DecoratedDefinition
      */
-    'fieldDefinitions'?: Array<FieldDefinition>;
+    'fieldDefinitions': Array<FieldDefinition>;
     /**
      * 
      * @type {number}
      * @memberof DecoratedDefinition
      */
-    'version'?: number;
+    'version': number;
     /**
      * 
      * @type {DefinitionLinks}
      * @memberof DecoratedDefinition
      */
-    '_links'?: DefinitionLinks;
+    '_links': DefinitionLinks;
 }
 
 export const DecoratedDefinitionStateEnum = {

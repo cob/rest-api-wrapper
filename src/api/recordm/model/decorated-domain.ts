@@ -27,13 +27,13 @@ export interface DecoratedDomain {
      * @type {number}
      * @memberof DecoratedDomain
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
      * @memberof DecoratedDomain
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -51,12 +51,18 @@ export interface DecoratedDomain {
      * @type {number}
      * @memberof DecoratedDomain
      */
-    'version'?: number;
+    'version': number;
     /**
      * 
      * @type {DomainLinks}
      * @memberof DecoratedDomain
      */
-    '_links'?: DomainLinks;
+    '_links': DomainLinks;
+    /**
+     * 
+     * @type {Array<Definition>}
+     * @memberof DecoratedDomain
+     */
+    'definition': Array<Definition>;
 }
 

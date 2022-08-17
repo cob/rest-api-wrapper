@@ -26,7 +26,7 @@ export interface CreateDefinitionRequest {
      * @type {string}
      * @memberof CreateDefinitionRequest
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -41,24 +41,9 @@ export interface CreateDefinitionRequest {
     'duplicable'?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof CreateDefinitionRequest
-     */
-    'state'?: CreateDefinitionRequestStateEnum;
-    /**
-     * 
      * @type {Array<FieldDefinition>}
      * @memberof CreateDefinitionRequest
      */
     'fieldDefinitions'?: Array<FieldDefinition>;
 }
-
-export const CreateDefinitionRequestStateEnum = {
-    ENABLED: 'enabled',
-    DISABLED: 'disabled',
-    DELETE_IN_PROGRESS: 'deleteInProgress'
-} as const;
-
-export type CreateDefinitionRequestStateEnum = typeof CreateDefinitionRequestStateEnum[keyof typeof CreateDefinitionRequestStateEnum];
-
 

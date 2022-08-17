@@ -37,6 +37,6 @@ export interface DomainLinks {
      * @type {string}
      * @memberof DomainLinks
      */
-    'size'?: string;
+    'size': string;
 }
 

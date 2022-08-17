@@ -25,24 +25,24 @@ export interface IntegrationStats {
      * @type {number}
      * @memberof IntegrationStats
      */
-    'updated'?: number;
+    'updated': number;
     /**
      * 
      * @type {number}
      * @memberof IntegrationStats
      */
-    'deleted'?: number;
+    'deleted': number;
     /**
      * 
      * @type {number}
      * @memberof IntegrationStats
      */
-    'forbidden'?: number;
+    'forbidden': number;
     /**
      * 
      * @type {number}
      * @memberof IntegrationStats
      */
-    'error'?: number;
+    'error': number;
 }
 

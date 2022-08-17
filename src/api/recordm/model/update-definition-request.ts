@@ -26,7 +26,7 @@ export interface UpdateDefinitionRequest {
      * @type {string}
      * @memberof UpdateDefinitionRequest
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -56,7 +56,7 @@ export interface UpdateDefinitionRequest {
      * @type {number}
      * @memberof UpdateDefinitionRequest
      */
-    'version'?: number;
+    'version': number;
 }
 
 export const UpdateDefinitionRequestStateEnum = {

@@ -26,7 +26,7 @@ export interface UpdateDomainRequest {
      * @type {string}
      * @memberof UpdateDomainRequest
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -44,6 +44,6 @@ export interface UpdateDomainRequest {
      * @type {number}
      * @memberof UpdateDomainRequest
      */
-    'version'?: number;
+    'version': number;
 }
 

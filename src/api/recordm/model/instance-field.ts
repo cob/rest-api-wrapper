@@ -27,7 +27,7 @@ export interface InstanceField {
      * @type {number}
      * @memberof InstanceField
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {number}
@@ -39,7 +39,7 @@ export interface InstanceField {
      * @type {FieldDefinition}
      * @memberof InstanceField
      */
-    'fieldDefinition'?: FieldDefinition;
+    'fieldDefinition': FieldDefinition;
     /**
      * 
      * @type {string}
@@ -51,7 +51,7 @@ export interface InstanceField {
      * @type {string}
      * @memberof InstanceField
      */
-    'label'?: string;
+    'label': string;
     /**
      * 
      * @type {Array<Task>}
@@ -69,18 +69,18 @@ export interface InstanceField {
      * @type {boolean}
      * @memberof InstanceField
      */
-    'duplicate'?: boolean;
+    'duplicate': boolean;
     /**
      * 
      * @type {boolean}
      * @memberof InstanceField
      */
-    'off'?: boolean;
+    'off': boolean;
     /**
      * 
      * @type {boolean}
      * @memberof InstanceField
      */
-    'upToDate'?: boolean;
+    'upToDate': boolean;
 }
 

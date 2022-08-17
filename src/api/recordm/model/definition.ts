@@ -25,13 +25,13 @@ export interface Definition {
      * @type {number}
      * @memberof Definition
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
      * @memberof Definition
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
@@ -49,12 +49,12 @@ export interface Definition {
      * @type {string}
      * @memberof Definition
      */
-    'state'?: string;
+    'state': string;
     /**
      * 
      * @type {number}
      * @memberof Definition
      */
-    'version'?: number;
+    'version': number;
 }
 

@@ -27,7 +27,7 @@ export interface Instance {
      * @type {number}
      * @memberof Instance
      */
-    'id'?: number;
+    'id': number;
     /**
      * The relative path for the Instance\'s attached files. Normally the id of the instance.
      * @type {string}
@@ -39,19 +39,19 @@ export interface Instance {
      * @type {number}
      * @memberof Instance
      */
-    'version'?: number;
+    'version': number;
     /**
      * 
      * @type {Array<string>}
      * @memberof Instance
      */
-    'instanceLabel'?: Array<string>;
+    'instanceLabel': Array<string>;
     /**
      * 
      * @type {Definition}
      * @memberof Instance
      */
-    'jsonDefinition'?: Definition;
+    'jsonDefinition': Definition;
     /**
      * 
      * @type {Array<InstanceField>}

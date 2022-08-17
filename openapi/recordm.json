@@ -1794,6 +1794,7 @@
         }
       },
       "DecoratedDefinition" : {
+        "required" : [ "_links", "fieldDefinitions", "id", "name", "state", "version" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -1829,6 +1830,7 @@
         }
       },
       "DefinitionLinks" : {
+        "required" : [ "export", "size" ],
         "type" : "object",
         "properties" : {
           "update" : {
@@ -1864,6 +1866,7 @@
         }
       },
       "FieldDefinition" : {
+        "required" : [ "duplicable", "fields", "groupField", "id", "name", "order" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -1916,6 +1919,7 @@
         }
       },
       "Definition" : {
+        "required" : [ "id", "name", "state", "version" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -1981,6 +1985,7 @@
         }
       },
       "CreateDefinitionRequest" : {
+        "required" : [ "name" ],
         "type" : "object",
         "properties" : {
           "name" : {
@@ -1992,10 +1997,6 @@
           "duplicable" : {
             "type" : "boolean"
           },
-          "state" : {
-            "type" : "string",
-            "enum" : [ "enabled", "disabled", "deleteInProgress" ]
-          },
           "fieldDefinitions" : {
             "type" : "array",
             "items" : {
@@ -2005,6 +2006,7 @@
         }
       },
       "UpdateDefinitionRequest" : {
+        "required" : [ "name", "version" ],
         "type" : "object",
         "properties" : {
           "name" : {
@@ -2033,6 +2035,7 @@
         }
       },
       "DecoratedDomain" : {
+        "required" : [ "_links", "definition", "id", "name", "version" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2057,10 +2060,17 @@
           },
           "_links" : {
             "$ref" : "#/components/schemas/DomainLinks"
+          },
+          "definition" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Definition"
+            }
           }
         }
       },
       "DomainLinks" : {
+        "required" : [ "size" ],
         "type" : "object",
         "properties" : {
           "update" : {
@@ -2075,6 +2085,7 @@
         }
       },
       "CreateDomainRequest" : {
+        "required" : [ "name" ],
         "type" : "object",
         "properties" : {
           "name" : {
@@ -2088,14 +2099,11 @@
             "items" : {
               "$ref" : "#/components/schemas/Definition"
             }
-          },
-          "version" : {
-            "type" : "integer",
-            "format" : "int32"
           }
         }
       },
       "UpdateDomainRequest" : {
+        "required" : [ "name", "version" ],
         "type" : "object",
         "properties" : {
           "name" : {
@@ -2117,6 +2125,7 @@
         }
       },
       "Instance" : {
+        "required" : [ "id", "instanceLabel", "jsonDefinition", "version" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2150,6 +2159,7 @@
         }
       },
       "InstanceField" : {
+        "required" : [ "duplicate", "fieldDefinition", "id", "label", "off", "upToDate" ],
         "type" : "object",
         "properties" : {
           "id" : {
@@ -2232,6 +2242,7 @@
         }
       },
       "IntegrationStats" : {
+        "required" : [ "deleted", "error", "forbidden", "updated" ],
         "type" : "object",
         "properties" : {
           "updated" : {
