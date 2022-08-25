@@ -1,5 +1,0 @@
-# Prevent generator from creating these files:
-src/api/**/git_push.sh
-src/api/**/.gitignore
-src/api/**/.npmignore
-src/api/**/.openapi-generator-ignore

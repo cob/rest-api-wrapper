@@ -1,33 +1,35 @@
-# What is @cob/rest-api-wrapper
+# What is @cob/cob-js
 
-`@cob/rest-api-wrapper` is a library of functions to simplify the interaction with a CoB server backend.
-It uses part of the available [REST API](https://learning.cultofbits.com/swagger/swagger-ui/#/) 
+`@cob/rest-api-wrapper` is a library of functions to simplify the interaction with a CoB server backend. It uses part of
+the available [REST API](https://learning.cultofbits.com/swagger/swagger-ui/#/)
 
 # How to install
 
 In your project directory run:
 
 ```
- npm i @cob/rest-api-wrapper
-````
+ npm i @cob/cob-js
+```
 
 # Available functions
 
 The list of available functions are:
-* `server` 
-* `auth` 
-* `umLoggedin`
-* `rmDomainSearch`
-* `rmDefinitionSearch`
-* `rmDefinitionAggregation`
-* `rmGetInstance`
-* `rmAddInstance`
-* `rmDeleteInstance`
-* `dmEquipmentSearch`
 
+- `server`
+- `auth`
+- `umLoggedin`
+- `rmDomainSearch`
+- `rmDefinitionSearch`
+- `rmDefinitionAggregation`
+- `rmGetInstance`
+- `rmAddInstance`
+- `rmDeleteInstance`
+- `dmEquipmentSearch`
 
 # Examples
+
 Checkout the `tests` directory for use cases for each of the functions.
 
 # Development
+
 For contributions to the project checkout [README.Development.md](./README.Development.md)
