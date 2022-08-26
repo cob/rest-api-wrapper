@@ -17,8 +17,37 @@
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-ignore": "off",
+    "unused-imports/no-unused-imports-ts": "off",
+    "no-var": "warn",
+    "arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "block-spacing": [
+      "error",
+      "always"
+    ],
+    "brace-style": [
+      "error",
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none",
+        "caughtErrors": "none",
+        "ignoreRestSiblings": true,
+        "vars": "all"
+      }
+    ],
     "max-len": [
-      2,
+      1,
       {
         "code": 120,
         "tabWidth": 2
