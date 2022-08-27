@@ -1,33 +1,28 @@
 import { getServer } from "@/server"
-import axios from "axios"
-import { Instance } from "@/api/recordm"
+import { IntegrationApi } from "@/api/recordm"
+import { UIInstance } from "@/api/recordm/helpers/model/ui-instance"
 
-const PostURL = "/recordm/recordm/instances/integration"
 const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
-const rmAddInstance = function (definitionName: string, values: { [K: string]: string }): Promise<Instance> {
+const rmAddInstance = function (definitionName: string, values: { [K: string]: string }): Promise<UIInstance> {
   const data = {
     type: definitionName,
     values: values,
   }
 
-  return axios
-    .post(getServer() + PostURL, data)
-    .then((response) => {
-      const id = response.data.id
+  const integrationApi = new IntegrationApi()
+  return integrationApi.add(data).then((response) => {
+    const instance = response.data as UIInstance
+    const id = instance.id
 
-      //Add resultsUrl to response
-      response.data.resultsUrl = ResultURLTemplate.replace("__INSTANCE_ID__", id)
+    //Add resultsUrl to response
+    instance.resultsUrl = ResultURLTemplate.replace("__INSTANCE_ID__", `${id}`)
+    if (typeof window === "undefined") {
+      instance.resultsUrl = getServer() + instance.resultsUrl
+    }
 
-      if (typeof window === "undefined") {
-        response.data.resultsUrl = getServer() + response.data.resultsUrl
-      }
-
-      return response.data
-    })
-    .catch((e) => {
-      throw e
-    })
+    return instance
+  })
 }
 
 export default rmAddInstance

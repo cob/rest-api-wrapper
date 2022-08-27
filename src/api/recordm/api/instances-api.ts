@@ -6,6 +6,7 @@ import { Configuration } from '@/api/configuration';
 // Some imports not used depending on template conditions
 import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '@/api/common';
 import { RequestArgs, BaseAPI, RequiredError } from '@/api/base';
+import { DecoratedInstance } from '../model';
 import { Instance } from '../model';
 
 /**
@@ -427,7 +428,7 @@ const InstancesApiFp = function(configuration: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInstance(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<void>> {
+        async getInstance(id: number, ifNoneMatch?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<DecoratedInstance>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getInstance(id, ifNoneMatch, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
@@ -439,7 +440,7 @@ const InstancesApiFp = function(configuration: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getNewInstance(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<void>> {
+        async getNewInstance(definitionId: number, withDefaults?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<DecoratedInstance>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getNewInstance(definitionId, withDefaults, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },

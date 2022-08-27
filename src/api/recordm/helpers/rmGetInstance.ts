@@ -1,25 +1,24 @@
 import { getServer } from "@/server"
-import axios from "axios"
-import { Instance } from "@/api/recordm"
+import { InstancesApi } from "@/api/recordm"
+import { UIInstance } from "@/api/recordm/helpers/model/ui-instance"
 
-const GetURL = "/recordm/recordm/instances/"
-const ResultsURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
+const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
-const rmGetInstance = function (instanceId: number): Promise<Instance> {
-  return axios
-    .get(getServer() + GetURL + instanceId)
-    .then((response) => {
-      response.data.resultsUrl = ResultsURLTemplate.replace("__INSTANCE_ID__", `${instanceId}`)
+const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
+  const instancesApi = new InstancesApi()
 
-      if (typeof window == "undefined") {
-        response.data.resultsUrl = getServer() + response.data.resultsUrl
-      }
+  return instancesApi.getInstance(instanceId).then((response) => {
+    const instance = response.data as UIInstance
+    const id = instance.id
 
-      return response.data
-    })
-    .catch((e) => {
-      throw e
-    })
+    //Add resultsUrl to response
+    instance.resultsUrl = ResultURLTemplate.replace("__INSTANCE_ID__", `${id}`)
+    if (typeof window === "undefined") {
+      instance.resultsUrl = getServer() + instance.resultsUrl
+    }
+
+    return instance
+  })
 }
 
 export default rmGetInstance

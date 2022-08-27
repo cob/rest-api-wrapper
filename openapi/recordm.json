@@ -1284,7 +1284,11 @@
           "200" : {
             "description" : "The instance was found and a representation of the instance is returned.",
             "content" : {
-              "application/json" : { },
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DecoratedInstance"
+                }
+              },
               "text/plain" : { }
             }
           },
@@ -1492,7 +1496,11 @@
           "200" : {
             "description" : "An empty instance.",
             "content" : {
-              "application/json" : { }
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/DecoratedInstance"
+                }
+              }
             }
           },
           "404" : {
@@ -2172,6 +2180,58 @@
             "type" : "string"
           },
           "username" : {
+            "type" : "string"
+          }
+        }
+      },
+      "DecoratedInstance" : {
+        "required" : [ "_links", "id", "instanceLabel", "jsonDefinition", "version" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "attachmentPath" : {
+            "type" : "string",
+            "description" : "The relative path for the Instance's attached files. Normally the id of the instance.",
+            "example" : "123456"
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "instanceLabel" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "jsonDefinition" : {
+            "$ref" : "#/components/schemas/DefinitionInfo"
+          },
+          "fields" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/InstanceField"
+            }
+          },
+          "_links" : {
+            "$ref" : "#/components/schemas/InstanceLinks"
+          }
+        }
+      },
+      "InstanceLinks" : {
+        "required" : [ "size" ],
+        "type" : "object",
+        "properties" : {
+          "update" : {
+            "type" : "string"
+          },
+          "delete" : {
+            "type" : "string"
+          },
+          "size" : {
             "type" : "string"
           }
         }
