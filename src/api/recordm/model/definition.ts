@@ -1,4 +1,6 @@
 
+// May contain unused imports in some cases
+import { FieldDefinition } from "./field-definition"
 
 /**
  * 
@@ -11,13 +13,13 @@ export interface Definition {
      * @type {number}
      * @memberof Definition
      */
-    'id': number;
+    'id'?: number;
     /**
      * 
      * @type {string}
      * @memberof Definition
      */
-    'name': string;
+    'name'?: string;
     /**
      * 
      * @type {string}
@@ -35,11 +37,26 @@ export interface Definition {
      * @type {string}
      * @memberof Definition
      */
-    'state': string;
+    'state'?: DefinitionStateEnum;
+    /**
+     * 
+     * @type {Array<FieldDefinition>}
+     * @memberof Definition
+     */
+    'fieldDefinitions'?: Array<FieldDefinition>;
     /**
      * 
      * @type {number}
      * @memberof Definition
      */
-    'version': number;
+    'version'?: number;
 }
+
+export const DefinitionStateEnum = {
+    ENABLED: 'enabled',
+    DISABLED: 'disabled',
+    DELETE_IN_PROGRESS: 'deleteInProgress'
+} as const;
+
+export type DefinitionStateEnum = typeof DefinitionStateEnum[keyof typeof DefinitionStateEnum];
+

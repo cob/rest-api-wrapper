@@ -8,7 +8,6 @@ import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeed
 import { RequestArgs, BaseAPI, RequiredError } from '@/api/base';
 import { CreateDefinitionRequest } from '../model';
 import { DecoratedDefinition } from '../model';
-import { DefinitionStats } from '../model';
 import { FieldError } from '../model';
 import { UpdateDefinitionRequest } from '../model';
 
@@ -251,48 +250,6 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * Retrieves the sta
-         * @summary Retrieves statistics about a definition.
-         * @param {number} [defId] The definition identifier
-         * @param {string} [def] The definition name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        getDefinitionStats: async (defId?: number, def?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/stats`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication cobtoken required
-
-            if (defId !== undefined) {
-                localVarQueryParameter['defId'] = defId;
-            }
-
-            if (def !== undefined) {
-                localVarQueryParameter['def'] = def;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 
          * @summary Create a new definition
          * @param {CreateDefinitionRequest} [createDefinitionRequest] The new definition payload
@@ -488,18 +445,6 @@ const DefinitionsApiFp = function(configuration: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
         /**
-         * Retrieves the sta
-         * @summary Retrieves statistics about a definition.
-         * @param {number} [defId] The definition identifier
-         * @param {string} [def] The definition name
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getDefinitionStats(defId?: number, def?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<DefinitionStats>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getDefinitionStats(defId, def, options);
-            return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
-        },
-        /**
          * 
          * @summary Create a new definition
          * @param {CreateDefinitionRequest} [createDefinitionRequest] The new definition payload
@@ -617,19 +562,6 @@ export class DefinitionsApi extends BaseAPI {
      */
     public getDefinitionByName(name: string, options?: AxiosRequestConfig) {
         return DefinitionsApiFp(this.configuration).getDefinitionByName(name, options).then((request) => request(this.axios));
-    }
-
-    /**
-     * Retrieves the sta
-     * @summary Retrieves statistics about a definition.
-     * @param {number} [defId] The definition identifier
-     * @param {string} [def] The definition name
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefinitionsApi
-     */
-    public getDefinitionStats(defId?: number, def?: string, options?: AxiosRequestConfig) {
-        return DefinitionsApiFp(this.configuration).getDefinitionStats(defId, def, options).then((request) => request(this.axios));
     }
 
     /**

@@ -1,6 +1,6 @@
 
 // May contain unused imports in some cases
-import { Definition } from "./definition"
+import { DefinitionInfo } from "./definition-info"
 // May contain unused imports in some cases
 import { InstanceField } from "./instance-field"
 
@@ -36,10 +36,10 @@ export interface Instance {
     'instanceLabel': Array<string>;
     /**
      * 
-     * @type {Definition}
+     * @type {DefinitionInfo}
      * @memberof Instance
      */
-    'jsonDefinition': Definition;
+    'jsonDefinition': DefinitionInfo;
     /**
      * 
      * @type {Array<InstanceField>}
