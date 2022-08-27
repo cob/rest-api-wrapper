@@ -26,7 +26,7 @@ const IntegrationApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         _delete: async (integrationDeleteMessage?: IntegrationDeleteMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/instances/integration`;
+            const localVarPath = `/recordm/recordm/instances/integration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -62,7 +62,7 @@ const IntegrationApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         add: async (integrationAddMessage?: IntegrationAddMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/instances/integration`;
+            const localVarPath = `/recordm/recordm/instances/integration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -98,7 +98,7 @@ const IntegrationApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         update: async (integrationUpdateMessage?: IntegrationUpdateMessage, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/instances/integration`;
+            const localVarPath = `/recordm/recordm/instances/integration`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;

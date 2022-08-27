@@ -13,7 +13,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
 })
 
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
-  let agg = {
+  const agg = {
     x: {
       sum: {
         field: "value",
@@ -35,7 +35,7 @@ test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
 })
 
 test('for "Arab world" there are 4 indicators', (done) => {
-  let agg = {
+  const agg = {
     x: {
       terms: {
         field: "indicator_name.raw", //NOTE: you allways have to use a raw for ES

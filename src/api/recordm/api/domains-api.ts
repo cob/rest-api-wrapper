@@ -30,7 +30,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
             assertParamExists('addDefinitionToDomain', 'domainId', domainId)
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('addDefinitionToDomain', 'definitionId', definitionId)
-            const localVarPath = `/recordm/domains/{domainId}/definitions/{definitionId}`
+            const localVarPath = `/recordm/recordm/domains/{domainId}/definitions/{definitionId}`
                 .replace(`{${"domainId"}}`, encodeURIComponent(String(domainId)))
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -65,7 +65,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         addDomain: async (createDomainRequest?: CreateDomainRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains`;
+            const localVarPath = `/recordm/recordm/domains`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -103,7 +103,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
         deleteDomain: async (domainId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'domainId' is not null or undefined
             assertParamExists('deleteDomain', 'domainId', domainId)
-            const localVarPath = `/recordm/domains/{domainId}`
+            const localVarPath = `/recordm/recordm/domains/{domainId}`
                 .replace(`{${"domainId"}}`, encodeURIComponent(String(domainId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -139,7 +139,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
         findDomainByName: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('findDomainByName', 'name', name)
-            const localVarPath = `/recordm/domains/name/{name}`
+            const localVarPath = `/recordm/recordm/domains/name/{name}`
                 .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -172,7 +172,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         getAllDomains: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains`;
+            const localVarPath = `/recordm/recordm/domains`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -208,7 +208,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
         getDomain: async (domainId: number, ifNoneMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'domainId' is not null or undefined
             assertParamExists('getDomain', 'domainId', domainId)
-            const localVarPath = `/recordm/domains/{domainId}`
+            const localVarPath = `/recordm/recordm/domains/{domainId}`
                 .replace(`{${"domainId"}}`, encodeURIComponent(String(domainId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -251,7 +251,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
             assertParamExists('removeDefinitionFromDomain', 'domainId', domainId)
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('removeDefinitionFromDomain', 'definitionId', definitionId)
-            const localVarPath = `/recordm/domains/{domainId}/definitions/{definitionId}`
+            const localVarPath = `/recordm/recordm/domains/{domainId}/definitions/{definitionId}`
                 .replace(`{${"domainId"}}`, encodeURIComponent(String(domainId)))
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -289,7 +289,7 @@ const DomainsApiAxiosParamCreator = function (configuration?: Configuration) {
         updateDomain: async (domainId: number, updateDomainRequest?: UpdateDomainRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'domainId' is not null or undefined
             assertParamExists('updateDomain', 'domainId', domainId)
-            const localVarPath = `/recordm/domains/{domainId}`
+            const localVarPath = `/recordm/recordm/domains/{domainId}`
                 .replace(`{${"domainId"}}`, encodeURIComponent(String(domainId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);

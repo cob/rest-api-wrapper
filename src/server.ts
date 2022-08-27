@@ -1,4 +1,6 @@
-let _server = ""
+import { DEFAUULT_CONFIGURATION } from "@/api/configuration"
+
+const _configuration = DEFAUULT_CONFIGURATION
 
 function setServer(server: string): void {
   if (typeof self == "object" && self.self === self && self) {
@@ -7,19 +9,11 @@ function setServer(server: string): void {
         "Specifying the same server is redundant."
     )
   }
-  _server = server
+  _configuration.basePath = server
 }
 
 function getServer(): string {
-  if (_server) {
-    return _server
-  } else if (typeof window == "object" && window.self === self && self) {
-    //this means we're in a browser, no need to specify server
-    _server = ""
-  } else {
-    _server = "https://learning.cultofbits.com"
-  }
-  return _server
+  return _configuration.basePath
 }
 
 export { setServer, getServer }

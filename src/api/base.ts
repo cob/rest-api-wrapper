@@ -1,8 +1,6 @@
 /* tslint:disable */
 
-import { Configuration } from "./configuration"
-
-// Some imports not used depending on template conditions
+import { Configuration, DEFAUULT_CONFIGURATION } from "./configuration"
 import globalAxios, { AxiosInstance, AxiosRequestConfig } from "axios"
 
 export interface RequestArgs {
@@ -11,12 +9,10 @@ export interface RequestArgs {
 }
 
 export class BaseAPI {
-  protected configuration: Configuration = new Configuration({ basePath: "/" })
+  protected configuration: Configuration
 
   constructor(configuration?: Configuration, protected axios: AxiosInstance = globalAxios) {
-    if (configuration) {
-      this.configuration = configuration
-    }
+    this.configuration = configuration ?? DEFAUULT_CONFIGURATION
   }
 }
 

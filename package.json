@@ -13,7 +13,7 @@
   "scripts": {
     "build": "npm run lint && tsc && vite build",
     "test": "jest",
-    "lint": "eslint --ext .js,.vue,.ts src/api/reportm --fix",
+    "lint": "eslint --ext .js,.vue,.ts src --fix",
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write .",
     "generate-api": "openapi-generator-cli generate && find . -type d -name .openapi-generator -exec rm -rf {} +"

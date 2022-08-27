@@ -2,7 +2,7 @@
 /* eslint-disable */
 
 export interface ConfigurationParameters {
-  basePath?: string
+  basePath: string
   baseOptions?: any
   formDataCtor?: new () => any
 }
@@ -14,7 +14,7 @@ export class Configuration {
    * @type {string}
    * @memberof Configuration
    */
-  basePath?: string
+  basePath: string
   /**
    * base options for axios calls
    *
@@ -31,7 +31,7 @@ export class Configuration {
    */
   formDataCtor?: new () => any
 
-  constructor(param: ConfigurationParameters = {}) {
+  constructor(param: ConfigurationParameters = DEFAUULT_CONFIGURATION) {
     this.basePath = param.basePath
     this.baseOptions = param.baseOptions
     this.formDataCtor = param.formDataCtor
@@ -52,3 +52,8 @@ export class Configuration {
     return mime !== null && (jsonMime.test(mime) || mime.toLowerCase() === "application/json-patch+json")
   }
 }
+
+export const DEFAUULT_CONFIGURATION: Configuration =
+    typeof window == "object" && window.self === self && self
+        ? new Configuration({ basePath: "/" }) //this means we're in a browser, no need to specify server
+        : new Configuration({ basePath: "https://learning.cultofbits.com" })

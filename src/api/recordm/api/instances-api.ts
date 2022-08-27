@@ -24,7 +24,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
         addInstance: async (instance: Instance, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'instance' is not null or undefined
             assertParamExists('addInstance', 'instance', instance)
-            const localVarPath = `/recordm/instances`;
+            const localVarPath = `/recordm/recordm/instances`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -63,7 +63,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
         addLogMessageToInstance: async (id: number, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('addLogMessageToInstance', 'id', id)
-            const localVarPath = `/recordm/instances/{id}/log`
+            const localVarPath = `/recordm/recordm/instances/{id}/log`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -103,7 +103,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
         deleteInstance: async (id: number, ignoreRefs?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('deleteInstance', 'id', id)
-            const localVarPath = `/recordm/instances/{id}`
+            const localVarPath = `/recordm/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -150,7 +150,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
             assertParamExists('downloadFile', 'fieldDefinitionId', fieldDefinitionId)
             // verify required parameter 'filename' is not null or undefined
             assertParamExists('downloadFile', 'filename', filename)
-            const localVarPath = `/recordm/instances/{id}/files/{fieldDefinitionId}/{filename}`
+            const localVarPath = `/recordm/recordm/instances/{id}/files/{fieldDefinitionId}/{filename}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)))
                 .replace(`{${"fieldDefinitionId"}}`, encodeURIComponent(String(fieldDefinitionId)))
                 .replace(`{${"filename"}}`, encodeURIComponent(String(filename)));
@@ -193,7 +193,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
         getInstance: async (id: number, ifNoneMatch?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('getInstance', 'id', id)
-            const localVarPath = `/recordm/instances/{id}`
+            const localVarPath = `/recordm/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -234,7 +234,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
         getNewInstance: async (definitionId: number, withDefaults?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('getNewInstance', 'definitionId', definitionId)
-            const localVarPath = `/recordm/instances/empty/definition/{definitionId}`
+            const localVarPath = `/recordm/recordm/instances/empty/definition/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -278,7 +278,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
             assertParamExists('updateInstance', 'id', id)
             // verify required parameter 'instance' is not null or undefined
             assertParamExists('updateInstance', 'instance', instance)
-            const localVarPath = `/recordm/instances/{id}`
+            const localVarPath = `/recordm/recordm/instances/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -325,7 +325,7 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
             assertParamExists('uploadFile', 'id', id)
             // verify required parameter 'fieldDefinitionId' is not null or undefined
             assertParamExists('uploadFile', 'fieldDefinitionId', fieldDefinitionId)
-            const localVarPath = `/recordm/instances/{id}/files/{fieldDefinitionId}`
+            const localVarPath = `/recordm/recordm/instances/{id}/files/{fieldDefinitionId}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)))
                 .replace(`{${"fieldDefinitionId"}}`, encodeURIComponent(String(fieldDefinitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.

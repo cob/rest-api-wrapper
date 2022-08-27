@@ -26,7 +26,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         searchInDefinition: async (defId?: number, def?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search`;
+            const localVarPath = `/recordm/recordm/definitions/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -88,7 +88,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         searchInDomain: async (domainId?: number, domain?: string, q?: string, from?: number, size?: number, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains/search`;
+            const localVarPath = `/recordm/recordm/domains/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -147,7 +147,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         searchStructuredInDomain: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains/search`;
+            const localVarPath = `/recordm/recordm/domains/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -194,7 +194,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         streamSearchInDefinition: async (defId?: number, def?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search/stream`;
+            const localVarPath = `/recordm/recordm/definitions/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -246,7 +246,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         streamSearchInDomain: async (domainId?: number, domain?: string, q?: string, sort?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains/search/stream`;
+            const localVarPath = `/recordm/recordm/domains/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -297,7 +297,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         streamStructuredSearchInDefinition: async (defId?: number, def?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search/stream`;
+            const localVarPath = `/recordm/recordm/definitions/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -343,7 +343,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         streamStructuredSearchInDomain: async (domainId?: number, domain?: string, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/domains/search/stream`;
+            const localVarPath = `/recordm/recordm/domains/search/stream`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -390,7 +390,7 @@ const SearchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         structuredSearchInDefinition: async (defId?: number, def?: string, typedKeys?: boolean, body?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions/search`;
+            const localVarPath = `/recordm/recordm/definitions/search`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;

@@ -27,7 +27,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         cloneDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('cloneDefinition', 'definitionId', definitionId)
-            const localVarPath = `/recordm/definitions/{definitionId}/clone`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}/clone`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -63,7 +63,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         deleteDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('deleteDefinition', 'definitionId', definitionId)
-            const localVarPath = `/recordm/definitions/{definitionId}`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -99,7 +99,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         exportDefinition: async (definitionId: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('exportDefinition', 'definitionId', definitionId)
-            const localVarPath = `/recordm/definitions/{definitionId}/export`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}/export`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -134,7 +134,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         getAllDefinitions: async (includeDisabled?: boolean, name?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions`;
+            const localVarPath = `/recordm/recordm/definitions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -179,7 +179,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         getDefinition: async (definitionId: number, ifNoneMatch?: string, _export?: boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('getDefinition', 'definitionId', definitionId)
-            const localVarPath = `/recordm/definitions/{definitionId}`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -223,7 +223,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         getDefinitionByName: async (name: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('getDefinitionByName', 'name', name)
-            const localVarPath = `/recordm/definitions/name/{name}`
+            const localVarPath = `/recordm/recordm/definitions/name/{name}`
                 .replace(`{${"name"}}`, encodeURIComponent(String(name)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -257,7 +257,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
          * @throws {RequiredError}
          */
         saveDefinition: async (createDefinitionRequest?: CreateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/recordm/definitions`;
+            const localVarPath = `/recordm/recordm/definitions`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -296,7 +296,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
         updateDefinition: async (definitionId: number, updateDefinitionRequest?: UpdateDefinitionRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'definitionId' is not null or undefined
             assertParamExists('updateDefinition', 'definitionId', definitionId)
-            const localVarPath = `/recordm/definitions/{definitionId}`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -338,7 +338,7 @@ const DefinitionsApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('updateDefinitionState', 'definitionId', definitionId)
             // verify required parameter 'state' is not null or undefined
             assertParamExists('updateDefinitionState', 'state', state)
-            const localVarPath = `/recordm/definitions/{definitionId}/state/{state}`
+            const localVarPath = `/recordm/recordm/definitions/{definitionId}/state/{state}`
                 .replace(`{${"definitionId"}}`, encodeURIComponent(String(definitionId)))
                 .replace(`{${"state"}}`, encodeURIComponent(String(state)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.

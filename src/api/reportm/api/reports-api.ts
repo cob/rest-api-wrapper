@@ -22,7 +22,7 @@ const ReportsApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         generate: async (reportGenerationRequest?: ReportGenerationRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/report`;
+            const localVarPath = `/reportm/report`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -58,7 +58,7 @@ const ReportsApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          */
         test: async (f?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/report/test`;
+            const localVarPath = `/reportm/report/test`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
