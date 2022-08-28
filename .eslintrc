@@ -17,7 +17,6 @@
   "rules": {
     "prettier/prettier": "error",
     "@typescript-eslint/ban-ts-ignore": "off",
-    "unused-imports/no-unused-imports-ts": "off",
     "no-var": "warn",
     "arrow-spacing": [
       "error",

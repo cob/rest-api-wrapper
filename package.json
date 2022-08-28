@@ -2,16 +2,19 @@
   "name": "@cob/cob-js",
   "version": "3.0.0",
   "author": "Cult Of Bits",
-  "main": "./dist/cob-js.cjs",
-  "module": "./dist/cob-js.mjs",
+  "main": "./dist/@cob/cob-js.cjs",
+  "module": "./dist/@cob/cob-js.mjs",
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
-      "require": "./dist/cob-js.cjs",
-      "import": "./dist/cob-js.mjs"
+      "require": "./dist/@cob/cob-js.cjs",
+      "import": "./dist/@cob/cob-js.js"
     }
   },
   "scripts": {
-    "build": "npm run lint && tsc && vite build",
+    "build": "tsc && vite build && tsc -P tsconfig.dts.json",
     "test": "jest",
     "lint": "eslint --ext .js,.vue,.ts src --fix",
     "prettier:check": "prettier --check .",
@@ -30,11 +33,9 @@
     "@types/node": "^18.7.6",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
-    "dts-bundle-generator": "^6.12.0",
     "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-unused-imports": "^2.0.0",
     "husky": "^8.0.1",
     "jest": "^28.1.3",
     "lint-staged": "^13.0.3",

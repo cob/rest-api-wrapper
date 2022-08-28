@@ -12,6 +12,15 @@
 
 Check [here](https://prettier.io/docs/en/webstorm.html) for more information
 
+## API Generation
+
+We use [OpenAPI Generator](https://openapi-generator.tech/) and the flavor `typescript-axios`. Some changes were made to the templates such that it's use would be simpler to the final developer. 
+The original templates can be found here: https://github.com/OpenAPITools/openapi-generator/tree/master/modules/openapi-generator/src/main/resources/typescript-axios
+
+To override existing behavior, just drop the template in the directory `cob-templates/typescript-axios` and call `npm run generate-api`. This will update the API with the new changes.
+
+More information can be found in [OpenApi Generator / Using Templates](https://openapi-generator.tech/docs/templating). 
+
 ## Development:
 
 ```shell

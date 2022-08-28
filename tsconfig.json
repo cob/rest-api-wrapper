@@ -3,7 +3,12 @@
     "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "declaration": true,
+    "outDir": "./dist",
     "strict": true,
     "useDefineForClassFields": true,
     "moduleResolution": "Node",
@@ -15,15 +20,26 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["vite/client", "node", "jest"],
+    "types": [
+      "vite/client",
+      "node",
+      "jest"
+    ],
     "allowJs": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
   "files": [
     "src/global.d.ts"
   ],
-  "include": ["src", "src/**/*"],
-  "exclude": ["node_modules", "test/**", ".history/**"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "test/**"
+  ]
 }

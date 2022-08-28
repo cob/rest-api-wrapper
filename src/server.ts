@@ -1,4 +1,4 @@
-import { DEFAUULT_CONFIGURATION } from "@/api/configuration"
+import { DEFAUULT_CONFIGURATION } from "@/configuration"
 
 const _configuration = DEFAUULT_CONFIGURATION
 
