@@ -4,6 +4,7 @@
   "author": "Cult Of Bits",
   "main": "./dist/@cob/cob-js.cjs",
   "module": "./dist/@cob/cob-js.mjs",
+  "typings": "./dist/typings/index.d.ts",
   "files": [
     "dist"
   ],

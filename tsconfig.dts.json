@@ -4,7 +4,7 @@
     "target": "ESNext",
     "module": "ESNext",
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "dist/typings",
     "moduleResolution": "Node",
     "emitDeclarationOnly": true,
     "lib": [
