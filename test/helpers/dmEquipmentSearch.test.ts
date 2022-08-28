@@ -1,5 +1,5 @@
-import dmEquipmentSearch from "../../../src/devicem/helpers/dmEquipmentSearch"
-import auth from "../../../src/userm/helpers/auth"
+import dmEquipmentSearch from "../../src/helpers/dmEquipmentSearch"
+import auth from "../../src/helpers/auth"
 
 beforeAll(async () => {
   await auth({ username: "jestTests", password: "1jestTests2" })

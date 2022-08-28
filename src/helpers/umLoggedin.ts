@@ -1,6 +1,6 @@
 import { getServer } from "@/server"
 import axios from "axios"
-import { UmLoggedInResponse } from "@/userm"
+import { UmLoggedInResponse } from "@/helpers/model"
 
 let _lastUmLoggedinResponse: UmLoggedInResponse
 let _lastUmLoggedinResponseValidity = 0

@@ -7,3 +7,4 @@ src/**/.openapi-generator-ignore
 src/*/base.ts
 src/*/common.ts
 src/*/configuration.ts
+src/*/index.ts

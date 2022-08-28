@@ -11,7 +11,7 @@
   "exports": {
     ".": {
       "require": "./dist/@cob/cob-js.cjs",
-      "import": "./dist/@cob/cob-js.js"
+      "import": "./dist/@cob/cob-js.mjs"
     }
   },
   "scripts": {

@@ -1,4 +1,4 @@
-import rmListDefinitions from "../../../src/recordm/helpers/rmListDefinitions"
+import rmListDefinitions from "../../src/helpers/rmListDefinitions"
 
 test("Can list all active definitions with (no filter)", async () => {
   const definitions = await rmListDefinitions()

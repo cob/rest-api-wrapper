@@ -1,5 +1,5 @@
 import { getServer } from "@/server"
-import umLoggedin from "@/userm/helpers/umLoggedin"
+import umLoggedin from "@/helpers/umLoggedin"
 
 import axios from "axios"
 import { CookieJar } from "tough-cookie"

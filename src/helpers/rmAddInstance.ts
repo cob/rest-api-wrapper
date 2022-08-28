@@ -1,13 +1,17 @@
 import { getServer } from "@/server"
-import { InstancesApi } from "@/recordm"
-import { UIInstance } from "@/recordm/helpers/model/ui-instance"
+import { IntegrationApi } from "@/recordm"
+import { UIInstance } from "@/helpers/model/ui-instance"
 
 const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
-const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
-  const instancesApi = new InstancesApi()
+const rmAddInstance = function (definitionName: string, values: { [K: string]: string }): Promise<UIInstance> {
+  const data = {
+    type: definitionName,
+    values: values,
+  }
 
-  return instancesApi.getInstance(instanceId).then((response) => {
+  const integrationApi = new IntegrationApi()
+  return integrationApi.add(data).then((response) => {
     const instance = response.data as UIInstance
     const id = instance.id
 
@@ -21,4 +25,4 @@ const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
   })
 }
 
-export default rmGetInstance
+export default rmAddInstance
