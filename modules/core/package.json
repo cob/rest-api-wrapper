@@ -1,20 +1,20 @@
 {
-  "name": "core",
+  "name": "@hm/cobjs-core",
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
     "cob",
     "core"
   ],
-  "main": "./dist/@hm/cobjs/core.cjs",
-  "module": "./dist/@hm/cobjs/core.cjs",
-  "typings": "./dist/@hm/typings/core/index.d.ts",
+  "main": "./dist/cobjs-core.cjs",
+  "module": "./dist/cobjs-core.mjs",
+  "typings": "./dist/typings/index.d.ts",
   "exports": {
-    "require": "./dist/@hm/cobjs/core.cjs",
-    "import": "./dist/@hm/cobjs/core.mjs"
+    "require": "./dist/cobjs-core.cjs",
+    "import": "./dist/cobjs-core.mjs"
   },
   "scripts": {
-    "build": "tsc -p ../../tsconfig.json -v && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json"
+    "build": "tsc && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json"
   },
   "dependencies": {
     "axios": "^0.27.2",

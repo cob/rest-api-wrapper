@@ -1,5 +1,5 @@
 {
-  "name": "@hm/cobjs",
+  "name": "cob-api-js",
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
@@ -15,7 +15,8 @@
     "openapi"
   ],
   "workspaces": [
-    "modules/core"
+    "modules/core",
+    "modules/reportm"
   ],
   "scripts": {
     "test": "jest",

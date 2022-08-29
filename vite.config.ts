@@ -10,12 +10,13 @@ const getParentPackageName = (): string => {
 };
 
 const getWorkspacePackageName = (): string => {
-    return workspacePackageJson.name;
+    return workspacePackageJson.name.substring(4)
 };
 
 const getPackageNameCamelCase = () => {
     try {
-        return getParentPackageName() + "/" + getWorkspacePackageName()
+        // return getParentPackageName() + "/" + getWorkspacePackageName()
+        return getWorkspacePackageName()
     } catch (err) {
         throw new Error("Name property in package.json is missing.");
     }
@@ -42,7 +43,7 @@ module.exports = defineConfig({
     },
     resolve: {
         alias: {
-            "@/": `${path.resolve(__dirname, "src")}/`
+            "@/": `${path.resolve("./", "src")}/`
         }
     }
 });
