@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.dts.json",
+  "compilerOptions": {
+    "outDir": "dist/typings/core"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}
