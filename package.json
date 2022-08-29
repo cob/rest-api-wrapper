@@ -1,10 +1,17 @@
 {
-  "name": "@cob/cob-js",
-  "version": "3.0.0",
+  "name": "hm-js",
+  "version": "0.1.0",
   "author": "Cult Of Bits",
-  "main": "./dist/@cob/cob-js.cjs",
+  "keywords": [
+    "cob",
+    "recordm",
+    "reportm",
+    "userm",
+    "devicem"
+  ],
+  "main": "./dist/hm/cob-js.cjs",
   "typings": "./dist/typings/index.d.ts",
-  "module": "./dist/@cob/cob-js.mjs",
+  "module": "./dist/@hm/cob-js.mjs",
   "files": [
     "dist",
     "README.md",
