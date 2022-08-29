@@ -1,5 +1,19 @@
 /* tslint:disable */
-/* eslint-disable */
+/* tslint:disable */
+
+import axios from "axios"
+import { CookieJar } from "tough-cookie"
+import * as axiosCookieJarSupport from "axios-cookiejar-support"
+
+export const cookieJar = new CookieJar()
+
+// If in node use tough-cookie for axios jar
+if (axiosCookieJarSupport?.wrapper) {
+  axiosCookieJarSupport.wrapper(axios)
+  axios.defaults.jar = cookieJar
+}
+
+axios.defaults.withCredentials = true
 
 export interface ConfigurationParameters {
   basePath: string
@@ -54,6 +68,6 @@ export class Configuration {
 }
 
 export const DEFAUULT_CONFIGURATION: Configuration =
-    typeof window == "object" && window.self === self && self
-        ? new Configuration({ basePath: "/" }) //this means we're in a browser, no need to specify server
-        : new Configuration({ basePath: "https://learning.cultofbits.com" })
+  typeof window == "object" && window.self === self && self
+    ? new Configuration({ basePath: "/" }) //this means we're in a browser, no need to specify server
+    : new Configuration({ basePath: "https://learning.cultofbits.com" })

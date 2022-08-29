@@ -3,16 +3,16 @@
   "version": "3.0.0",
   "author": "Cult Of Bits",
   "main": "./dist/@cob/cob-js.cjs",
-  "module": "./dist/@cob/cob-js.mjs",
   "typings": "./dist/typings/index.d.ts",
+  "module": "./dist/@cob/cob-js.mjs",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "openapi"
   ],
   "exports": {
-    ".": {
-      "require": "./dist/@cob/cob-js.cjs",
-      "import": "./dist/@cob/cob-js.mjs"
-    }
+    "require": "./dist/@cob/cob-js.cjs",
+    "import": "./dist/@cob/cob-js.mjs"
   },
   "scripts": {
     "build": "tsc && vite build && tsc -P tsconfig.dts.json",

@@ -2,19 +2,7 @@ import { getServer } from "@/server"
 import umLoggedin from "@/helpers/umLoggedin"
 
 import axios from "axios"
-import { CookieJar } from "tough-cookie"
-import * as axiosCookieJarSupport from "axios-cookiejar-support"
-
-let cookieJar: CookieJar
-
-// If in node use tough-cookie for axios jar
-if (axiosCookieJarSupport?.wrapper) {
-  axiosCookieJarSupport.wrapper(axios)
-  cookieJar = new CookieJar()
-  axios.defaults.jar = cookieJar
-}
-
-axios.defaults.withCredentials = true
+import { cookieJar } from "@/configuration"
 
 const auth = function ({ username, password, token }: { username?: string; password?: string; token?: string }) {
   if (username && password) {
