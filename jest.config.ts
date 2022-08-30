@@ -13,4 +13,5 @@ const config: Config.InitialOptions = {
     cob: null
   }
 };
+
 export default config;

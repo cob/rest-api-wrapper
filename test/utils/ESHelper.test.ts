@@ -1,4 +1,4 @@
-import { toEsFieldName } from "../../src/utils/ESHelper"
+import { toEsFieldName } from "../../modules/core/src/utils/ESHelper"
 
 test("can translate a definition field name into a ES field name", () => {
   expect(toEsFieldName("a field")).toStrictEqual("a_field")

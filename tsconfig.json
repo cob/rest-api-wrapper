@@ -8,7 +8,6 @@
       "DOM"
     ],
     "declaration": true,
-    "outDir": "./dist",
     "strict": true,
     "useDefineForClassFields": true,
     "moduleResolution": "Node",
@@ -23,7 +22,6 @@
     "types": [
       "vite/client",
       "node",
-      "jest"
     ],
     "allowJs": true,
     "paths": {
@@ -32,12 +30,6 @@
       ]
     }
   },
-  "files": [
-    "src/global.d.ts"
-  ],
-  "include": [
-    "src"
-  ],
   "exclude": [
     "node_modules",
     "test/**"

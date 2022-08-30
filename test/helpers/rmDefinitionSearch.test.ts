@@ -1,4 +1,4 @@
-import rmDefinitionSearch from "../../src/helpers/rmDefinitionSearch"
+import rmDefinitionSearch from "../../modules/helpers/src/rmDefinitionSearch"
 import axios from "axios"
 
 test('for the learning server, "countries series" count for "Arab world" is 20', async () => {

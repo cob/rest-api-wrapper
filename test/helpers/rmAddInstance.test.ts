@@ -1,6 +1,6 @@
-import auth from "../../src/helpers/auth"
-import rmAddInstance from "../../src/helpers/rmAddInstance"
-import rmDeleteInstance from "../../src/helpers/rmDeleteInstance"
+import auth from "../../modules/helpers/src/auth"
+import rmAddInstance from "../../modules/helpers/src/rmAddInstance"
+import rmDeleteInstance from "../../modules/helpers/src/rmDeleteInstance"
 
 beforeAll(async () => {
   await auth({ username: "jestTests", password: "1jestTests2" })

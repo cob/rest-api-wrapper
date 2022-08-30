@@ -1,4 +1,4 @@
-import rmListDefinitionFields from "../../src/helpers/rmListDefinitionFields"
+import rmListDefinitionFields from "../../modules/helpers/src/rmListDefinitionFields"
 
 test("Can retrieve definition fields", async () => {
   const definitionDetails = await rmListDefinitionFields(7)

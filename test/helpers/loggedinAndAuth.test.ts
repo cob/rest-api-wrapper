@@ -1,5 +1,5 @@
-import auth from "../../src/helpers/auth"
-import umLoggedin from "../../src/helpers/umLoggedin"
+import auth from "../../modules/helpers/src/auth"
+import umLoggedin from "../../modules/helpers/src/umLoggedin"
 
 test('before any auth, umLoggedin returns "anonymous"', async () => {
   const result = await umLoggedin()

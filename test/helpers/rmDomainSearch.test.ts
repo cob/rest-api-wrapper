@@ -1,4 +1,4 @@
-import rmDomainSearch from "../../src/helpers/rmDomainSearch"
+import rmDomainSearch from "../../modules/helpers/src/rmDomainSearch"
 import axios from "axios"
 
 test('for the learning server, "E-learning Demo" domain count for "Arab world" is 22', async () => {

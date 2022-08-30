@@ -1,41 +1,43 @@
 import path from "path";
-import { defineConfig } from "vite";
-import packageJson from "./package.json";
+import {defineConfig} from "vite";
 
-const getPackageName = () => {
-  return packageJson.name;
+const workingDir = path.resolve("./")
+const workspacePackageJson = require(`${workingDir}/package.json`)
+
+const getWorkspacePackageName = (): string => {
+    return workspacePackageJson.name
 };
 
 const getPackageNameCamelCase = () => {
-  try {
-    return getPackageName().replace(/-./g, (char) => char[1].toUpperCase());
-  } catch (err) {
-    throw new Error("Name property in package.json is missing.");
-  }
+    try {
+        return getWorkspacePackageName()
+    } catch (err) {
+        throw new Error("Name property in package.json is missing.");
+    }
 };
 
 const fileName = {
-  es: `${getPackageName()}.mjs`,
-  cjs: `${getPackageName()}.cjs`
+    es: `${getPackageNameCamelCase()}.mjs`,
+    cjs: `${getPackageNameCamelCase()}.cjs`
 };
 
 module.exports = defineConfig({
-  base: "./",
-  build: {
-    sourcemap: true,
-    lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: getPackageNameCamelCase(),
-      formats: ["es", "cjs"],
-      fileName: (format) => {
-        // @ts-ignore
-        return fileName[format];
-      }
+    base: "./",
+    build: {
+        sourcemap: true,
+        lib: {
+            entry: path.resolve("./", "src/index.ts"),
+            name: getPackageNameCamelCase(),
+            formats: ["es", "cjs"],
+            fileName: (format) => {
+                // @ts-ignore
+                return fileName[format];
+            }
+        }
+    },
+    resolve: {
+        alias: {
+            "@/": `${path.resolve("./", "src")}/`
+        }
     }
-  },
-  resolve: {
-    alias: {
-      "@/": `${path.resolve(__dirname, "src")}/`
-    }
-  }
 });

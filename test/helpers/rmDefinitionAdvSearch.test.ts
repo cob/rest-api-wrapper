@@ -1,4 +1,4 @@
-import rmDefinitionAggregation from "../../src/helpers/rmDefinitionAggregation"
+import rmDefinitionAggregation from "../../modules/helpers/src/rmDefinitionAggregation"
 
 test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20', (done) => {
   rmDefinitionAggregation(2, {}, "Arab world")

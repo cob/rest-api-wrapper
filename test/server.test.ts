@@ -1,4 +1,4 @@
-import { getServer, setServer } from "../src"
+import { getServer, setServer } from "../modules/core/src"
 
 test('default server is "https://learning.cultofbits.com"', () => {
   expect(getServer()).toBe("https://learning.cultofbits.com")
