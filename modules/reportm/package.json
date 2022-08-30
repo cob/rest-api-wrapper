@@ -1,5 +1,5 @@
 {
-  "name": "@hm/cobjs-reportm",
+  "name": "hm-cobjs-reportm",
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
@@ -13,11 +13,14 @@
     "require": "./dist/cobjs-reportm.cjs",
     "import": "./dist/cobjs-reportm.mjs"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json"
   },
   "dependencies": {
-    "@hm/cobjs-core": "0.1.0"
+    "hm-cobjs-core": "0.1.0"
   },
   "devDependencies": {
     "@types/jsdom": "^20.0.0",

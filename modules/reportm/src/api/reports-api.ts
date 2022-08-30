@@ -9,8 +9,8 @@ import {
     toPathString,
     createRequestFunction,
     Configuration
-} from '@hm/cobjs-core';
-import { RequestArgs, BaseAPI, RequiredError } from '@hm/cobjs-core';
+} from 'hm-cobjs-core';
+import { RequestArgs, BaseAPI, RequiredError } from 'hm-cobjs-core';
 import { ReportGenerationRequest } from '../model';
 
 /**

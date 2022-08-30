@@ -10,7 +10,7 @@ const getParentPackageName = (): string => {
 };
 
 const getWorkspacePackageName = (): string => {
-    return workspacePackageJson.name.substring(4)
+    return workspacePackageJson.name.substring(3)
 };
 
 const getPackageNameCamelCase = () => {

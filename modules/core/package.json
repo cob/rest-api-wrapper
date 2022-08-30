@@ -1,5 +1,5 @@
 {
-  "name": "@hm/cobjs-core",
+  "name": "hm-cobjs-core",
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
@@ -13,6 +13,9 @@
     "require": "./dist/cobjs-core.cjs",
     "import": "./dist/cobjs-core.mjs"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json"
   },
