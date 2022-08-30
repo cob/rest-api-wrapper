@@ -1,4 +1,4 @@
-import rmListDefinitions from "../../modules/helpers/src/rmListDefinitions"
+import { rmListDefinitions } from "@cob/cobjs-helpers";
 
 test("Can list all active definitions with (no filter)", async () => {
   const definitions = await rmListDefinitions()

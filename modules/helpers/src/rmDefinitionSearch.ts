@@ -4,7 +4,7 @@ import axios from "axios"
 const QueryURLTemplate = "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
 
-const rmDefinitionSearch = async function (
+export const rmDefinitionSearch = async function (
   definitionName: string,
   query = "*",
   from = 0,
@@ -29,5 +29,3 @@ const rmDefinitionSearch = async function (
 
   return response.data
 }
-
-export default rmDefinitionSearch

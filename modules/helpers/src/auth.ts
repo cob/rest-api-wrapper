@@ -1,10 +1,8 @@
-import { getServer } from '@cob/cobjs-core'
-import umLoggedin from "./umLoggedin"
-
+import { getServer, cookieJar } from '@cob/cobjs-core'
+import { umLoggedin } from "./umLoggedin"
 import axios from "axios"
-import { cookieJar } from '@cob/cobjs-core'
 
-const auth = function ({ username, password, token }: { username?: string; password?: string; token?: string }) {
+export const auth = function ({ username, password, token }: { username?: string; password?: string; token?: string }) {
   if (username && password) {
     return axios
       .post(getServer() + "/recordm/security/auth", {
@@ -26,5 +24,3 @@ const auth = function ({ username, password, token }: { username?: string; passw
 
   return Promise.reject("Specify a username/password OR a token")
 }
-
-export default auth

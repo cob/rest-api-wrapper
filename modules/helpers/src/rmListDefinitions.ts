@@ -1,6 +1,6 @@
 import { DecoratedDefinition, DefinitionsApi } from '@cob/cobjs-recordm'
 
-const rmListDefinitions = async function (
+export const rmListDefinitions = async function (
   filter: { includeDisabled?: boolean; name?: string | null } = { includeDisabled: false, name: null }
 ): Promise<DecoratedDefinition[]> {
   const definitionsApi = new DefinitionsApi()
@@ -12,5 +12,3 @@ const rmListDefinitions = async function (
     )
   ).data
 }
-
-export default rmListDefinitions

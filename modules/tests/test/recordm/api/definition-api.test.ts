@@ -1,4 +1,4 @@
-import { DefinitionsApi } from "../../../modules/recordm/src"
+import { DefinitionsApi } from "@cob/cobjs-recordm"
 
 test("Can list all active definitions with (no filter)", async () => {
   const definitionsApi = new DefinitionsApi()

@@ -4,7 +4,7 @@ import axios from "axios"
 const QueryURLTemplate = "/recordm/recordm/domains/search/__DOMAIN_ID__?from=0&size=0&q=__QUERY__"
 const ResultsURLTemplate = "/recordm/#/domain/__DOMAIN_ID__/q=__QUERY__"
 
-const rmDomainSearch = async function (
+export const rmDomainSearch = async function (
   domainId: number,
   query = "*",
   from = 0,
@@ -30,5 +30,3 @@ const rmDomainSearch = async function (
 
   return response.data
 }
-
-export default rmDomainSearch

@@ -4,7 +4,7 @@ import { UIInstance } from './model'
 
 const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
-const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
+export const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
   const instancesApi = new InstancesApi()
 
   return instancesApi.getInstance(instanceId).then((response) => {
@@ -20,5 +20,3 @@ const rmGetInstance = function (instanceId: number): Promise<UIInstance> {
     return instance
   })
 }
-
-export default rmGetInstance

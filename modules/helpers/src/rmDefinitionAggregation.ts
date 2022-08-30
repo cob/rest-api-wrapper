@@ -4,7 +4,7 @@ import axios from "axios"
 const QueryURLTemplate = "/recordm/recordm/definitions/search/advanced/__DEF_ID__?from=__FROM__&size=__SIZE__"
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
 
-const rmDefinitionAggregation = async function (
+export const rmDefinitionAggregation = async function (
   defId: number,
   aggregation: object,
   query = "*",
@@ -42,5 +42,3 @@ const rmDefinitionAggregation = async function (
 
   return response.data
 }
-
-export default rmDefinitionAggregation

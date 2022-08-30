@@ -1,4 +1,4 @@
-import rmGetInstance from "../../modules/helpers/src/rmGetInstance"
+import { rmGetInstance } from "@cob/cobjs-helpers";
 
 test("instance 556 is Aruba (ABW)", async () => {
   const result = await rmGetInstance(556)

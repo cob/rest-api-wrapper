@@ -6,11 +6,8 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
-  moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
-  },
   globals: {
-    cob: null
+    cob: null,
   }
 };
 

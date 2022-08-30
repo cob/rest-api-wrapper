@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
-    "cob",
+    "@cob",
+    "cob-js",
     "reportm"
   ],
   "main": "./dist/@cob/cobjs-reportm.cjs",

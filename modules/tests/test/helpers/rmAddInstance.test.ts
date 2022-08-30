@@ -1,6 +1,4 @@
-import auth from "../../modules/helpers/src/auth"
-import rmAddInstance from "../../modules/helpers/src/rmAddInstance"
-import rmDeleteInstance from "../../modules/helpers/src/rmDeleteInstance"
+import { auth, rmAddInstance, rmDeleteInstance } from "@cob/cobjs-helpers";
 
 beforeAll(async () => {
   await auth({ username: "jestTests", password: "1jestTests2" })

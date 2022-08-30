@@ -1,5 +1,5 @@
-import rmDefinitionSearch from "../../modules/helpers/src/rmDefinitionSearch"
 import axios from "axios"
+import { rmDefinitionSearch } from "@cob/cobjs-helpers";
 
 test('for the learning server, "countries series" count for "Arab world" is 20', async () => {
   const result = await rmDefinitionSearch("Countries Series", "Arab world")

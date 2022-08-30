@@ -1,4 +1,4 @@
-import { getServer, setServer } from "../modules/core/src"
+import { getServer, setServer } from "@cob/cobjs-core"
 
 test('default server is "https://learning.cultofbits.com"', () => {
   expect(getServer()).toBe("https://learning.cultofbits.com")

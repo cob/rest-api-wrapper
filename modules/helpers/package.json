@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "keywords": [
-    "cob",
+    "@cob",
+    "cob-js",
     "helpers"
   ],
   "main": "./dist/@cob/cobjs-helpers.cjs",
@@ -17,7 +18,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json"
+    "build": "tsc && vite build -c ../../vite.config.ts && tsc --project ./tsconfig.dts.json",
+    "test": "jest -c ../tests/jest.config.ts"
   },
   "dependencies": {
     "@cob/cobjs-core": "0.1.0",

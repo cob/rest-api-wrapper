@@ -1,5 +1,5 @@
-import rmDomainSearch from "../../modules/helpers/src/rmDomainSearch"
 import axios from "axios"
+import { rmDomainSearch } from "@cob/cobjs-helpers";
 
 test('for the learning server, "E-learning Demo" domain count for "Arab world" is 22', async () => {
   const result = await rmDomainSearch(2, "Arab world")

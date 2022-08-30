@@ -20,19 +20,12 @@
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "vite/client",
       "node",
       "jest"
     ],
-    "allowJs": true,
-    "paths": {
-      "@/*": [
-        "src/*"
-      ]
-    }
+    "allowJs": true
   },
   "exclude": [
-    "node_modules",
     "test/**"
   ]
 }

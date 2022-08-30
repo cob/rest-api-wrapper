@@ -1,5 +1,4 @@
-import dmEquipmentSearch from "../../modules/helpers/src/dmEquipmentSearch"
-import auth from "../../modules/helpers/src/auth"
+import { dmEquipmentSearch, auth } from "@cob/cobjs-helpers"
 
 beforeAll(async () => {
   await auth({ username: "jestTests", password: "1jestTests2" })

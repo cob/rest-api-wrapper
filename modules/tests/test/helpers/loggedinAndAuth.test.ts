@@ -1,5 +1,4 @@
-import auth from "../../modules/helpers/src/auth"
-import umLoggedin from "../../modules/helpers/src/umLoggedin"
+import { auth, umLoggedin } from "@cob/cobjs-helpers";
 
 test('before any auth, umLoggedin returns "anonymous"', async () => {
   const result = await umLoggedin()

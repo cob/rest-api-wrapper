@@ -6,7 +6,7 @@ let _lastUmLoggedinResponse: UmLoggedInResponse
 let _lastUmLoggedinResponseValidity = 0
 let _currentPromise: Promise<{ username: string }>
 
-const umLoggedin = function ({ throtle }: { throtle: boolean } = { throtle: true }): Promise<UmLoggedInResponse> {
+export const umLoggedin = function ({ throtle }: { throtle: boolean } = { throtle: true }): Promise<UmLoggedInResponse> {
   // debugger;
   if (cob?.app?.getCurrentLoggedInUser) {
     return Promise.resolve({
@@ -43,5 +43,3 @@ const umLoggedin = function ({ throtle }: { throtle: boolean } = { throtle: true
       }))
   }
 }
-
-export default umLoggedin

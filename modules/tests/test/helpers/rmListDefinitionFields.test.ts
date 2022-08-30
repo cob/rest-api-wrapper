@@ -1,4 +1,4 @@
-import rmListDefinitionFields from "../../modules/helpers/src/rmListDefinitionFields"
+import { rmListDefinitionFields } from "@cob/cobjs-helpers";
 
 test("Can retrieve definition fields", async () => {
   const definitionDetails = await rmListDefinitionFields(7)

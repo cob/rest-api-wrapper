@@ -34,10 +34,5 @@ module.exports = defineConfig({
                 return fileName[format];
             }
         }
-    },
-    resolve: {
-        alias: {
-            "@/": `${path.resolve("./", "src")}/`
-        }
     }
 });
