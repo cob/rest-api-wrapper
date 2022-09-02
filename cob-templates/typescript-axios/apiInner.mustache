@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
-import { Configuration } from '@/configuration';
+import { Configuration } from '@cob/cobjs-core';
 {{#withNodeImports}}
 // URLSearchParams not necessarily used
 import { URL, URLSearchParams } from 'url';
@@ -12,8 +12,8 @@ import FormData from 'form-data'
 {{/multipartFormData}}
 {{/withNodeImports}}
 // Some imports not used depending on template conditions
-import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '@/common';
-import { RequestArgs, BaseAPI, RequiredError } from '@/base';
+import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '@cob/cobjs-core';
+import { RequestArgs, BaseAPI, RequiredError } from '@cob/cobjs-core';
 {{#imports}}
 import { {{classname}} } from '{{apiRelativeToRoot}}{{tsModelPackage}}';
 {{/imports}}

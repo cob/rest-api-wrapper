@@ -8,7 +8,7 @@
         "templateDir": "./cob-templates/typescript-axios",
         "ignoreFileOverride": "/Users/hugomarcelino/projects/cob/rest-api-wrapper/.openapi-generator-ignore",
         "generatorName": "typescript-axios",
-        "output": "#{cwd}/src/#{name}",
+        "output": "#{cwd}/packages/#{name}/src/",
         "glob": "./openapi/*.{json,yaml}",
         "typeMappings": {
           "set": "Array"

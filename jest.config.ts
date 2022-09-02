@@ -6,11 +6,15 @@ const config: Config.InitialOptions = {
   transform: {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
   },
-  moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
-  },
   globals: {
-    cob: null
+    cob: null,
+    'ts-jest': {
+      tsconfig: 'tsconfig.test.json'
+    }
+  },
+  moduleNameMapper: {
+    '^@cob/cobjs-(.*)$': '<rootDir>/packages/$1/src'
   }
 };
+
 export default config;

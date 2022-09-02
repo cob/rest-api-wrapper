@@ -1,45 +1,23 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "declaration": true,
-    "outDir": "./dist",
-    "strict": true,
-    "useDefineForClassFields": true,
     "moduleResolution": "Node",
-    "sourceMap": true,
-    "resolveJsonModule": true,
+    "strict": true,
     "esModuleInterop": true,
-    "noEmit": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "node",
-      "jest"
-    ],
-    "allowJs": true,
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@cob/cobjs-core": ["./packages/core/src"],
+      "@cob/cobjs-recordm": ["./packages/recordm/src"],
+      "@cob/cobjs-reportm": ["./packages/reportm/src"],
+      "@cob/cobjs-helpers": ["./packages/helpers/src"],
     }
   },
-  "files": [
-    "src/global.d.ts"
-  ],
-  "include": [
-    "src"
-  ],
   "exclude": [
-    "node_modules",
-    "test/**"
+    "dist",
+    "node_modules"
   ]
 }
