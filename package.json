@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "author": "Cult Of Bits",
   "scripts": {
-    "compile": "npm run build -ws --if-present",
+    "build:all": "npm run build -ws --if-present",
     "test": "jest",
-    "publish": "npm pubish -ws",
+    "publish:all": "npm pubish -ws",
     "generate-api": "openapi-generator-cli generate && find . -type d -name .openapi-generator -exec rm -rf {} +"
   },
   "workspaces": [

@@ -28,7 +28,6 @@ module.exports = defineConfig({
         rollupOptions: {
             external: ['axios']
         },
-        minify: false,
         sourcemap: true,
         lib: {
             entry: path.resolve("./", "src/index.ts"),

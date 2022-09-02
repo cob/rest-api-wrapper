@@ -1,17 +1,5 @@
 # Initial Setup
 
-## Development setup
-
-1. Install plugin [Prettier](https://plugins.jetbrains.com/plugin/10456-prettier) in Intellij and enable it
-   in `Preferences / Settings | Plugins.`
-
-![](https://prettier.io/docs/assets/webstorm/prettier-settings.png)
-
-2. Add `,json` extensions to the values in `Run for files`
-3. Check `On Reformat Code` and `On save`
-
-Check [here](https://prettier.io/docs/en/webstorm.html) for more information
-
 ## API Generation
 
 We use [OpenAPI Generator](https://openapi-generator.tech/) and the flavor `typescript-axios`. Some changes were made to the templates such that it's use would be simpler to the final developer. 
@@ -30,7 +18,11 @@ $> npm install
 ## Build:
 
 ```shell
-$> npm run build
+# "Build" single package 
+$> npm run build --workspace packages/<package_name>
+
+# "Build" all packages 
+$> npm run build:all
 ```
 
 ## Testing
@@ -39,6 +31,18 @@ You can check the status of the existing tests by running:
 
 ```shell
 npm run test
+```
+
+## Publishing packages
+
+You can check the status of the existing tests by running:
+
+```shell
+# "Publish" a single package 
+$> npm run publish --workspace packages/<package_name> 
+
+# "Publish" all packages 
+$> npm run publish:all
 ```
 
 ### Test cenario baseline
