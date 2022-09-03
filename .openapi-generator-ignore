@@ -1,10 +1,9 @@
 # Prevent generator from creating these files:
-modules/*/src/git_push.sh
-modules/*/src/.gitignore
-modules/*/src/.npmignore
-modules/*/src/.openapi-generator-ignore
+packages/*/src/git_push.sh
+packages/*/src/.gitignore
+packages/*/src/.npmignore
+packages/*/src/.openapi-generator-ignore
 
-modules/*/src/base.ts
-modules/*/src/common.ts
-modules/*/src/configuration.ts
-modules/*/src/index.ts
+packages/*/src/base.ts
+packages/*/src/common.ts
+packages/*/src/configuration.ts

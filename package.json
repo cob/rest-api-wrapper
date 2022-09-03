@@ -12,9 +12,11 @@
     "packages/core",
     "packages/recordm",
     "packages/reportm",
+    "packages/integrationm",
     "packages/helpers"
   ],
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.1",
     "@types/jest": "^28.1.7",
     "@types/node": "^18.7.6",
     "jest": "^28.1.3",

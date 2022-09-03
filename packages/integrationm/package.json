@@ -1,0 +1,27 @@
+{
+  "name": "@cob/cobjs-integrationm",
+  "version": "0.1.0",
+  "author": "Cult Of Bits",
+  "keywords": [
+    "@cob",
+    "cob-js",
+    "recordm"
+  ],
+  "main": "./dist/@cob/cobjs-integrationm.cjs",
+  "module": "./dist/@cob/cobjs-integrationm.mjs",
+  "typings": "./dist/typings/index.d.ts",
+  "exports": {
+    "require": "./dist/@cob/cobjs-integrationm.cjs",
+    "import": "./dist/@cob/cobjs-integrationm.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build -c ../../vite.config.ts && tsc"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "@cob/cobjs-core": "0.1.0"
+  }
+}

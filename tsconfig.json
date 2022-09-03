@@ -13,7 +13,8 @@
       "@cob/cobjs-core": ["./packages/core/src"],
       "@cob/cobjs-recordm": ["./packages/recordm/src"],
       "@cob/cobjs-reportm": ["./packages/reportm/src"],
-      "@cob/cobjs-helpers": ["./packages/helpers/src"],
+      "@cob/cobjs-integrationm": ["./packages/integrationm/src"],
+      "@cob/cobjs-helpers": ["./packages/helpers/src"]
     }
   },
   "exclude": [
