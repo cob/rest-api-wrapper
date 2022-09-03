@@ -5,7 +5,7 @@
   "scripts": {
     "build:all": "npm run build -ws --if-present",
     "test": "jest",
-    "publish:all": "npm pubish -ws",
+    "publish:all": "npm publish -ws",
     "generate-api": "openapi-generator-cli generate && find . -type d -name .openapi-generator -exec rm -rf {} +"
   },
   "workspaces": [
