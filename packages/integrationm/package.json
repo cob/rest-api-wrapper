@@ -5,7 +5,7 @@
   "keywords": [
     "@cob",
     "cob-js",
-    "recordm"
+    "integrationm"
   ],
   "main": "./dist/@cob/cobjs-integrationm.cjs",
   "module": "./dist/@cob/cobjs-integrationm.mjs",

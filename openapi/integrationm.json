@@ -36,7 +36,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Body"
+                "$ref" : "#/components/schemas/JSON"
               },
               "examples" : {
                 "body" : {
@@ -67,7 +67,7 @@
             "content" : {
               "*" : {
                 "schema" : {
-                  "type" : "object"
+                  "type" : "string"
                 }
               }
             }
@@ -98,7 +98,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Body"
+                "$ref" : "#/components/schemas/JSON"
               },
               "examples" : {
                 "body" : {
@@ -129,7 +129,7 @@
             "content" : {
               "*" : {
                 "schema" : {
-                  "type" : "object"
+                  "type" : "string"
                 }
               }
             }
@@ -143,10 +143,12 @@
   },
   "components" : {
     "schemas" : {
-      "Body" : {
+      "JSON" : {
         "type" : "object",
-        "additionalProperties" : {
-          "type" : "object"
+        "properties" : {
+          "empty" : {
+            "type" : "boolean"
+          }
         }
       }
     },

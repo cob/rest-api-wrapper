@@ -6,6 +6,7 @@ import { Configuration } from '@cob/cobjs-core';
 // Some imports not used depending on template conditions
 import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '@cob/cobjs-core';
 import { RequestArgs, BaseAPI, RequiredError } from '@cob/cobjs-core';
+import { JSON } from '../model';
 
 /**
  * ActionsApi - axios parameter creator
@@ -17,11 +18,11 @@ const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
          *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
          * @summary Execute a blocking action
          * @param {string} name The name of the action
-         * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+         * @param {JSON} [jSON] The new definition payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        executeBlockingAction: async (name: string, requestBody?: { [key: string]: object; }, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        executeBlockingAction: async (name: string, jSON?: JSON, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('executeBlockingAction', 'name', name)
             const localVarPath = `/integrationm/action/{name}`
@@ -46,7 +47,7 @@ const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(jSON, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -57,11 +58,11 @@ const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
          *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
          * @summary Execute an unblocking action
          * @param {string} name The name of the action
-         * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+         * @param {JSON} [jSON] The new definition payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        executeConcurrentAction: async (name: string, requestBody?: { [key: string]: object; }, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        executeConcurrentAction: async (name: string, jSON?: JSON, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'name' is not null or undefined
             assertParamExists('executeConcurrentAction', 'name', name)
             const localVarPath = `/integrationm/concurrent/{name}`
@@ -86,7 +87,7 @@ const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(requestBody, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(jSON, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -107,24 +108,24 @@ const ActionsApiFp = function(configuration: Configuration) {
          *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
          * @summary Execute a blocking action
          * @param {string} name The name of the action
-         * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+         * @param {JSON} [jSON] The new definition payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async executeBlockingAction(name: string, requestBody?: { [key: string]: object; }, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.executeBlockingAction(name, requestBody, options);
+        async executeBlockingAction(name: string, jSON?: JSON, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.executeBlockingAction(name, jSON, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
         /**
          *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
          * @summary Execute an unblocking action
          * @param {string} name The name of the action
-         * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+         * @param {JSON} [jSON] The new definition payload
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async executeConcurrentAction(name: string, requestBody?: { [key: string]: object; }, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<object>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.executeConcurrentAction(name, requestBody, options);
+        async executeConcurrentAction(name: string, jSON?: JSON, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<string>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.executeConcurrentAction(name, jSON, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
     }
@@ -141,25 +142,25 @@ export class ActionsApi extends BaseAPI {
      *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
      * @summary Execute a blocking action
      * @param {string} name The name of the action
-     * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+     * @param {JSON} [jSON] The new definition payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public executeBlockingAction(name: string, requestBody?: { [key: string]: object; }, options?: AxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).executeBlockingAction(name, requestBody, options).then((request) => request(this.axios));
+    public executeBlockingAction(name: string, jSON?: JSON, options?: AxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).executeBlockingAction(name, jSON, options).then((request) => request(this.axios));
     }
 
     /**
      *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
      * @summary Execute an unblocking action
      * @param {string} name The name of the action
-     * @param {{ [key: string]: object; }} [requestBody] The new definition payload
+     * @param {JSON} [jSON] The new definition payload
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ActionsApi
      */
-    public executeConcurrentAction(name: string, requestBody?: { [key: string]: object; }, options?: AxiosRequestConfig) {
-        return ActionsApiFp(this.configuration).executeConcurrentAction(name, requestBody, options).then((request) => request(this.axios));
+    public executeConcurrentAction(name: string, jSON?: JSON, options?: AxiosRequestConfig) {
+        return ActionsApiFp(this.configuration).executeConcurrentAction(name, jSON, options).then((request) => request(this.axios));
     }
 }
