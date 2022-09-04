@@ -17,10 +17,10 @@ export interface ReportGenerationRequest {
     'report': string;
     /**
      * The arguments to use when generating the report
-     * @type {{ [key: string]: object; }}
+     * @type {{ [key: string]: any; }}
      * @memberof ReportGenerationRequest
      */
-    'arguments'?: { [key: string]: object; };
+    'arguments'?: { [key: string]: any; };
     /**
      * 
      * @type {ReportGenerationRequestCallback}

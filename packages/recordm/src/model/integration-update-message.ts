@@ -21,8 +21,8 @@ export interface IntegrationUpdateMessage {
     'condition': string;
     /**
      * An object in which the keys are the field IDs or field paths, and the values are the values to be used to fill the fields.
-     * @type {object}
+     * @type {any}
      * @memberof IntegrationUpdateMessage
      */
-    'values': object;
+    'values': any;
 }

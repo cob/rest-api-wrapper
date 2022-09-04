@@ -317,11 +317,11 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
          * @summary Upload file to field in instance
          * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
          * @param {string} fieldDefinitionId The id of the field definition of the $file field
-         * @param {object} [file] The file to upload.
+         * @param {any} [file] The file to upload.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadFile: async (id: string, fieldDefinitionId: string, file?: object, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadFile: async (id: string, fieldDefinitionId: string, file?: any, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('uploadFile', 'id', id)
             // verify required parameter 'fieldDefinitionId' is not null or undefined
@@ -462,11 +462,11 @@ const InstancesApiFp = function(configuration: Configuration) {
          * @summary Upload file to field in instance
          * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
          * @param {string} fieldDefinitionId The id of the field definition of the $file field
-         * @param {object} [file] The file to upload.
+         * @param {any} [file] The file to upload.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadFile(id: string, fieldDefinitionId: string, file?: object, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<void>> {
+        async uploadFile(id: string, fieldDefinitionId: string, file?: any, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<void>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadFile(id, fieldDefinitionId, file, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
@@ -578,12 +578,12 @@ export class InstancesApi extends BaseAPI {
      * @summary Upload file to field in instance
      * @param {string} id When uploading to an existing instance, it\&#39;s the id of the instance. When uploading for an instance that doesn\&#39;t yet exist, it should be an UUID that matches the one the instance will have on creation. This way the already uploaded files will be moved to the final destination.
      * @param {string} fieldDefinitionId The id of the field definition of the $file field
-     * @param {object} [file] The file to upload.
+     * @param {any} [file] The file to upload.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof InstancesApi
      */
-    public uploadFile(id: string, fieldDefinitionId: string, file?: object, options?: AxiosRequestConfig) {
+    public uploadFile(id: string, fieldDefinitionId: string, file?: any, options?: AxiosRequestConfig) {
         return InstancesApiFp(this.configuration).uploadFile(id, fieldDefinitionId, file, options).then((request) => request(this.axios));
     }
 }

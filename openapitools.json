@@ -11,8 +11,7 @@
         "output": "#{cwd}/packages/#{name}/src/",
         "glob": "./openapi/*.{json,yaml}",
         "typeMappings": {
-          "set": "Array",
-          "json": "any"
+          "object": "any"
         },
         "additionalProperties": {
           "supportsES6": true,

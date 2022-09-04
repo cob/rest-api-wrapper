@@ -15,10 +15,10 @@ export interface IntegrationAddMessage {
     'type': string;
     /**
      * An object in which the keys are the field names, and the values are the values to be used to fill the fields.
-     * @type {object}
+     * @type {any}
      * @memberof IntegrationAddMessage
      */
-    'values': object;
+    'values': any;
     /**
      * A flag that makes the return wait for the record to be available for searching
      * @type {boolean}
