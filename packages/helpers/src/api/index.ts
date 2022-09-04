@@ -1,4 +1,5 @@
 export * from "./auth"
+export * from "./logout"
 export * from "./dmEquipmentSearch"
 export * from "./rmAddInstance"
 export * from "./rmDefinitionAggregation"

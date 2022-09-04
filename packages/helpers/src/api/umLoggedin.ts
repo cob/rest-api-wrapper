@@ -8,7 +8,7 @@ let _currentPromise: Promise<{ username: string }>
 
 export const umLoggedin = function ({ throtle }: { throtle: boolean } = { throtle: true }): Promise<UmLoggedInResponse> {
   // debugger;
-  if (cob?.app?.getCurrentLoggedInUser) {
+  if (typeof cob !== 'undefined' && cob?.app?.getCurrentLoggedInUser) {
     return Promise.resolve({
       username: cob.app.getCurrentLoggedInUser(),
       groups: cob.app.getGroups()
@@ -20,8 +20,10 @@ export const umLoggedin = function ({ throtle }: { throtle: boolean } = { throtl
   } else if (throtle && Date.now() < _lastUmLoggedinResponseValidity) {
     _lastUmLoggedinResponse.throtle = true
     return Promise.resolve(_lastUmLoggedinResponse)
+
   } else if (throtle && _currentPromise && typeof _currentPromise.then === "function") {
     return _currentPromise.then((r) => r)
+
   } else {
     return (_currentPromise = axios
       .get(getServer() + "/userm/userm/user/loggedin")

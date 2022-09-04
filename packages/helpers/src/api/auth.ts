@@ -5,7 +5,7 @@ import axios from "axios"
 export const auth = function ({ username, password, token }: { username?: string; password?: string; token?: string }) {
   if (username && password) {
     return axios
-      .post(getServer() + "/recordm/security/auth", {
+      .post(getServer() + "/userm/security/auth", {
         username: username,
         password: password,
       })
@@ -14,7 +14,7 @@ export const auth = function ({ username, password, token }: { username?: string
         throw e
       })
   } else if (token) {
-    if (cob?.app?.getCurrentLoggedInUser) {
+    if (typeof cob !== 'undefined' && cob?.app?.getCurrentLoggedInUser) {
       console.warn("You should only use timeless tokens in backend scripts, not browser. Ignoring")
     }
 
