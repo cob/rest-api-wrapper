@@ -14,8 +14,8 @@ import { RequestArgs, BaseAPI, RequiredError } from '@cob/cobjs-core';
 const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-         * @summary Execute a blocking action
+         * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+         * @summary Execute a blocking action. No other action will be executable until this one finishes.
          * @param {string} name The name of the action
          * @param {{ [key: string]: any; }} [requestBody] The new definition payload
          * @param {*} [options] Override http request option.
@@ -54,8 +54,8 @@ const ActionsApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-         * @summary Execute an unblocking action
+         * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+         * @summary Execute an action that will not block the execution of other actions
          * @param {string} name The name of the action
          * @param {{ [key: string]: any; }} [requestBody] The new definition payload
          * @param {*} [options] Override http request option.
@@ -104,8 +104,8 @@ const ActionsApiFp = function(configuration: Configuration) {
     const localVarAxiosParamCreator = ActionsApiAxiosParamCreator(configuration)
     return {
         /**
-         *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-         * @summary Execute a blocking action
+         * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+         * @summary Execute a blocking action. No other action will be executable until this one finishes.
          * @param {string} name The name of the action
          * @param {{ [key: string]: any; }} [requestBody] The new definition payload
          * @param {*} [options] Override http request option.
@@ -116,8 +116,8 @@ const ActionsApiFp = function(configuration: Configuration) {
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
         /**
-         *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-         * @summary Execute an unblocking action
+         * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+         * @summary Execute an action that will not block the execution of other actions
          * @param {string} name The name of the action
          * @param {{ [key: string]: any; }} [requestBody] The new definition payload
          * @param {*} [options] Override http request option.
@@ -138,8 +138,8 @@ const ActionsApiFp = function(configuration: Configuration) {
  */
 export class ActionsApi extends BaseAPI {
     /**
-     *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-     * @summary Execute a blocking action
+     * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+     * @summary Execute a blocking action. No other action will be executable until this one finishes.
      * @param {string} name The name of the action
      * @param {{ [key: string]: any; }} [requestBody] The new definition payload
      * @param {*} [options] Override http request option.
@@ -151,8 +151,8 @@ export class ActionsApi extends BaseAPI {
     }
 
     /**
-     *  Can be used with both JSON   - the simplest way when calling from other code (or even cURL)   - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.
-     * @summary Execute an unblocking action
+     * Can be used with:    - JSON, the simplest way when calling from other code (or even cURL)   - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.
+     * @summary Execute an action that will not block the execution of other actions
      * @param {string} name The name of the action
      * @param {{ [key: string]: any; }} [requestBody] The new definition payload
      * @param {*} [options] Override http request option.

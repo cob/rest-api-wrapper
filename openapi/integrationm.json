@@ -19,8 +19,8 @@
     "/action/{name}" : {
       "post" : {
         "tags" : [ "Actions" ],
-        "summary" : "Execute a blocking action",
-        "description" : " Can be used with both JSON \n - the simplest way when calling from other code (or even cURL) \n - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.",
+        "summary" : "Execute a blocking action. No other action will be executable until this one finishes.",
+        "description" : "Can be used with:  \n - JSON, the simplest way when calling from other code (or even cURL) \n - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.",
         "operationId" : "executeBlockingAction",
         "parameters" : [ {
           "name" : "name",
@@ -81,8 +81,8 @@
     "/concurrent/{name}" : {
       "post" : {
         "tags" : [ "Actions" ],
-        "summary" : "Execute an unblocking action",
-        "description" : " Can be used with both JSON \n - the simplest way when calling from other code (or even cURL) \n - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.",
+        "summary" : "Execute an action that will not block the execution of other actions",
+        "description" : "Can be used with:  \n - JSON, the simplest way when calling from other code (or even cURL) \n - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.",
         "operationId" : "executeConcurrentAction",
         "parameters" : [ {
           "name" : "name",
