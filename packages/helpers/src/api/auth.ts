@@ -19,7 +19,7 @@ export const auth = function ({ username, password, token }: { username?: string
     }
 
     cookieJar.setCookieSync("cobtoken=" + token + ";", getServer())
-    return Promise.resolve(umLoggedin({ throtle: false }))
+    return umLoggedin({ throtle: false })
   }
 
   return Promise.reject("Specify a username/password OR a token")
