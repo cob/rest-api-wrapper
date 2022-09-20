@@ -5,7 +5,7 @@ const _configuration = DEFAUULT_CONFIGURATION
 function setServer(server: string): void {
   if (typeof self == "object" && self.self === self && self) {
     console.warn(
-      "Attention: setting a diferent server in a browser environment will problably lead to CORS issues.\n" +
+      "Attention: setting a diferent server in a browser environment will probably lead to CORS issues.\n" +
         "Specifying the same server is redundant."
     )
   }
