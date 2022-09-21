@@ -2,6 +2,8 @@
 
 // May contain unused imports in some cases
 import { Group } from "./group"
+// May contain unused imports in some cases
+import { UserLinks } from "./user-links"
 
 /**
  * 
@@ -14,19 +16,19 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    'id'?: number;
+    'id': number;
     /**
      * 
      * @type {string}
      * @memberof User
      */
-    'name'?: string;
+    'name': string;
     /**
      * 
      * @type {string}
      * @memberof User
      */
-    'username'?: string;
+    'username': string;
     /**
      * 
      * @type {string}
@@ -38,7 +40,7 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    'email'?: string;
+    'email': string;
     /**
      * 
      * @type {string}
@@ -62,7 +64,7 @@ export interface User {
      * @type {number}
      * @memberof User
      */
-    'version'?: number;
+    'version': number;
     /**
      * 
      * @type {Array<Group>}
@@ -81,6 +83,12 @@ export interface User {
      * @memberof User
      */
     'substitutedUsers'?: Array<User>;
+    /**
+     * 
+     * @type {UserLinks}
+     * @memberof User
+     */
+    '_links'?: UserLinks;
     /**
      * 
      * @type {boolean}

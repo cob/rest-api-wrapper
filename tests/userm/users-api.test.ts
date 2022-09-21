@@ -1,5 +1,5 @@
 import {setServer} from "@cob/cobjs-core";
-import {UpdateUserRequest, UpdateUserRequestStateEnum, UsersApi} from "@cob/cobjs-userm";
+import {Group, UpdateUserRequest, UpdateUserRequestStateEnum, UsersApi} from "@cob/cobjs-userm";
 import {auth} from "@cob/cobjs-helpers";
 
 const adminUsername = ""
@@ -23,8 +23,8 @@ test("can retrieve user data with username", async () => {
     expect(anonymousUser.id).toStrictEqual(1)
     expect(anonymousUser.name).toStrictEqual("anonymous")
     expect(anonymousUser.state).toStrictEqual(UpdateUserRequestStateEnum.ENABLED)
-    expect(anonymousUser._links.perms).toStrictEqual("userm/user/1/perms")
-    expect(anonymousUser.groups?.map(g => g.name)).toStrictEqual(['FUNC Manage user demo'])
+    expect(anonymousUser._links?.perms).toStrictEqual("userm/user/1/perms")
+    expect(anonymousUser.groups?.map((g: Group) => g.name)).toStrictEqual(['FUNC Manage user demo'])
 })
 
 test("can update user data with username", async () => {
@@ -32,18 +32,15 @@ test("can update user data with username", async () => {
     await auth({username: adminUsername, password: adminPassword})
     const usersApi = new UsersApi();
 
-    const initialUserData = (await usersApi.getUserByUsername("demo")).data
+    const userData = (await usersApi.getUserByUsername("demo")).data
 
     const now = Date.now()
-    const newUserData: UpdateUserRequest = {
-        name: "a_" + now,
-        email: "a_" + now + '@cob.pt',
-        state: UpdateUserRequestStateEnum.DISABLED,
-        usernameAD: "ad.a_" + now,
-        version: initialUserData.version
-    }
+    userData.name = "a_" + now
+    userData.email = "a_" + now + '@cob.pt'
+    userData.state = UpdateUserRequestStateEnum.DISABLED
+    userData.usernameAD = "ad.a_" + now
 
-    const afterUpdate = (await usersApi.updateUser(initialUserData.id, newUserData)).data
+    const afterUpdate = (await usersApi.updateUser(userData.id, userData)).data
 
     expect(afterUpdate.username).toStrictEqual("demo")
     expect(afterUpdate.id).toStrictEqual(14)
@@ -51,8 +48,8 @@ test("can update user data with username", async () => {
     expect(afterUpdate.email).toStrictEqual("a_" + now + '@cob.pt')
     expect(afterUpdate.usernameAD).toStrictEqual("ad.a_" + now)
     expect(afterUpdate.state).toStrictEqual(UpdateUserRequestStateEnum.DISABLED)
-    expect(afterUpdate.version).toStrictEqual(initialUserData.version + 1)
-    expect(afterUpdate._links.self).toStrictEqual("/userm/user/14")
+    expect(afterUpdate.version).toStrictEqual(userData.version + 1)
+    expect(afterUpdate._links?.self).toStrictEqual("/userm/user/14")
 })
 
 test("can change password", async () => {

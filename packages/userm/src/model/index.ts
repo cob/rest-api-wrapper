@@ -1,4 +1,3 @@
-export * from "./decorated-user"
 export * from "./field-error"
 export * from "./group"
 export * from "./update-user-request"

@@ -6,9 +6,9 @@ import { Configuration } from '@cob/cobjs-core';
 // Some imports not used depending on template conditions
 import { DUMMY_BASE_URL, assertParamExists, setSearchParams, serializeDataIfNeeded, toPathString, createRequestFunction } from '@cob/cobjs-core';
 import { RequestArgs, BaseAPI, RequiredError } from '@cob/cobjs-core';
-import { DecoratedUser } from '../model';
 import { FieldError } from '../model';
 import { UpdateUserRequest } from '../model';
+import { User } from '../model';
 
 /**
  * UsersApi - axios parameter creator
@@ -115,7 +115,7 @@ const UsersApiFp = function(configuration: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getUserByUsername(username: string, substitutedUsers?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<DecoratedUser>> {
+        async getUserByUsername(username: string, substitutedUsers?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getUserByUsername(username, substitutedUsers, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },
@@ -127,7 +127,7 @@ const UsersApiFp = function(configuration: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateUser(id: number, updateUserRequest?: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<DecoratedUser>> {
+        async updateUser(id: number, updateUserRequest?: UpdateUserRequest, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateUser(id, updateUserRequest, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, configuration);
         },

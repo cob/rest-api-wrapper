@@ -13,10 +13,22 @@ import { User } from "./user"
 export interface UpdateUserRequest {
     /**
      * 
+     * @type {number}
+     * @memberof UpdateUserRequest
+     */
+    'id': number;
+    /**
+     * 
      * @type {string}
      * @memberof UpdateUserRequest
      */
     'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateUserRequest
+     */
+    'username': string;
     /**
      * 
      * @type {string}
@@ -71,6 +83,12 @@ export interface UpdateUserRequest {
      * @memberof UpdateUserRequest
      */
     'substitutedUsers'?: Array<User>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UpdateUserRequest
+     */
+    'passwordCleared'?: boolean;
 }
 
 export const UpdateUserRequestStateEnum = {
