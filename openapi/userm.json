@@ -292,11 +292,11 @@
             "type" : "string",
             "deprecated" : true
           },
-          "add-to" : {
+          "remove-from" : {
             "type" : "string",
             "deprecated" : true
           },
-          "remove-from" : {
+          "add-to" : {
             "type" : "string",
             "deprecated" : true
           }
@@ -318,6 +318,7 @@
         }
       },
       "UpdateUserRequest" : {
+        "required" : [ "email", "name" ],
         "type" : "object",
         "properties" : {
           "name" : {

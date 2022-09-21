@@ -62,12 +62,12 @@ export interface UserLinks {
      * @memberof UserLinks
      * @deprecated
      */
-    'add-to'?: string;
+    'remove-from'?: string;
     /**
      * 
      * @type {string}
      * @memberof UserLinks
      * @deprecated
      */
-    'remove-from'?: string;
+    'add-to'?: string;
 }
