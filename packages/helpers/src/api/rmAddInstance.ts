@@ -4,7 +4,7 @@ import { UIInstance } from '../model/index'
 
 const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
 
-export const rmAddInstance = function (definitionName: string, values: { [K: string]: string }): Promise<UIInstance> {
+export const rmAddInstance = function (definitionName: string, values: { [K: string]: any  }): Promise<UIInstance> {
   const data = {
     type: definitionName,
     values: values,
