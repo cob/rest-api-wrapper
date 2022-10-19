@@ -343,12 +343,11 @@ const InstancesApiAxiosParamCreator = function (configuration?: Configuration) {
 
             // authentication cobtoken required
 
-
-            if (file !== undefined) { 
-                localVarFormParams.append('file', new Blob([JSON.stringify(file)], { type: "application/json", }));
+            if (file !== undefined) {
+                localVarFormParams.append('file', file as any);
             }
     
-    
+
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
