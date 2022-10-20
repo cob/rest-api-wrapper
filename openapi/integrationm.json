@@ -1,0 +1,161 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "IntegrationM API",
+    "description" : "The IntegrationM REST API<br/><br/> **Note**: To  use the 'Try it out' buttons, you must be [logged in](/).",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/integrationm"
+  } ],
+  "security" : [ {
+    "cobtoken" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Actions",
+    "description" : "Actions endpoints"
+  } ],
+  "paths" : {
+    "/action/{name}" : {
+      "post" : {
+        "tags" : [ "Actions" ],
+        "summary" : "Execute a blocking action. No other action will be executable until this one finishes.",
+        "description" : "Can be used with:  \n - JSON, the simplest way when calling from other code (or even cURL) \n - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.",
+        "operationId" : "executeBlockingAction",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "The name of the action",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The new definition payload",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/JSON"
+              },
+              "examples" : {
+                "body" : {
+                  "description" : "body",
+                  "value" : {
+                    "key1" : "value1",
+                    "key2" : "value2"
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "type" : "string"
+              },
+              "examples" : {
+                "body" : {
+                  "description" : "body",
+                  "value" : "key1=value1&key2=value2"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The result of the action",
+            "content" : {
+              "*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "The user is not allowed to perform the operation"
+          }
+        }
+      }
+    },
+    "/concurrent/{name}" : {
+      "post" : {
+        "tags" : [ "Actions" ],
+        "summary" : "Execute an action that will not block the execution of other actions",
+        "description" : "Can be used with:  \n - JSON, the simplest way when calling from other code (or even cURL) \n - <code>application/x-www-form-urlencoded</code>, directly from an HTML form.",
+        "operationId" : "executeConcurrentAction",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "The name of the action",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The new definition payload",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/JSON"
+              },
+              "examples" : {
+                "body" : {
+                  "description" : "body",
+                  "value" : {
+                    "key1" : "value1",
+                    "key2" : "value2"
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "type" : "string"
+              },
+              "examples" : {
+                "body" : {
+                  "description" : "body",
+                  "value" : "key1=value1&key2=value2"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The result of the action",
+            "content" : {
+              "*" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          },
+          "403" : {
+            "description" : "The user is not allowed to perform the operation"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "JSON" : {
+        "type" : "object",
+        "additionalProperties" : {
+          "type" : "object"
+        }
+      }
+    },
+    "securitySchemes" : {
+      "cobtoken" : {
+        "type" : "apiKey",
+        "name" : "cobtoken",
+        "in" : "cookie"
+      }
+    }
+  }
+}

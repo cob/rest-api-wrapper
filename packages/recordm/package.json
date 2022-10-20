@@ -1,0 +1,28 @@
+{
+  "name": "@cob/cobjs-recordm",
+  "version": "0.1.0",
+  "author": "Cult Of Bits",
+  "keywords": [
+    "@cob",
+    "cob-js",
+    "recordm"
+  ],
+  "main": "./dist/@cob/cobjs-recordm.cjs",
+  "module": "./dist/@cob/cobjs-recordm.mjs",
+  "typings": "./dist/typings/index.d.ts",
+  "exports": {
+    "require": "./dist/@cob/cobjs-recordm.cjs",
+    "import": "./dist/@cob/cobjs-recordm.mjs"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "vite build -c ../../vite.config.ts && tsc"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "@cob/cobjs-core": "0.1.0"
+  }
+}

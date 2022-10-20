@@ -1,0 +1,11 @@
+/* eslint-disable */
+{{#withSeparateModelsAndApi}}{{#hasAllOf}}{{#allOf}}
+// May contain unused imports in some cases
+import { {{class}} } from "./{{filename}}"{{/allOf}}{{/hasAllOf}}{{#hasOneOf}}{{#oneOf}}
+// May contain unused imports in some cases
+import { {{class}} } from "./{{filename}}"{{/oneOf}}{{/hasOneOf}}{{^hasAllOf}}{{^hasOneOf}}{{#imports}}
+// May contain unused imports in some cases
+import { {{class}} } from "./{{filename}}"{{/imports}}{{/hasOneOf}}{{/hasAllOf}}{{/withSeparateModelsAndApi}}
+{{#models}}{{#model}}
+{{#isEnum}}{{>modelEnum}}{{/isEnum}}{{#oneOf}}{{#-first}}{{>modelOneOf}}{{/-first}}{{/oneOf}}{{#allOf}}{{#-first}}{{>modelAllOf}}{{/-first}}{{/allOf}}{{^isEnum}}{{^oneOf}}{{^allOf}}{{>modelGeneric}}{{/allOf}}{{/oneOf}}{{/isEnum}}
+{{/model}}{{/models}}

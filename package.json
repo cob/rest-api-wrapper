@@ -1,30 +1,29 @@
 {
-  "name": "@cob/rest-api-wrapper",
-  "version": "2.3.0",
-  "description": "",
-  "main": "src/index.js",
+  "name": "cob-js",
+  "version": "0.1.0",
+  "author": "Cult Of Bits",
   "scripts": {
-    "test": " node --experimental-vm-modules node_modules/.bin/jest",
-    "build": "./node_modules/.bin/webpack --config webpack.config.js"
+    "build:all": "npm run build -ws --if-present",
+    "test": "jest",
+    "publish:all": "npm publish -ws",
+    "generate-api": "openapi-generator-cli generate && find . -type d -name .openapi-generator -exec rm -rf {} +"
   },
-  "author": "",
-  "license": "SEE LICENSE IN <filename>",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "axios-cookiejar-support": "^1.0.1",
-    "tough-cookie": "^4.0.0"
-  },
+  "workspaces": [
+    "packages/core",
+    "packages/userm",
+    "packages/recordm",
+    "packages/reportm",
+    "packages/integrationm",
+    "packages/helpers"
+  ],
   "devDependencies": {
-    "jest": "^26.6.3",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
-  },
-  "type": "module",
-  "jest": {
-    "roots": [
-      "src/",
-      "tests/"
-    ],
-    "transform": {}
+    "@openapitools/openapi-generator-cli": "^2.5.1",
+    "@types/jest": "^28.1.7",
+    "@types/node": "^18.7.6",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.9"
   }
 }

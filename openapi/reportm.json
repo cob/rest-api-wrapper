@@ -1,0 +1,260 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "ReportM API",
+    "description" : "The ReportM REST API<br/><br/> **Note**: To  use the 'Try it out' buttons, you must be [logged in](/).",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/reportm"
+  } ],
+  "tags" : [ {
+    "name" : "Reports"
+  } ],
+  "paths" : {
+    "/report" : {
+      "post" : {
+        "tags" : [ "Reports" ],
+        "summary" : "Generate Report",
+        "description" : "Can be used with both JSON - the simplest way when calling from other code (or even cURL) - or directly from an HTML form, in <code>application/x-www-form-urlencoded</code> format.",
+        "operationId" : "generate",
+        "requestBody" : {
+          "description" : "The params passed to the report.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ReportGenerationRequest"
+              },
+              "examples" : {
+                "payload" : {
+                  "value" : {
+                    "report" : "report_name.xlsx",
+                    "arguments" : {
+                      "arg1" : "value1",
+                      "arg2" : [ "a", "b" ]
+                    },
+                    "callback" : "https://example.com"
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/ReportGenerationRequest"
+              },
+              "examples" : {
+                "payload" : {
+                  "value" : "report=report_name.xlsx&arguments={\"arg1\": \"value1\",  \"arg2\": \"value2\"}"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "An Excel file with the generated report.",
+            "content" : {
+              "application/vnd.ms-excel" : { }
+            }
+          },
+          "202" : {
+            "description" : "Excel generation request was accepted and it will notifiy in the provided callback when finished",
+            "content" : {
+              "application/vnd.ms-excel" : {
+                "examples" : {
+                  "request" : {
+                    "value" : "POST <callback.url>?...&report=<absoluth_path_to_report>"
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "If there is an issue with the report request.",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "message" : {
+                    "value" : {
+                      "details" : "the error details"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "If there was an unauthorized access.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "404" : {
+            "description" : "If the report couldn't be found.",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "message" : {
+                    "value" : {
+                      "details" : "the error details"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "cobtoken" : [ ]
+        } ]
+      }
+    },
+    "/report/test" : {
+      "post" : {
+        "tags" : [ "Reports" ],
+        "summary" : "Test a report template",
+        "description" : "To simplify development of new report templates. Arguments to the template can be passed as query string args.",
+        "operationId" : "test",
+        "requestBody" : {
+          "description" : "An excel file to be used as a template",
+          "content" : {
+            "multipart/form-data" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/FileUploadWrapper"
+              },
+              "encoding" : {
+                "file" : {
+                  "contentType" : "application/vnd.ms-excel"
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "An Excel file with the generated report.",
+            "content" : {
+              "application/vnd.ms-excel" : { }
+            }
+          },
+          "400" : {
+            "description" : "If any error occurs: invalid template file, empty template file, invalid config, etc...",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "message" : {
+                    "value" : {
+                      "details" : "the error details"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "If no cobtoken was passed.",
+            "content" : {
+              "application/json" : { }
+            }
+          },
+          "404" : {
+            "description" : "If the report couldn't be found.",
+            "content" : {
+              "application/json" : {
+                "examples" : {
+                  "message" : {
+                    "value" : {
+                      "details" : "the error details"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security" : [ {
+          "cobtoken" : [ ]
+        } ]
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Auth" : {
+        "required" : [ "type" ],
+        "type" : "object",
+        "properties" : {
+          "type" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Type"
+            }, {
+              "description" : "The type of authentication to use when performing the callback"
+            } ]
+          }
+        }
+      },
+      "FileUploadWrapper" : {
+        "type" : "object",
+        "properties" : {
+          "f" : {
+            "format" : "binary",
+            "description" : "The template excel file",
+            "type" : "string"
+          }
+        }
+      },
+      "ReportCallback" : {
+        "required" : [ "url" ],
+        "type" : "object",
+        "properties" : {
+          "url" : {
+            "description" : "The callback url",
+            "type" : "string"
+          },
+          "auth" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/Auth"
+            }, {
+              "description" : "The authentication details"
+            } ]
+          }
+        }
+      },
+      "ReportGenerationRequest" : {
+        "required" : [ "report" ],
+        "type" : "object",
+        "properties" : {
+          "report" : {
+            "description" : "The report template to use. It can be a path relative to the provided list of directories where the report templates reside",
+            "type" : "string"
+          },
+          "arguments" : {
+            "description" : "The arguments to use when generating the report",
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "object"
+            }
+          },
+          "callback" : {
+            "allOf" : [ {
+              "$ref" : "#/components/schemas/ReportCallback"
+            }, {
+              "description" : "The callback object to use to notify that the report has been generated"
+            } ]
+          }
+        }
+      },
+      "Type" : {
+        "enum" : [ "COB" ],
+        "type" : "string"
+      }
+    },
+    "securitySchemes" : {
+      "cobtoken" : {
+        "type" : "apiKey",
+        "name" : "cobtoken",
+        "in" : "cookie"
+      }
+    }
+  }
+}

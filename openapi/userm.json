@@ -1,0 +1,330 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "UserM API",
+    "description" : "The UserM REST API<br/><br/> **Note**: To  use the 'Try it out' buttons, you must be [logged in](/).",
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "/userm"
+  } ],
+  "security" : [ {
+    "cobtoken" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Users",
+    "description" : "User endpoints"
+  } ],
+  "paths" : {
+    "/userm/user/username/{username}" : {
+      "get" : {
+        "tags" : [ "Users" ],
+        "summary" : "Retrieves a user by it's username",
+        "description" : "Retrieves the full details of a user. Optionally, it can also include information about the users that this user is substituing.",
+        "operationId" : "getUserByUsername",
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "path",
+          "description" : "The user username",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "substitutedUsers",
+          "in" : "query",
+          "description" : "If it should load the substituted users",
+          "schema" : {
+            "type" : "boolean",
+            "default" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "A simple representation of the definition without field definitions",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized access."
+          },
+          "403" : {
+            "description" : "The user is not allowed to perform the operation"
+          },
+          "404" : {
+            "description" : "No user found with the provided username"
+          }
+        }
+      }
+    },
+    "/userm/user/{id}" : {
+      "put" : {
+        "tags" : [ "Users" ],
+        "summary" : "Update an existing user",
+        "operationId" : "updateUser",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The user identifier",
+          "required" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "The updated user information",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateUserRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "The update was successful",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Invalid request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/FieldError"
+                  }
+                }
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized access."
+          },
+          "403" : {
+            "description" : "The user is not allowed to perfom the operation"
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "409" : {
+            "description" : "The received version is outdated"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Group" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "description" : {
+            "type" : "string"
+          },
+          "product" : {
+            "type" : "string"
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "User" : {
+        "required" : [ "email", "id", "name", "username", "version" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "username" : {
+            "type" : "string"
+          },
+          "usernameAD" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "contact" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string",
+            "writeOnly" : true
+          },
+          "substitute" : {
+            "$ref" : "#/components/schemas/User"
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "groups" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Group"
+            }
+          },
+          "state" : {
+            "type" : "string",
+            "enum" : [ "enabled", "disabled" ]
+          },
+          "substitutedUsers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/User"
+            }
+          },
+          "_links" : {
+            "$ref" : "#/components/schemas/UserLinks"
+          },
+          "passwordCleared" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "UserLinks" : {
+        "required" : [ "perms" ],
+        "type" : "object",
+        "properties" : {
+          "self" : {
+            "type" : "string"
+          },
+          "update" : {
+            "type" : "string"
+          },
+          "assignSubstitute" : {
+            "type" : "string"
+          },
+          "addTo" : {
+            "type" : "string"
+          },
+          "removeFrom" : {
+            "type" : "string"
+          },
+          "delete" : {
+            "type" : "string"
+          },
+          "perms" : {
+            "type" : "string"
+          },
+          "assign-substitute" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "add-to" : {
+            "type" : "string",
+            "deprecated" : true
+          },
+          "remove-from" : {
+            "type" : "string",
+            "deprecated" : true
+          }
+        }
+      },
+      "FieldError" : {
+        "type" : "object",
+        "properties" : {
+          "errorType" : {
+            "type" : "string",
+            "enum" : [ "MANDATORY", "NON_UNIQUE", "INVALID_FORMAT", "SHORT_DATA", "INVALID_PRODUCT", "DATA_TOO_LONG", "USER_NOT_FOUND", "INVALID_SUBSTITUTE_USER", "NOT_ALLOWED" ]
+          },
+          "fieldName" : {
+            "type" : "string"
+          },
+          "message" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UpdateUserRequest" : {
+        "required" : [ "email", "id", "name", "username" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "username" : {
+            "type" : "string"
+          },
+          "usernameAD" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          },
+          "contact" : {
+            "type" : "string"
+          },
+          "password" : {
+            "type" : "string",
+            "writeOnly" : true
+          },
+          "substitute" : {
+            "$ref" : "#/components/schemas/User"
+          },
+          "version" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "groups" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/Group"
+            }
+          },
+          "state" : {
+            "type" : "string",
+            "enum" : [ "enabled", "disabled" ]
+          },
+          "substitutedUsers" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/User"
+            }
+          },
+          "passwordCleared" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes" : {
+      "cobtoken" : {
+        "type" : "apiKey",
+        "name" : "cobtoken",
+        "in" : "cookie"
+      }
+    }
+  }
+}
