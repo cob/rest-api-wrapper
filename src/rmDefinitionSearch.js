@@ -8,7 +8,7 @@ const rmDefinitionSearch = async function (definitionName, query="*", from=0, si
   //TODO: verificar se o AXIOS permite especificar correctamente os query parameters 
   let queryUrl = QueryURLTemplate
     .replace('__DEF_NAME__',definitionName)
-    .replace('__QUERY__',query)
+    .replace('__QUERY__',encodeURIComponent(query))
     .replace('__FROM__',from)
     .replace('__SIZE__',size)
 

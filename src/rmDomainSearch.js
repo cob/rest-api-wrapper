@@ -7,7 +7,7 @@ const ResultsURLTemplate = "/recordm/#/domain/__DOMAIN_ID__/q=__QUERY__"
 const rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort="", ascending=false) {
     let queryUrl = QueryURLTemplate
         .replace('__DOMAIN_ID__',domainId)
-        .replace('__QUERY__',query)
+        .replace('__QUERY__',encodeURIComponent(query))
         .replace('__FROM__',from)
         .replace('__SIZE__',size)
 

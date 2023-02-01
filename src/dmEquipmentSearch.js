@@ -7,7 +7,7 @@ const ResultsURLTemplate = "/confm/#/search/q=__QUERY__"
 const dmEquipmentSearch = async function (query="*", from=0, size=0) {
 
     let queryUrl = QueryURLTemplate
-        .replace('__QUERY__',query)
+        .replace('__QUERY__',encodeURIComponent(query))
         .replace('__FROM__',from)
         .replace('__SIZE__',size)
 
