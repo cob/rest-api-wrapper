@@ -1,10 +1,10 @@
-import { getServer } from "@cob/cobjs-core";
+import {getServer} from "@cob/cobjs-core";
 import axios from "axios";
 
 const QueryURLTemplate = "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__";
 const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__";
 
-export const rmDefinitionSearch = async function(
+export const rmDefinitionSearch = async function (
   definitionName: string,
   query = "*",
   from = 0,
@@ -17,8 +17,8 @@ export const rmDefinitionSearch = async function(
     .replace("__FROM__", `${from}`)
     .replace("__SIZE__", `${size}`);
 
-  if (sort) queryUrl += "&sort=" + sort;
-  if (ascending) queryUrl += "&ascending=" + ascending;
+  if (sort !== undefined) queryUrl += "&sort=" + sort;
+  if (ascending !== undefined) queryUrl += "&ascending=" + ascending;
 
   const response = await axios.get(getServer() + queryUrl);
   const def = response.data._definitions;
