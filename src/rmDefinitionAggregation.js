@@ -2,7 +2,7 @@ import { getServer } from "./server.js";
 import axios from 'axios';
 
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/advanced/__DEF_ID__?from=__FROM__&size=__SIZE__"
-const ResultsURLTemplate = "/recordm/#/definitions/__DEF_ID__/q=__QUERY__"
+const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
 const rmDefinitionAggregation = function (defId, aggregation, query="*", from=0, size=10, sort="", ascending="") {
   let queryUrl = QueryURLTemplate

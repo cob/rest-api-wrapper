@@ -2,7 +2,7 @@ import { getServer } from "./server.js";
 import axios from 'axios';
 
 const GetURL =  "/recordm/recordm/instances/"
-const ResultsURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
+const ResultsURLTemplate = "#/instance/__INSTANCE_ID__"
 
 const rmGetInstance = async function (instanceId) {
   return axios.get(getServer() + GetURL + instanceId)

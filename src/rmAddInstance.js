@@ -2,7 +2,7 @@ import { getServer } from "./server.js";
 import axios from 'axios';
 
 const PostURL =  "/recordm/recordm/instances/integration"
-const ResultURLTemplate = "/recordm/index.html#/instance/__INSTANCE_ID__"
+const ResultURLTemplate = "#/instance/__INSTANCE_ID__"
 
 const rmAddInstance = async function (definitionName, values) {
   let data = {
