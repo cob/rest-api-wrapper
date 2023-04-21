@@ -21,9 +21,13 @@ const rmDefinitionSearch = async function (definitionName, query="*", from=0, si
       let defId = def[Object.keys(def)[0]].id
       
       //Add resultsUrl to response
-      response.data.resultsUrl = getServer() + ResultsURLTemplate
+      response.data.resultsUrl = ResultsURLTemplate
         .replace('__DEF_ID__', defId)
         .replace('__QUERY__', query)
+        
+      if(typeof window == "undefined") {
+        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
+      }
 
       return response.data
     })

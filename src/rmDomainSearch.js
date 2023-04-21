@@ -21,7 +21,7 @@ const rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort=
           .replace('__DOMAIN_ID__', domainId)
           .replace('__QUERY__', query);
         if(typeof window == "undefined") {
-          response.data.resultsUrl = getServer() + response.data.resultsUrl
+          response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
         }
   
         return response.data

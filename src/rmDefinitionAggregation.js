@@ -34,7 +34,7 @@ const rmDefinitionAggregation = function (defId, aggregation, query="*", from=0,
       response.data.resultsUrl = resultsUrl
 
       if(typeof window == "undefined") {
-        response.data.resultsUrl = getServer() + response.data.resultsUrl
+        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
       }
 
       return response.data

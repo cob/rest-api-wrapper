@@ -11,7 +11,7 @@ const rmGetInstance = async function (instanceId) {
         .replace('__INSTANCE_ID__', instanceId)
         
       if(typeof window == "undefined") {
-        response.data.resultsUrl = getServer() + response.data.resultsUrl
+        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
       }
 
       return response.data

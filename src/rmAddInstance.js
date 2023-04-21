@@ -19,7 +19,7 @@ const rmAddInstance = async function (definitionName, values) {
         .replace('__INSTANCE_ID__', id)
 
       if(typeof window == "undefined") {
-        response.data.resultsUrl = getServer() + response.data.resultsUrl
+        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
       }
 
       return response.data
