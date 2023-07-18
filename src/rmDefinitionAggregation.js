@@ -1,21 +1,13 @@
 import { getServer } from "./server.js";
 import axios from 'axios';
 
-const QueryURLTemplate =  "/recordm/recordm/definitions/search/advanced/__DEF_ID__?from=__FROM__&size=__SIZE__"
+const QueryURLTemplate =  "/recordm/recordm/definitions/search?"
 const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
-const rmDefinitionAggregation = function (defId, aggregation, query="*", from=0, size=10, sort="", ascending="") {
-  let queryUrl = QueryURLTemplate
-    .replace('__DEF_ID__',defId)
-    .replace('__FROM__',from)
-    .replace('__SIZE__',size)
+const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc") {
+  
+  let queryUrl = QueryURLTemplate + (typeof def == "number" ? "defId=" : "def=") + def
 
-  let resultsUrl = ResultsURLTemplate
-    .replace('__DEF_ID__', defId)
-    .replace('__QUERY__', query)
-
-  if(sort) queryUrl += "&sort="+sort
-  if(ascending) queryUrl += "&ascending="+ascending
 
   let data = {
     "query": {
@@ -25,16 +17,29 @@ const rmDefinitionAggregation = function (defId, aggregation, query="*", from=0,
         "analyze_wildcard": true
       }
     },
+    "from": from,
+    "size": size,
     "aggs": aggregation
   }
 
   return axios.post(getServer() + queryUrl, data)
     .then(response => {
       //Add resultsUrl to response
+      const indexName = Object.keys(response.data._definitions)[0]
+      let resultsUrl = ResultsURLTemplate
+        .replace('__DEF_ID__', response.data._definitions[indexName].id)
+        .replace('__QUERY__', query)
       response.data.resultsUrl = resultsUrl
-
+        
       if(typeof window == "undefined") {
         response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
+      }
+
+      if(sort) {
+        const direction = (ascending == "asc") ? 1 : -1
+        response.data.hits.hits = response.data.hits.hits.sort((a,b) => {
+          return a._source[sort] > b._source[sort] ? direction : a._source[sort] < b._source[sort] ? -direction : 0
+        })
       }
 
       return response.data

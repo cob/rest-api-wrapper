@@ -14,6 +14,18 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
     })
 })
 
+test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20, query by name', (done) => {
+    rmDefinitionAggregation("Countries Series", {}, "Arab world")
+    .then( result => {
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
+        expect(result.hits.total.value).toBe(20)
+        done()
+    })
+    .catch(e => {
+        done(e)
+    })
+})
+
 
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
     let agg = {
@@ -24,7 +36,7 @@ test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
         }
     }
 
-    rmDefinitionAggregation(2, agg , 'Arab  World indicator_name:"population, total"')
+    rmDefinitionAggregation("Countries Series", agg , 'Arab  World indicator_name:"population, total"')
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World indicator_name:\"population, total\"")
         expect(result.aggregations['sum#x'].value).toBe(2019650012)
@@ -40,13 +52,13 @@ test('for "Arab world" there are 4 indicators', (done) => {
     let agg = {
         "x": {
             "terms": {
-                "field": "indicator_name.raw", //NOTE: you allways have to use a raw for ES
+                "field": "indicator_name.raw", //NOTE: you always have to use a raw for ES
                 "size": 50
             }
         }
     }
 
-    rmDefinitionAggregation(2, agg , "Arab  World")
+    rmDefinitionAggregation(2, agg , "Arab  World", 0, 8, "indicator_name","desc")
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World")
         expect(result.aggregations['sterms#x'].buckets).toEqual([
@@ -55,6 +67,31 @@ test('for "Arab world" there are 4 indicators', (done) => {
             { doc_count: 5, key: 'Population, total' },
             { doc_count: 5, key: 'Surface area (sq. km)' }
           ])
+        expect(result.hits.hits.length).toBe(8)
+        expect(result.hits.hits[0]._source.indicator_name[0]).toBe("Population, total")
+        expect(result.hits.hits[7]._source.indicator_name[0]).toBe("Alternative and nuclear energy (% of total energy use)")
+        done()
+    })
+    .catch(e => {
+        done(e)
+    })
+})
+
+
+
+test('for "Arab world" there are 4 indicators, ascending', (done) => {
+    let agg = {
+        "x": {
+            "terms": {
+                "field": "indicator_name.raw", //NOTE: you always have to use a raw for ES
+                "size": 50
+            }
+        }
+    }
+
+    rmDefinitionAggregation(2, agg , "Arab  World", 0, 8, "indicator_name","asc")
+    .then( result => {
+        expect(result.hits.hits[0]._source.indicator_name[0]).toBe("Alternative and nuclear energy (% of total energy use)")
         done()
     })
     .catch(e => {
