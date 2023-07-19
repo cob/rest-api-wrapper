@@ -33,7 +33,7 @@ export default [
          library: {
             type: 'module'
          },
-         filename: 'rest-api-wrapper.mjs'
+         filename: 'rest-api-wrapper.esm.js'
       }
    }
 ]
