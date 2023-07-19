@@ -15,7 +15,7 @@ const setServer = function(server) {
 const getServer = function() {
   if(_server) {
     return _server
-  } else if(typeof window == 'object' && window.self === self && self) { //this means we're in a browser, no need to specify server
+  } else if(typeof document !== "undefined") { //this means we're in a browser, no need to specify server
     _server = ""
   } else {
     _server = "https://learning.cultofbits.com"

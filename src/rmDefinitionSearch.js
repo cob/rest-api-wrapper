@@ -25,7 +25,7 @@ const rmDefinitionSearch = async function (definitionName, query="*", from=0, si
         .replace('__DEF_ID__', defId)
         .replace('__QUERY__', query)
         
-      if(typeof window == "undefined") {
+      if(typeof document == "undefined") {
         response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
       }
 

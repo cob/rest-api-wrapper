@@ -10,7 +10,7 @@ const rmGetInstance = async function (instanceId) {
       response.data.resultsUrl = ResultsURLTemplate
         .replace('__INSTANCE_ID__', instanceId)
         
-      if(typeof window == "undefined") {
+      if(typeof document == "undefined") {
         response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
       }
 
