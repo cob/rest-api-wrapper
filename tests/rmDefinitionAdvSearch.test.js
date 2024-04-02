@@ -6,7 +6,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
     rmDefinitionAggregation(2, {}, "Arab world")
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
-        expect(result.hits.total.value).toBe(20)
+        expect(result.hits.total.value).toBe(22)
         done()
     })
     .catch(e => {
@@ -18,7 +18,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
     rmDefinitionAggregation("Countries Series", {}, "Arab world")
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
-        expect(result.hits.total.value).toBe(20)
+        expect(result.hits.total.value).toBe(22)
         done()
     })
     .catch(e => {
@@ -26,6 +26,24 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
     })
 })
 
+
+test('Total population for all countries combined in the year 2018. The query should fail if timezone is not given, due to DLS', async (done) => {
+    let agg = {
+        "x": {
+            "sum": {
+                "field": "value"
+            }
+        }
+    }
+
+    const with_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 year.date:2018-07-10 indicator_name:"population, total"', 0, 0, "", "", "Europe/Lisbon")
+    expect(with_tz.aggregations['sum#x'].value).toBe(80494309045)
+
+    const without_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 year.date:2018-07-10 indicator_name:"population, total"')
+    expect(without_tz.aggregations['sum#x'].value).toBe(0)
+
+    done()
+})
 
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
     let agg = {
@@ -62,8 +80,8 @@ test('for "Arab world" there are 4 indicators', (done) => {
     .then( result => {
         expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World")
         expect(result.aggregations['sterms#x'].buckets).toEqual([
+            { doc_count: 7, key: 'GDP: linked series (current LCU)' },
             { doc_count: 5, key: 'Alternative and nuclear energy (% of total energy use)' },
-            { doc_count: 5, key: 'GDP: linked series (current LCU)' },
             { doc_count: 5, key: 'Population, total' },
             { doc_count: 5, key: 'Surface area (sq. km)' }
           ])
