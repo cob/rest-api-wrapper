@@ -6,7 +6,7 @@ import rmDefinitionSearch from "../src/rmDefinitionSearch"
 test('for the learning server, "countries series" count for "Arab world" is 20', () => {
     rmDefinitionSearch("Countries Series", "Arab world")
     .then( result => {
-        expect(result.hits.total.value).toBe(22)
+        expect(result.hits.total.value).toBe(20)
     })
 })
 
@@ -37,7 +37,7 @@ test('search for a definition that does not exist logs an error and throws "Defi
 test('for the learning server, "countries series" count for "Arab world" is 20, even when using + signs in the query' , () => {
     rmDefinitionSearch("Countries Series", "Arab world year.date:<now-100y+100y")
     .then( result => {
-        expect(result.hits.total.value).toBe(22)
+        expect(result.hits.total.value).toBe(20)
     })
 })
 
