@@ -4,7 +4,7 @@ import axios from 'axios';
 const QueryURLTemplate =  "/recordm/recordm/definitions/search/name/__DEF_NAME__?from=__FROM__&size=__SIZE__&q=__QUERY__&tz=__TIMEZONE__"
 const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
-const rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0, sort="", ascending="", timezone=undefined) {
+const rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0, sort="", ascending="", timezone) {
   //TODO: verificar se o AXIOS permite especificar correctamente os query parameters 
   let queryUrl = QueryURLTemplate
     .replace('__DEF_NAME__',definitionName)

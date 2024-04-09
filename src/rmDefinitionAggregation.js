@@ -4,7 +4,7 @@ import axios from 'axios';
 const QueryURLTemplate =  "/recordm/recordm/definitions/search?"
 const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
-const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc", timezone=undefined) {
+const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc", timezone) {
   
   let queryUrl = QueryURLTemplate + (typeof def == "number" ? "defId=" : "def=") + def
 
