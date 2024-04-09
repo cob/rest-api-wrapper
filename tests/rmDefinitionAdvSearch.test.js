@@ -27,6 +27,24 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
 })
 
 
+test('Total population for all countries combined in the year 2018. The query should fail if timezone is not given, due to DST', async (done) => {
+    let agg = {
+        "x": {
+            "sum": {
+                "field": "value"
+            }
+        }
+    }
+
+    const with_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 indicator_name:"population, total"', 0, 0, "", "", "Europe/Lisbon")
+    expect(with_tz.aggregations['sum#x'].value).toBe(80494309045)
+
+    const without_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 indicator_name:"population, total"')
+    expect(without_tz.aggregations['sum#x'].value).toBe(0)
+
+    done()
+})
+
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
     let agg = {
         "x": {
