@@ -11,7 +11,7 @@ const rmDefinitionSearch = async function (definitionName, query="*", from=0, si
     .replace('__QUERY__',encodeURIComponent(query))
     .replace('__FROM__',from)
     .replace('__SIZE__',size)
-    .replace('__TIMEZONE__', timezone ?? "")
+    .replace('__TIMEZONE__', (timezone === null || timezone === undefined) ? "" : timezone)
 
   if(sort) queryUrl += "&sort="+sort
   if(ascending) queryUrl += "&ascending="+ascending
