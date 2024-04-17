@@ -19,7 +19,7 @@ const rmDomainSearch = async function (domainId, query="*", from=0, size=0,sort=
         //Add resultsUrl to response
         response.data.resultsUrl = ResultsURLTemplate
           .replace('__DOMAIN_ID__', domainId)
-          .replace('__QUERY__', query);
+          .replace('__QUERY__', encodeURIComponent(query));
         if(typeof document == "undefined") {
           response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
         }

@@ -24,7 +24,7 @@ const rmDefinitionSearch = async function (definitionName, query="*", from=0, si
       //Add resultsUrl to response
       response.data.resultsUrl = ResultsURLTemplate
         .replace('__DEF_ID__', defId)
-        .replace('__QUERY__', query)
+        .replace('__QUERY__', encodeURIComponent(query))
         
       if(typeof document == "undefined") {
         response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl

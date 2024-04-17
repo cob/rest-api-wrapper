@@ -16,7 +16,7 @@ const dmEquipmentSearch = async function (query="*", from=0, size=0) {
 
       //Add resultsUrl to response
       response.data.resultsUrl = getServer() + ResultsURLTemplate
-        .replace('__QUERY__', query)
+        .replace('__QUERY__', encodeURIComponent(query))
 
       return response.data
     })

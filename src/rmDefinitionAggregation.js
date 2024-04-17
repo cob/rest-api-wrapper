@@ -28,7 +28,7 @@ const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, s
       const indexName = Object.keys(response.data._definitions)[0]
       let resultsUrl = ResultsURLTemplate
         .replace('__DEF_ID__', response.data._definitions[indexName].id)
-        .replace('__QUERY__', query)
+        .replace('__QUERY__', encodeURIComponent(query))
       response.data.resultsUrl = resultsUrl
         
       if(typeof document == "undefined") {
