@@ -41,14 +41,16 @@ test('for the learning server, "countries series" count for "Arab world" is 20, 
     })
 })
 
-test('for the learning server, "countries series" count for the date 2018-10-07. With timezone Europe/Lisbon it should find several matches. Without it, it will not find anything.' , async () => {
+test('for the learning server, "countries series" count for the date 2018-10-07. With timezone Europe/Lisbon it should find several matches. In UTC, it will not find anything.' , async () => {
     // Dates are stored as UTC at midnight. This means without the Europe/Lisbon 
     // timezone, they are seen as the previous day during daylight savings 
     // (00h00 - 1h = 23h00 prev day) and as such the query misses them.
-    const with_tz = await rmDefinitionSearch("Countries Series", "year.date:2018-07-10", 0, 0, "", "", "Europe/Lisbon")
+    // Test assumes a Europe/Lisbon machine
+    
+    const with_tz = await rmDefinitionSearch("Countries Series", "year.date:2018-07-10")
     expect(with_tz.hits.total.value).toBeGreaterThan(0)
     
-    const without_tz = await rmDefinitionSearch("Countries Series", "year.date:2018-07-10")
+    const without_tz = await rmDefinitionSearch("Countries Series", "year.date:2018-07-10", 0, 0, "", "", "Etc/UTC")
     expect(without_tz.hits.total.value).toBe(0)
 
 })
