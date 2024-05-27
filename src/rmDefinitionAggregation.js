@@ -6,7 +6,7 @@ const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
 const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc", timezone) {
  
-  let tz = timezone === null || timezone === undefined ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone
+  let tz = !timezone ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone
 
   let queryUrl = QueryURLTemplate + (typeof def == "number" ? "defId=" : "def=") + def
 

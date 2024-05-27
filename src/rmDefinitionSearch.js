@@ -6,7 +6,7 @@ const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
 
 const rmDefinitionSearch = async function (definitionName, query="*", from=0, size=0, sort="", ascending="", timezone) {
  
-  let tz = timezone === null || timezone === undefined ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone
+  let tz = !timezone ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone
 
   //TODO: verificar se o AXIOS permite especificar correctamente os query parameters 
   let queryUrl = QueryURLTemplate
