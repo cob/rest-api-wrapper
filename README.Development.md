@@ -7,13 +7,18 @@ npm i
 ```
 
 # Testing
-You can check the status of the existing tests by running:
+The tests are split in two suites:
 
-```
-npm run test
-```
+* `npm run test` — unit tests (`tests/unit`), fully offline with a mocked axios
+* `npm run test:integration` — end-to-end tests (`tests/integration`) against https://learning.cultofbits.com
 
-However these test are supposed to be running continuously throughout the development process. 
+The integration credentials come from the `COB_TEST_USERNAME` / `COB_TEST_PASSWORD` environment
+variables (defaulting to the learning-server test account). The timeless-token test only runs
+when `COB_TEST_TOKEN` is set — tokens must never be committed to the repository.
+
+There is also a linter: `npm run lint`.
+
+The unit tests are supposed to be running continuously throughout the development process. 
 For this first make sure you have jest cli installed:
 
 ```
