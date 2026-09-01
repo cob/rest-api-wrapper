@@ -5,7 +5,7 @@ import rmDefinitionAggregation from "../src/rmDefinitionAggregation"
 test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20', (done) => {
     rmDefinitionAggregation(2, {}, "Arab world")
     .then( result => {
-        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab%20world")
         expect(result.hits.total.value).toBe(20)
         done()
     })
@@ -17,7 +17,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
 test('for the learning server, "countries series" is defId 2, and count for "Arab world" is 20, query by name', (done) => {
     rmDefinitionAggregation("Countries Series", {}, "Arab world")
     .then( result => {
-        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab world")
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab%20world")
         expect(result.hits.total.value).toBe(20)
         done()
     })
@@ -27,7 +27,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
 })
 
 
-test('Total population for all countries combined in the year 2018. The query should fail if given the UTC timezone (default is the machine\'s), due to DST', async (done) => {
+test('Total population for all countries combined in the year 2018. The query should fail if given the UTC timezone (default is the machine\'s), due to DST', async () => {
     // Test assumes a Europe/Lisbon machine
     
     let agg = {
@@ -43,8 +43,6 @@ test('Total population for all countries combined in the year 2018. The query sh
 
     const without_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 indicator_name:"population, total"',0, 0, "", "", "Etc/UTC")
     expect(without_tz.aggregations['sum#x'].value).toBe(0)
-
-    done()
 })
 
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
@@ -58,7 +56,7 @@ test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
 
     rmDefinitionAggregation("Countries Series", agg , 'Arab  World indicator_name:"population, total"')
     .then( result => {
-        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World indicator_name:\"population, total\"")
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab%20%20World%20indicator_name%3A%22population%2C%20total%22")
         expect(result.aggregations['sum#x'].value).toBe(2019650012)
         done()
     })
@@ -80,7 +78,7 @@ test('for "Arab world" there are 4 indicators', (done) => {
 
     rmDefinitionAggregation(2, agg , "Arab  World", 0, 8, "indicator_name","desc")
     .then( result => {
-        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab  World")
+        expect(result.resultsUrl).toBe("https://learning.cultofbits.com/recordm/#/definitions/2/q=Arab%20%20World")
         expect(result.aggregations['sterms#x'].buckets).toEqual([
             { doc_count: 5, key: 'Alternative and nuclear energy (% of total energy use)' },
             { doc_count: 5, key: 'GDP: linked series (current LCU)' },

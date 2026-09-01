@@ -10,12 +10,12 @@
   "author": "",
   "license": "SEE LICENSE IN <filename>",
   "dependencies": {
-    "axios": "^0.21.1",
-    "axios-cookiejar-support": "^1.0.1",
-    "tough-cookie": "^4.0.0"
+    "axios": "^1.20.0",
+    "axios-cookiejar-support": "^4.0.7",
+    "tough-cookie": "^4.1.4"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
+    "jest": "^30.5.1",
     "webpack": "^5.28.0",
     "webpack-cli": "^4.6.0"
   },
