@@ -1,4 +1,5 @@
 import { getServer } from "./server.js";
+import { normalizeAscending } from "./utils/urlHelper.js";
 import axios from 'axios';
 
 const QueryURLTemplate =  "/recordm/recordm/definitions/search?"
@@ -38,9 +39,12 @@ const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, s
       }
 
       if(sort) {
-        const direction = (ascending == "asc") ? 1 : -1
+        // NOTE: this sort is client-side and only reorders the page of hits
+        // returned by the server (up to `size`), not the full result set
+        const direction = (normalizeAscending(ascending) === false) ? -1 : 1
+        const sortValue = hit => Array.isArray(hit._source[sort]) ? hit._source[sort][0] : hit._source[sort]
         response.data.hits.hits = response.data.hits.hits.sort((a,b) => {
-          return a._source[sort] > b._source[sort] ? direction : a._source[sort] < b._source[sort] ? -direction : 0
+          return sortValue(a) > sortValue(b) ? direction : sortValue(a) < sortValue(b) ? -direction : 0
         })
       }
 

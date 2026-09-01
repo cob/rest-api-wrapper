@@ -17,7 +17,7 @@ if(typeof document !== 'object' && typeof axiosCookieJarSupport.wrapper === "fun
 
 axios.defaults.withCredentials = true
 
-const auth = function ({username, password, token}) {
+const auth = function ({username, password, token} = {}) {
   if(username) {
     return axios
         .post(getServer() + "/recordm/security/auth", {
@@ -36,7 +36,7 @@ const auth = function ({username, password, token}) {
     }
     return umLoggedin(false)
   }
-  return Promise.reject("Specify a username/password OR a token")
+  return Promise.reject(new Error("Specify a username/password OR a token"))
 }
 
 export default auth

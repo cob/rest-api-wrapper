@@ -6,6 +6,11 @@ let _lastUmLoggedinResponseValidity = 0
 let _currentPromise
 
 const umLoggedin = function (throtle=true) {
+  // tolerate the legacy object form umLoggedin({throtle: false})
+  if (typeof throtle === 'object' && throtle !== null) {
+    throtle = throtle.throtle !== false
+  }
+
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return Promise.resolve({
       username:cob.app.getCurrentLoggedInUser(),
