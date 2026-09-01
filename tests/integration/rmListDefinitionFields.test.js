@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-import rmListDefinitionFields from '../src/rmListDefinitionFields.js'
+import rmListDefinitionFields from '../../src/rmListDefinitionFields.js'
 
 test('Can retrieve definition fields', async () => {
     let definitionDetails = await rmListDefinitionFields(7);

@@ -1,28 +1,17 @@
 import { getServer } from "./server.js";
 import axios from 'axios';
 
-const QueryURLTemplate =  "/confm/confm/search?from=__FROM__&size=__SIZE__&q=__QUERY__"
-const ResultsURLTemplate = "/confm/#/search/q=__QUERY__"
-
 const dmEquipmentSearch = async function (query="*", from=0, size=0) {
 
-    let queryUrl = QueryURLTemplate
-        .replace('__QUERY__',encodeURIComponent(query))
-        .replace('__FROM__',from)
-        .replace('__SIZE__',size)
+  const queryUrl = `/confm/confm/search?from=${from}&size=${size}&q=${encodeURIComponent(query)}`
 
-  return axios.get(getServer() + queryUrl)
-    .then(response => {
+  const response = await axios.get(getServer() + queryUrl)
 
-      //Add resultsUrl to response
-      response.data.resultsUrl = getServer() + ResultsURLTemplate
-        .replace('__QUERY__', encodeURIComponent(query))
+  // unlike the recordm functions, this URL always carries the server prefix
+  // (in a browser getServer() is "" and it stays relative)
+  response.data.resultsUrl = getServer() + `/confm/#/search/q=${encodeURIComponent(query)}`
 
-      return response.data
-    })
-    .catch ( e => {
-      throw(e)
-    })
+  return response.data
 }
 
 export default dmEquipmentSearch

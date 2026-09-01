@@ -1,6 +1,6 @@
 
 /** @jest-environment node */
-import dmEquipmentSearch from "../src/dmEquipmentSearch.js"
+import dmEquipmentSearch from "../../src/dmEquipmentSearch.js"
 
 // Skipped: these tests depend on the confm service being available on the
 // learning server, and /confm/confm/search currently answers 404 there.

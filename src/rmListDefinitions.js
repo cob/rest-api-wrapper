@@ -8,7 +8,7 @@ const rmListDefinitions = async function(filter = {includeDisabled: false, name:
 
     if (filter) {
         queryParams.push(filter.includeDisabled ? `includeDisabled=true` : null)
-        queryParams.push(filter.name ? `name=${filter.name.replace(/\*/g, '%')}` : null)
+        queryParams.push(filter.name ? `name=${encodeURIComponent(filter.name.replace(/\*/g, '%'))}` : null)
     }
 
     return (await axios.get(`${getServer() + GetUri}?${queryParams.filter(it => !!it).join("&")}`)).data
