@@ -1,7 +1,7 @@
 import { getServer } from "./server.js";
 import axios from 'axios';
 
-const GetURL =  "/recordm/recordm/instances/__ID__??ignoreRefs=__FLAG__"
+const GetURL =  "/recordm/recordm/instances/__ID__?ignoreRefs=__FLAG__"
 
 const rmDeleteInstance = async function (instanceId, ignoreRefs=false) {
   let url = GetURL

@@ -20,7 +20,7 @@ test('after successful auth umLoggedin returns that user and sets throtled usern
 })
 
 
-test.only('setting a timelessTokens also sets throtled username', async () => {
+test('setting a timelessTokens also sets throtled username', async () => {
     let response = await auth({token:"Pn2tDonpOqtIXvwPATQC1/AKGnYHRTeWVgPd4Jsjx3oviX9cVlIe/Q2yfHF0KVAyl0qixyggX/BsFjb+xtTLdE/wYoSKci29LzjZPHgtqgNeKbzYQS0ipAarKpy2x09R2JMmHxyZgLt0mb20fnptYg=="})
     expect(response.username).toEqual("jestTests")
     expect(response.throtle).toBeUndefined()

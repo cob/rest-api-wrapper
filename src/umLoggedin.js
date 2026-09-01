@@ -6,7 +6,6 @@ let _lastUmLoggedinResponseValidity = 0
 let _currentPromise
 
 const umLoggedin = function (throtle=true) {
-  // debugger;
   if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
     return Promise.resolve({
       username:cob.app.getCurrentLoggedInUser(),
@@ -14,26 +13,31 @@ const umLoggedin = function (throtle=true) {
     })
 
   } else if ( throtle && Date.now() < _lastUmLoggedinResponseValidity ) {
-    _lastUmLoggedinResponse.throtle = true
-    return Promise.resolve(_lastUmLoggedinResponse)
+    return Promise.resolve({ ..._lastUmLoggedinResponse, throtle: true })
 
-  } else if ( throtle && _currentPromise && typeof _currentPromise.then === "function") {
-    return _currentPromise.then( r => r)
+  } else if ( throtle && _currentPromise ) {
+    return _currentPromise
 
   } else {
-    return _currentPromise = axios.get(getServer() + "/userm/userm/user/loggedin")
-    .then(response => {
+    const request = axios.get(getServer() + "/userm/userm/user/loggedin")
+      .then(response => {
         _lastUmLoggedinResponseValidity = Date.now() + 60000
         return _lastUmLoggedinResponse = response.data.loggedInUser
       })
       .catch ( e => {
-          if (e.response.status === 403) {
-              return Promise.resolve({username: "anonymous"})
-          } else {
-              throw (e)
-          }
+        if (e.response && e.response.status === 403) {
+          return {username: "anonymous"}
+        }
+        throw e
       })
+      .finally(() => {
+        // allow a fresh request once this one settles, otherwise the
+        // 60s cache validity is never re-evaluated
+        if (_currentPromise === request) _currentPromise = undefined
+      })
+    _currentPromise = request
+    return request
   }
 }
 
-export default umLoggedin 
+export default umLoggedin

@@ -24,19 +24,19 @@ const auth = function ({username, password, token}) {
             username: username,
             password: password
         })
-        .then(r => umLoggedin({throtle: false}))
+        .then(() => umLoggedin(false))
         .catch(e => { throw e })
 
   } else if(token) {
-    if(typeof cob === 'object' && cob.app && typeof cob.app.getCurrentLoggedInUser === 'function') {
-      console.warn('You should only use timeless tokens in backend scripts, not browser. Ignoring');
+    if(cookieJar) {
+      cookieJar.setCookieSync('cobtoken=' + token + ';', getServer())
+    } else {
+      // no cookie jar means we're in a browser: timeless tokens belong in backend scripts
+      console.warn('Timeless tokens should only be used in backend scripts, not in a browser. Ignoring the token.');
     }
-
-    //TODO: test
-    cookieJar.setCookieSync('cobtoken=' + token + ';', getServer())
-    return Promise.resolve( umLoggedin({throtle:false}) )
+    return umLoggedin(false)
   }
   return Promise.reject("Specify a username/password OR a token")
 }
 
-export default auth 
+export default auth
