@@ -27,7 +27,7 @@ test('for the learning server, "countries series" is defId 2, and count for "Ara
 })
 
 
-test('Total population for all countries combined in the year 2018. The query should fail if given the UTC timezone (default is the machine\'s), due to DST', async (done) => {
+test('Total population for all countries combined in the year 2018. The query should fail if given the UTC timezone (default is the machine\'s), due to DST', async () => {
     // Test assumes a Europe/Lisbon machine
     
     let agg = {
@@ -43,8 +43,6 @@ test('Total population for all countries combined in the year 2018. The query sh
 
     const without_tz = await rmDefinitionAggregation("Countries Series", agg , 'year.date:2018-07-10 indicator_name:"population, total"',0, 0, "", "", "Etc/UTC")
     expect(without_tz.aggregations['sum#x'].value).toBe(0)
-
-    done()
 })
 
 test('for "Arab world" population sum over years is 2.019.650.012', (done) => {
