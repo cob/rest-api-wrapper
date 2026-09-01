@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-import rmListDefinitions from '../src/rmListDefinitions.js'
+import rmListDefinitions from '../../src/rmListDefinitions.js'
 
 test('Can list all active definitions with (no filter)', async () => {
 
