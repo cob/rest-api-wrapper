@@ -1,17 +1,15 @@
 import { getServer } from "./server.js";
-import { normalizeAscending } from "./utils/urlHelper.js";
+import { makeResultsUrl, normalizeAscending } from "./utils/urlHelper.js";
 import axios from 'axios';
 
-const QueryURLTemplate =  "/recordm/recordm/definitions/search?"
-const ResultsURLTemplate = "#/definitions/__DEF_ID__/q=__QUERY__"
+const rmDefinitionAggregation = async function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc", timezone) {
 
-const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, size=10, sort="", ascending="asc", timezone) {
- 
-  let tz = !timezone ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone
+  const tz = timezone || Intl.DateTimeFormat().resolvedOptions().timeZone
 
-  let queryUrl = QueryURLTemplate + (typeof def == "number" ? "defId=" : "def=") + def
+  const queryUrl = "/recordm/recordm/definitions/search?"
+    + (typeof def == "number" ? "defId=" : "def=") + encodeURIComponent(def)
 
-  let data = {
+  const data = {
     "query": {
       "query_string": {
         "query": query,
@@ -25,34 +23,23 @@ const rmDefinitionAggregation = function (def, aggregation, query="*", from=0, s
     "aggs": aggregation
   }
 
-  return axios.post(getServer() + queryUrl, data)
-    .then(response => {
-      //Add resultsUrl to response
-      const indexName = Object.keys(response.data._definitions)[0]
-      let resultsUrl = ResultsURLTemplate
-        .replace('__DEF_ID__', response.data._definitions[indexName].id)
-        .replace('__QUERY__', encodeURIComponent(query))
-      response.data.resultsUrl = resultsUrl
-        
-      if(typeof document == "undefined") {
-        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
-      }
+  const response = await axios.post(getServer() + queryUrl, data)
 
-      if(sort) {
-        // NOTE: this sort is client-side and only reorders the page of hits
-        // returned by the server (up to `size`), not the full result set
-        const direction = (normalizeAscending(ascending) === false) ? -1 : 1
-        const sortValue = hit => Array.isArray(hit._source[sort]) ? hit._source[sort][0] : hit._source[sort]
-        response.data.hits.hits = response.data.hits.hits.sort((a,b) => {
-          return sortValue(a) > sortValue(b) ? direction : sortValue(a) < sortValue(b) ? -direction : 0
-        })
-      }
+  const definitions = response.data._definitions
+  const defId = definitions[Object.keys(definitions)[0]].id
+  response.data.resultsUrl = makeResultsUrl("/recordm/", `#/definitions/${defId}/q=${encodeURIComponent(query)}`)
 
-      return response.data
+  if(sort) {
+    // NOTE: this sort is client-side and only reorders the page of hits
+    // returned by the server (up to `size`), not the full result set
+    const direction = (normalizeAscending(ascending) === false) ? -1 : 1
+    const sortValue = hit => Array.isArray(hit._source[sort]) ? hit._source[sort][0] : hit._source[sort]
+    response.data.hits.hits = response.data.hits.hits.sort((a,b) => {
+      return sortValue(a) > sortValue(b) ? direction : sortValue(a) < sortValue(b) ? -direction : 0
     })
-    .catch ( e => {
-      throw(e)
-    })
+  }
+
+  return response.data
 }
 
-export default rmDefinitionAggregation 
+export default rmDefinitionAggregation

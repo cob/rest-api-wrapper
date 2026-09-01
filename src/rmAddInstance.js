@@ -1,32 +1,18 @@
 import { getServer } from "./server.js";
+import { makeResultsUrl } from "./utils/urlHelper.js";
 import axios from 'axios';
 
-const PostURL =  "/recordm/recordm/instances/integration"
-const ResultURLTemplate = "#/instance/__INSTANCE_ID__"
-
 const rmAddInstance = async function (definitionName, values) {
-  let data = {
+  const data = {
     "type": definitionName,
     "values": values
   }
-  
-  return axios.post(getServer() + PostURL, data)
-    .then(response => {
-      let id = response.data.id
 
-      //Add resultsUrl to response
-      response.data.resultsUrl = ResultURLTemplate
-        .replace('__INSTANCE_ID__', id)
+  const response = await axios.post(getServer() + "/recordm/recordm/instances/integration", data)
 
-      if(typeof document == "undefined") {
-        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
-      }
+  response.data.resultsUrl = makeResultsUrl("/recordm/", `#/instance/${response.data.id}`)
 
-      return response.data
-    })
-    .catch ( e => {
-      throw(e)
-    })
+  return response.data
 }
 
 export default rmAddInstance

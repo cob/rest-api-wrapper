@@ -1,24 +1,13 @@
 import { getServer } from "./server.js";
+import { makeResultsUrl } from "./utils/urlHelper.js";
 import axios from 'axios';
 
-const GetURL =  "/recordm/recordm/instances/"
-const ResultsURLTemplate = "#/instance/__INSTANCE_ID__"
-
 const rmGetInstance = async function (instanceId) {
-  return axios.get(getServer() + GetURL + encodeURIComponent(instanceId))
-    .then(response => {
-      response.data.resultsUrl = ResultsURLTemplate
-        .replace('__INSTANCE_ID__', instanceId)
-        
-      if(typeof document == "undefined") {
-        response.data.resultsUrl = getServer() + "/recordm/" + response.data.resultsUrl
-      }
+  const response = await axios.get(getServer() + "/recordm/recordm/instances/" + encodeURIComponent(instanceId))
 
-      return response.data
-    })
-    .catch ( e => {
-      throw(e)
-    })
+  response.data.resultsUrl = makeResultsUrl("/recordm/", `#/instance/${instanceId}`)
+
+  return response.data
 }
 
 export default rmGetInstance

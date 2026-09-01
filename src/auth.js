@@ -1,5 +1,6 @@
 import { getServer } from "./server.js"
-import umLoggedin from "../src/umLoggedin.js"
+import { isBrowser } from "./utils/environment.js"
+import umLoggedin from "./umLoggedin.js"
 
 import axios from 'axios'
 import * as toughCookie from 'tough-cookie'
@@ -9,7 +10,7 @@ let cookieJar
 
 // If in node use tough-cookie for axios jar (in a browser cookies are handled by the browser itself
 // and these two modules are stubbed out of the webpack bundles)
-if(typeof document !== 'object' && typeof axiosCookieJarSupport.wrapper === "function") {
+if(!isBrowser() && typeof axiosCookieJarSupport.wrapper === "function") {
   axiosCookieJarSupport.wrapper(axios)
   cookieJar = new toughCookie.CookieJar()
   axios.defaults.jar = cookieJar
@@ -25,7 +26,6 @@ const auth = function ({username, password, token} = {}) {
             password: password
         })
         .then(() => umLoggedin(false))
-        .catch(e => { throw e })
 
   } else if(token) {
     if(cookieJar) {
