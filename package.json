@@ -1,6 +1,6 @@
 {
   "name": "@cob/rest-api-wrapper",
-  "version": "2.9.1",
+  "version": "2.9.2",
   "description": "Library of functions to simplify the interaction with a CoB server REST API",
   "keywords": [
     "cultofbits",
