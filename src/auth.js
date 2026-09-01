@@ -2,17 +2,17 @@ import { getServer } from "./server.js"
 import umLoggedin from "../src/umLoggedin.js"
 
 import axios from 'axios'
-import { CookieJar } from 'tough-cookie'
-import axiosCookieJarSupport from 'axios-cookiejar-support'
+import * as toughCookie from 'tough-cookie'
+import * as axiosCookieJarSupport from 'axios-cookiejar-support'
 
 let cookieJar
 
-// If in node use tough-cookie for axios jar
-if(typeof axiosCookieJarSupport.default === "function") {
-  axiosCookieJarSupport.default(axios)
-  cookieJar = new CookieJar()
+// If in node use tough-cookie for axios jar (in a browser cookies are handled by the browser itself
+// and these two modules are stubbed out of the webpack bundles)
+if(typeof document !== 'object' && typeof axiosCookieJarSupport.wrapper === "function") {
+  axiosCookieJarSupport.wrapper(axios)
+  cookieJar = new toughCookie.CookieJar()
   axios.defaults.jar = cookieJar
-  axios.defaults.ignoreCookieErrors = true
 }
 
 axios.defaults.withCredentials = true

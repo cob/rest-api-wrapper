@@ -2,7 +2,12 @@ export default [
    {
       entry: './src/index.js',
       resolve: {
-         fallback: { 
+         // node-only cookie handling, stubbed out of browser bundles (see src/auth.js)
+         alias: {
+            "axios-cookiejar-support": false,
+            "tough-cookie": false
+         },
+         fallback: {
             "url": false,
             "util": false
          }
@@ -22,6 +27,11 @@ export default [
       },
       entry: './src/index.js',
       resolve: {
+         // node-only cookie handling, stubbed out of browser bundles (see src/auth.js)
+         alias: {
+            "axios-cookiejar-support": false,
+            "tough-cookie": false
+         },
          fallback: {
             "url": false,
             "util": false,
